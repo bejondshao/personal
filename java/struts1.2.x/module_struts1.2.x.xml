@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_struts1.2.x" default="compile.module.struts1.2.x">
+  <dirname property="module.struts1.2.x.basedir" file="${ant.file.module_struts1.2.x}"/>
+  
+  <property name="module.jdk.home.struts1.2.x" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.struts1.2.x" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.struts1.2.x" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.struts1.2.x" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
+  
+  <property name="struts1.2.x.output.dir" value="${module.struts1.2.x.basedir}/out/production/struts1.2.x"/>
+  <property name="struts1.2.x.testoutput.dir" value="${module.struts1.2.x.basedir}/out/test/struts1.2.x"/>
+  
+  <path id="struts1.2.x.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="struts1.2.x.module.production.classpath">
+    <path refid="${module.jdk.classpath.struts1.2.x}"/>
+    <path refid="library.struts-1.2.x.classpath"/>
+    <path refid="library.ee6210.classpath"/>
+  </path>
+  
+  <path id="struts1.2.x.runtime.production.module.classpath">
+    <pathelement location="${struts1.2.x.output.dir}"/>
+    <path refid="library.struts-1.2.x.classpath"/>
+  </path>
+  
+  <path id="struts1.2.x.module.classpath">
+    <path refid="${module.jdk.classpath.struts1.2.x}"/>
+    <pathelement location="${struts1.2.x.output.dir}"/>
+    <path refid="library.struts-1.2.x.classpath"/>
+    <path refid="library.ee6210.classpath"/>
+  </path>
+  
+  <path id="struts1.2.x.runtime.module.classpath">
+    <pathelement location="${struts1.2.x.testoutput.dir}"/>
+    <pathelement location="${struts1.2.x.output.dir}"/>
+    <path refid="library.struts-1.2.x.classpath"/>
+    <path refid="library.ee6210.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.struts1.2.x">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.struts1.2.x">
+    <patternset refid="excluded.from.module.struts1.2.x"/>
+  </patternset>
+  
+  <path id="struts1.2.x.module.sourcepath">
+    <dirset dir="${module.struts1.2.x.basedir}">
+      <include name="web/WEB-INF/src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.struts1.2.x" depends="compile.module.struts1.2.x.production,compile.module.struts1.2.x.tests" description="Compile module struts1.2.x"/>
+  
+  <target name="compile.module.struts1.2.x.production" depends="register.custom.compilers" description="Compile module struts1.2.x; production classes">
+    <mkdir dir="${struts1.2.x.output.dir}"/>
+    <javac2 destdir="${struts1.2.x.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.struts1.2.x}/javac">
+      <compilerarg line="${compiler.args.struts1.2.x}"/>
+      <bootclasspath refid="struts1.2.x.module.bootclasspath"/>
+      <classpath refid="struts1.2.x.module.production.classpath"/>
+      <src refid="struts1.2.x.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.struts1.2.x"/>
+    </javac2>
+    
+    <copy todir="${struts1.2.x.output.dir}">
+      <fileset dir="${module.struts1.2.x.basedir}/web/WEB-INF/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.struts1.2.x.tests" depends="register.custom.compilers,compile.module.struts1.2.x.production" description="compile module struts1.2.x; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.struts1.2.x" description="cleanup module">
+    <delete dir="${struts1.2.x.output.dir}"/>
+    <delete dir="${struts1.2.x.testoutput.dir}"/>
+  </target>
+</project>
