@@ -8,7 +8,7 @@
     <property name="source" location="${basedir}/WEB-INF/src" />
     <property name="webroot" location="${basedir}" />
 
-    <property name="dist" location="${basedir}/../dist" />
+    <property name="dist" location="${basedir}/../../dist" />
 
     <target name="clean">
         <echo message="clean temp files" />
@@ -17,7 +17,7 @@
     </target>
     <target name="prepare" depends="clean">
         <mkdir dir="${webroot}/WEB-INF/classes" />
-        <mkdir dir="${webroot}/../dist" />
+        <mkdir dir="${webroot}/../../dist" />
     </target>
     <target name="build" depends="prepare">
         <echo message="Compiling java code" />
