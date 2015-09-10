@@ -6,13 +6,13 @@
 
 <struts-config>
         <global-forwards>
-                <forward name="newProduct" path="/newProduct.jsp" />
-                <forward name="searchProduct" path="/searchProduct.jsp" />
+                <forward name="newProduct" path="/WEB-INF/html/newProduct.jsp" />
+                <forward name="searchProduct" path="/WEB-INF/html/searchProduct.jsp" />
         </global-forwards>
         <action-mappings>
                 <action path="/hello" type="com.bejond.SampleAction">
-                        <forward name="success" path="/welcome.jsp" />
-                        <forward name="error" path="/error.jsp" />
+                        <forward name="success" path="/WEB-INF/html/welcome.jsp" />
+                        <forward name="error" path="/WEB-INF/html/error.jsp" />
                 </action>
         </action-mappings>
 </struts-config>
