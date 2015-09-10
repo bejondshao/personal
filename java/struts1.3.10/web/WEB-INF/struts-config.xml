@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+        <global-forwards>
+                <forward name="newProduct" path="/newProduct.jsp" />
+                <forward name="searchProduct" path="/searchProduct.jsp" />
+        </global-forwards>
+        <action-mappings>
+                <action path="/hello" type="com.bejond.SampleAction">
+                        <forward name="success" path="/welcome.jsp" />
+                        <forward name="error" path="/error.jsp" />
+                </action>
+        </action-mappings>
+</struts-config>

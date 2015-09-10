@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<project name="sample-struts" basedir="web" default="deploy">
+    <description>This is the first ant sample. And it's also a struts sample.</description>
+    <property file="build.properties" />
+    <property name="project-name" value="${ant.project.name}" />
+    <property name="source" location="${basedir}/WEB-INF/src" />
+    <property name="webroot" location="${basedir}" />
+    <property name="tomcat-root" location="${tomcat.root}" />
+    <property name="dist" location="${basedir}/../dist" />
+
+    <target name="clean">
+        <echo message="clean temp files" />
+        <delete dir="${tomcat-root}/webapps/${project-name}" />
+    </target>
+    <target name="prepare" depends="clean">
+        <mkdir dir="${webroot}/WEB-INF/classes" />
+        <mkdir dir="${webroot}/../dist" />
+    </target>
+    <target name="build" depends="prepare">
+        <echo message="Compiling java code" />
+        <javac destdir="${webroot}/WEB-INF/classes" srcdir="${source}">
+            <classpath>
+                <fileset dir="${tomcat-root}/lib">
+                    <include name="**/*.jar" />
+                </fileset>
+                <fileset dir="${webroot}/../lib">
+                    <include name="**/*.jar" />
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+    <target name="package" depends="build">
+        <echo message="Packaging the project" />
+        <war destfile="${dist}/${project-name}.war" basedir="${webroot}" webxml="${webroot}/WEB-INF/web.xml" />
+    </target>
+    <target name="deploy" depends="package">
+        <echo message="Deploying the war file to server" />
+        <copy file="${dist}/${project-name}.war" todir="${tomcat-root}/webapps" />
+
+        <echo message="Deploy successfully!" />
+    </target>
+</project>
