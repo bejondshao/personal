@@ -7,7 +7,7 @@
     <property name="project-name" value="${ant.project.name}" />
     <property name="source" location="${basedir}/WEB-INF/src" />
     <property name="webroot" location="${basedir}" />
-
+    <property name="classes" location="${webroot}/WEB-INF/classes" />
     <property name="dist" location="${basedir}/../../dist" />
 
     <target name="clean">
@@ -21,19 +21,22 @@
     </target>
     <target name="build" depends="prepare">
         <echo message="Compiling java code" />
-        <javac destdir="${webroot}/WEB-INF/classes" srcdir="${source}">
+        <javac destdir="${classes}" srcdir="${source}">
             <classpath>
                 <fileset dir="${tomcat-root}/lib">
                     <include name="**/*.jar" />
                 </fileset>
-                <fileset dir="${webroot}/../lib">
+                <fileset dir="${webroot}/WEB-INF/lib">
                     <include name="**/*.jar" />
                 </fileset>
             </classpath>
         </javac>
+        <echo message="Copying resource files" />
+        <copy file="${source}/resources/messages.properties" todir="${classes}/resources/" includeemptydirs="true" />
     </target>
     <target name="package" depends="build">
         <echo message="Packaging the project" />
+        <mkdir dir="${classes}/resources" />
         <war destfile="${dist}/${project-name}.war" basedir="${webroot}" webxml="${webroot}/WEB-INF/web.xml" />
     </target>
     <target name="deploy" depends="package">

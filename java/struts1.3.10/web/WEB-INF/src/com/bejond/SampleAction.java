@@ -4,6 +4,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.util.MessageResources;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -19,12 +21,18 @@ public class SampleAction extends Action{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
+		MessageResources messageResources = getResources(request);
+
+		String helloWord = messageResources.getMessage("welcome.helloWord");
+		String message = messageResources.getMessage("welcome.message");
+
 		// prepare model
 		Map model = new HashMap<>();
 
 		if (username.equals("asdf") && password.equals("good")) {
 			model.put("name", username);
 			model.put("password", password);
+			model.put("message", message);
 
 			request.setAttribute("userInfo", model);
 

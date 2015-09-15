@@ -15,6 +15,7 @@
   <%
     Map model = (Map)request.getAttribute("userInfo");
   %>
-<h3>Hello, <%= model.get("name") %>!</h3>
+<h3>Hello, <%= model.get("name") %>! <%= model.get("message") %> </h3>
+
   </body>
 </html>
