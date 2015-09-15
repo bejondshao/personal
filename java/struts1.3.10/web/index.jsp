@@ -17,6 +17,7 @@
     <td>
       <html:link forward="searchProduct">查询产品信息</html:link>
     </td>
+    <a href="login.jsp" >login</a>
   </tr>
 </table>
 </body>

@@ -9,10 +9,14 @@
                 <forward name="newProduct" path="/WEB-INF/html/newProduct.jsp" />
                 <forward name="searchProduct" path="/WEB-INF/html/searchProduct.jsp" />
         </global-forwards>
+
         <action-mappings>
-                <action path="/hello" type="com.bejond.SampleAction">
+
+
+                <action path="/login" type="com.bejond.SampleAction">
                         <forward name="success" path="/WEB-INF/html/welcome.jsp" />
                         <forward name="error" path="/WEB-INF/html/error.jsp" />
                 </action>
         </action-mappings>
+        <message-resources parameter="resources/messages"/>
 </struts-config>
