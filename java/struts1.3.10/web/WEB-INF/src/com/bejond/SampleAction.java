@@ -16,14 +16,14 @@ public class SampleAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		// get info from request object
-		String userName = request.getParameter("username");
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
 		// prepare model
 		Map model = new HashMap<>();
 
-		if (userName != null && password.equals("good")) {
-			model.put("name", userName);
+		if (username.equals("asdf") && password.equals("good")) {
+			model.put("name", username);
 			model.put("password", password);
 
 			request.setAttribute("userInfo", model);
