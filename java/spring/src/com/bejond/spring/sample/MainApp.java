@@ -14,7 +14,10 @@ public class MainApp {
 		HelloWorld helloWorld =
 			(HelloWorld) applicationContext.getBean("helloWorld");
 
+		helloWorld.setMessage("Hello world 1");
 		helloWorld.getMessage();
+		HelloWorld helloWorld2 = (HelloWorld) applicationContext.getBean("helloWorld");
+		helloWorld2.getMessage();
 	}
 
 }
