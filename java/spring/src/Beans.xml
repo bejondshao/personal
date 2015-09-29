@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="init"
+       default-destroy-method="destory" >
 
        <bean id="helloWorld" class="com.bejond.spring.sample.HelloWorld" scope="prototype">
               <property name="message" value="Hello World! (This initial data is set in Beans.xml file.)" />
+       </bean>
+       <bean id="helloWorldChina" class="com.bejond.spring.sample.HelloWorldChina" parent="helloWorld">
+              <property name="address" value="China, Asia" />
        </bean>
 </beans>

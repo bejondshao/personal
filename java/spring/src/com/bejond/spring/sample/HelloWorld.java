@@ -13,4 +13,12 @@ public class HelloWorld {
 	public void getMessage() {
 		System.out.println("Your message is: " + _message);
 	}
+
+	public void init() {
+		System.out.println("Your bean is initializing.");
+	}
+
+	public void destory() {
+		System.out.println("Your bean is destroying");
+	}
 }

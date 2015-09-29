@@ -18,6 +18,10 @@ public class MainApp {
 		helloWorld.getMessage();
 		HelloWorld helloWorld2 = (HelloWorld) applicationContext.getBean("helloWorld");
 		helloWorld2.getMessage();
+
+		HelloWorldChina helloWorldChina= (HelloWorldChina) applicationContext.getBean("helloWorldChina");
+		helloWorldChina.getMessage();
+		helloWorldChina.getAddress();
 	}
 
 }
