@@ -11,4 +11,10 @@
        <bean id="helloWorldChina" class="com.bejond.spring.sample.HelloWorldChina" parent="helloWorld">
               <property name="address" value="China, Asia" />
        </bean>
+
+       <bean id="textManager" class="com.bejond.spring.sample.innerBean.TextManager" >
+              <property name="spellChecker">
+                     <bean id="spellChecker" class="com.bejond.spring.sample.innerBean.SpellChecker"/>
+              </property>
+       </bean>
 </beans>
