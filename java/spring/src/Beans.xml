@@ -14,10 +14,9 @@
        </bean>
 
        <bean id="textManager" class="com.bejond.spring.sample.innerBean.TextManager" >
-              <property name="spellChecker">
-                     <bean id="spellChecker" class="com.bejond.spring.sample.innerBean.SpellChecker"/>
-              </property>
+
        </bean>
+              <bean id="spellChecker" class="com.bejond.spring.sample.innerBean.SpellChecker"/>
        <bean id="javaCollection" class="com.bejond.spring.sample.injectCollection.JavaCollection">
               <property name="list">
                      <list>

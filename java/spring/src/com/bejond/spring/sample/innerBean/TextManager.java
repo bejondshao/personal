@@ -1,12 +1,17 @@
 package com.bejond.spring.sample.innerBean;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * Created by bejond on 15-9-29.
  */
 public class TextManager {
 	private String _text;
+	@Autowired
 	private SpellChecker spellChecker;
-
+public TextManager(){
+	System.out.println("Inside TextManager Constructor.");
+}
 	public String getText() {
 		return _text;
 	}
