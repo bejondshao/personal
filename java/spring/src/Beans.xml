@@ -17,4 +17,38 @@
                      <bean id="spellChecker" class="com.bejond.spring.sample.innerBean.SpellChecker"/>
               </property>
        </bean>
+       <bean id="javaCollection" class="com.bejond.spring.sample.injectCollection.JavaCollection">
+              <property name="list">
+                     <list>
+                            <value>China</value>
+                            <value>USA</value>
+                            <value>USA</value>
+                            <value>India</value>
+                     </list>
+              </property>
+              <property name="set">
+                     <set>
+                            <value>China</value>
+                            <value>USA</value>
+                            <value>USA</value>
+                            <value>India</value>
+                     </set>
+              </property>
+              <property name="map">
+                     <map>
+                            <entry key="1" value="China"/>
+                            <entry key="2" value="USA"/>
+                            <entry key="3" value="USA"/>
+                            <entry key="4" value="Indea"/>
+                     </map>
+              </property>
+              <property name="property">
+                     <props>
+                            <prop key="Asia">China</prop>
+                            <prop key="North America">USA1</prop>
+                            <prop key="North America">USA2</prop>
+                            <prop key="Asia">India</prop>
+                     </props>
+              </property>
+       </bean>
 </beans>
