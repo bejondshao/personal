@@ -6,7 +6,9 @@ package com.bejond.spring.sample.innerBean;
 public class TextManager {
 	private String _text;
 	private SpellChecker spellChecker;
-
+public TextManager() {
+	System.out.println("Inside TextManager Constructor.");
+}
 	public String getText() {
 		return _text;
 	}
