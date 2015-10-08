@@ -58,5 +58,7 @@
 
               <property name="length" value="120"/>
        </bean>
-
+       <bean id="customEventPublisher" class="com.bejond.spring.sample.event.CustomEventPublisher">
+       </bean>
+       <bean id="customEventHandler" class="com.bejond.spring.sample.event.CustomEventHandler" />
 </beans>
