@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_helloweb" default="compile.module.helloweb">
+  <dirname property="module.helloweb.basedir" file="${ant.file.module_helloweb}"/>
+  
+  <property name="module.jdk.home.helloweb" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.helloweb" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.helloweb" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.helloweb" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
+  
+  <property name="helloweb.output.dir" value="${module.helloweb.basedir}/../../../../liferay_code/trunk/liferay-portal/out/production/HelloWeb"/>
+  <property name="helloweb.testoutput.dir" value="${module.helloweb.basedir}/../../../../liferay_code/trunk/liferay-portal/out/test/HelloWeb"/>
+  
+  <path id="helloweb.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="helloweb.module.production.classpath">
+    <path refid="${module.jdk.classpath.helloweb}"/>
+    <fileset dir="${basedir}/../../../other/personal/java/HelloWeb/WEB-INF/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="helloweb.runtime.production.module.classpath">
+    <pathelement location="${helloweb.output.dir}"/>
+    <fileset dir="${basedir}/../../../other/personal/java/HelloWeb/WEB-INF/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="helloweb.module.classpath">
+    <path refid="${module.jdk.classpath.helloweb}"/>
+    <pathelement location="${helloweb.output.dir}"/>
+    <fileset dir="${basedir}/../../../other/personal/java/HelloWeb/WEB-INF/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="helloweb.runtime.module.classpath">
+    <pathelement location="${helloweb.testoutput.dir}"/>
+    <pathelement location="${helloweb.output.dir}"/>
+    <fileset dir="${basedir}/../../../other/personal/java/HelloWeb/WEB-INF/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.helloweb">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.helloweb">
+    <patternset refid="excluded.from.module.helloweb"/>
+  </patternset>
+  
+  <path id="helloweb.module.sourcepath">
+    <dirset dir="${module.helloweb.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.helloweb" depends="compile.module.helloweb.production,compile.module.helloweb.tests" description="Compile module HelloWeb"/>
+  
+  <target name="compile.module.helloweb.production" depends="register.custom.compilers" description="Compile module HelloWeb; production classes">
+    <mkdir dir="${helloweb.output.dir}"/>
+    <javac2 destdir="${helloweb.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.helloweb}/javac">
+      <compilerarg line="${compiler.args.helloweb}"/>
+      <bootclasspath refid="helloweb.module.bootclasspath"/>
+      <classpath refid="helloweb.module.production.classpath"/>
+      <src refid="helloweb.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.helloweb"/>
+    </javac2>
+    
+    <copy todir="${helloweb.output.dir}">
+      <fileset dir="${module.helloweb.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.helloweb.tests" depends="register.custom.compilers,compile.module.helloweb.production" description="compile module HelloWeb; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.helloweb" description="cleanup module">
+    <delete dir="${helloweb.output.dir}"/>
+    <delete dir="${helloweb.testoutput.dir}"/>
+  </target>
+</project>

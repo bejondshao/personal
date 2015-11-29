@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_hellomvc" default="compile.module.hellomvc">
+  <dirname property="module.hellomvc.basedir" file="${ant.file.module_hellomvc}"/>
+  
+  <property name="module.jdk.home.hellomvc" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.hellomvc" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.hellomvc" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.hellomvc" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
+  
+  <property name="hellomvc.output.dir" value="${module.hellomvc.basedir}/../../../../liferay_code/trunk/liferay-portal/out/production/HelloMVC"/>
+  <property name="hellomvc.testoutput.dir" value="${module.hellomvc.basedir}/../../../../liferay_code/trunk/liferay-portal/out/test/HelloMVC"/>
+  
+  <path id="hellomvc.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="hellomvc.module.production.classpath">
+    <path refid="${module.jdk.classpath.hellomvc}"/>
+    <fileset dir="${basedir}/../../../other/personal/java/HelloMVC/web/WEB-INF/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="hellomvc.runtime.production.module.classpath">
+    <pathelement location="${hellomvc.output.dir}"/>
+  </path>
+  
+  <path id="hellomvc.module.classpath">
+    <path refid="${module.jdk.classpath.hellomvc}"/>
+    <pathelement location="${hellomvc.output.dir}"/>
+    <fileset dir="${basedir}/../../../other/personal/java/HelloMVC/web/WEB-INF/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="hellomvc.runtime.module.classpath">
+    <pathelement location="${hellomvc.testoutput.dir}"/>
+    <pathelement location="${hellomvc.output.dir}"/>
+    <fileset dir="${basedir}/../../../other/personal/java/HelloMVC/web/WEB-INF/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.hellomvc">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.hellomvc">
+    <patternset refid="excluded.from.module.hellomvc"/>
+  </patternset>
+  
+  <path id="hellomvc.module.sourcepath">
+    <dirset dir="${module.hellomvc.basedir}">
+      <include name="web/WEB-INF/src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.hellomvc" depends="compile.module.hellomvc.production,compile.module.hellomvc.tests" description="Compile module HelloMVC"/>
+  
+  <target name="compile.module.hellomvc.production" depends="register.custom.compilers" description="Compile module HelloMVC; production classes">
+    <mkdir dir="${hellomvc.output.dir}"/>
+    <javac2 destdir="${hellomvc.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.hellomvc}/javac">
+      <compilerarg line="${compiler.args.hellomvc}"/>
+      <bootclasspath refid="hellomvc.module.bootclasspath"/>
+      <classpath refid="hellomvc.module.production.classpath"/>
+      <src refid="hellomvc.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.hellomvc"/>
+    </javac2>
+    
+    <copy todir="${hellomvc.output.dir}">
+      <fileset dir="${module.hellomvc.basedir}/web/WEB-INF/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.hellomvc.tests" depends="register.custom.compilers,compile.module.hellomvc.production" description="compile module HelloMVC; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.hellomvc" description="cleanup module">
+    <delete dir="${hellomvc.output.dir}"/>
+    <delete dir="${hellomvc.testoutput.dir}"/>
+  </target>
+</project>
