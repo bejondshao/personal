@@ -44,7 +44,7 @@
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
 
-        <action name="hello">
+        <action name="helloaaa">
             <result>
                 /Hello.jsp
             </result>
@@ -52,5 +52,6 @@
 
     </package>
 
+    <constant name="struts.devMode" value="true" />
 
 </struts>
