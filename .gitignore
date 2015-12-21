@@ -4,7 +4,7 @@
 **/.sonar
 **/pmd-reports
 *.bak
-*.iml
+
 *.ipr
 *.iws
 *.swp
@@ -21,7 +21,7 @@
 /*.sublime-*
 /.bnd
 /.checkstyle
-/.idea
+
 /.ivy/cache/com.liferay-*.xml
 /.ivy/cache/resolved-*
 /.sonar
@@ -39,7 +39,7 @@
 /build.*.properties
 /classes/Test.class
 /dist
-/intellij
+
 /lib/development/db2jcc.jar
 /lib/development/db2jcc_license_cu.jar
 /lib/development/ojdbc14.jar
