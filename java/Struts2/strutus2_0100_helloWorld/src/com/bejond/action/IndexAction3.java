@@ -8,4 +8,8 @@ public class IndexAction3 extends ActionSupport {
 	public String execute() {
 		return "success";
 	}
+
+	public String addName() {
+		return "added";
+	}
 }

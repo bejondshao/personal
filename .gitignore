@@ -224,3 +224,4 @@ cobertura.ser
 
 /java/struts1.3.10/web/WEB-INF/classes
 java/Struts2/out
+java/Struts2/strutus2_0100_helloWorld/out
