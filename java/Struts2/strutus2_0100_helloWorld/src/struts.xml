@@ -49,6 +49,21 @@
                 /Hello.jsp
             </result>
         </action>
+        <action name="action1">
+            <result>
+                /action1.jsp
+            </result>
+        </action>
+        <action name="action2">
+            <result>
+                /action2.jsp
+            </result>
+        </action>
+        <action name="action3">
+            <result>
+                /action3.jsp
+            </result>
+        </action>
 
     </package>
 

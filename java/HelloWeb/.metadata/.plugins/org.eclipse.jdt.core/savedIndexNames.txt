@@ -1,0 +1,14 @@
+INDEX VERSION 1.127+/home/bejond/source/other/personal/java/HelloWeb/.metadata/.plugins/org.eclipse.jdt.core
+1688220695.index
+180614749.index
+1523592858.index
+3635798338.index
+1947446294.index
+3967626055.index
+738737672.index
+1852895590.index
+357856511.index
+1964267666.index
+2787671285.index
+4019686859.index
+4027247733.index
