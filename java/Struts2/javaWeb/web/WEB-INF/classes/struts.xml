@@ -66,7 +66,7 @@
 
 
 
-    <package name="path" extends="struts-default" namespace="/path">
+    <package name="path" extends="struts-default" namespace="/">
         <action name="path" class="com.bejond.action.Path">
             <result name="path">/path.jsp</result>
         </action>
