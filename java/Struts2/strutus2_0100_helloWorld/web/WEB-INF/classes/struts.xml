@@ -65,7 +65,7 @@
             </result>
         </action>
 
-        <action name="addName" class="com.bejond.action.IndexAction3" method="addName">
+        <action name="addNameaa" class="com.bejond.action.IndexAction3" method="addName">
             <result name="added">
                 /action4.jsp
             </result>
@@ -74,6 +74,17 @@
         <action name="aaa" class="com.bejond.action.IndexAction3">
             <result name="added">
                 /action5.jsp
+            </result>
+            <result>
+                /action1.jsp
+            </result>
+        </action>
+        <action name="action*" class="com.bejond.action.IndexAction3" method="{1}">
+            <result name="added">
+                /action5.jsp
+            </result>
+            <result name="deleted">
+                /action6.jsp
             </result>
         </action>
     </package>

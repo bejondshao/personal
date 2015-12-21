@@ -12,4 +12,8 @@ public class IndexAction3 extends ActionSupport {
 	public String addName() {
 		return "added";
 	}
+
+	public String deleteName() {
+		return "deleted";
+	}
 }
