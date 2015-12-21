@@ -71,6 +71,11 @@
             </result>
         </action>
 
+        <action name="aaa" class="com.bejond.action.IndexAction3">
+            <result name="added">
+                /action5.jsp
+            </result>
+        </action>
     </package>
 
     <constant name="struts.devMode" value="true" />
