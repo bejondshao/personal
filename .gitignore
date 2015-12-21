@@ -223,3 +223,4 @@ cobertura.ser
 /java/dist
 
 /java/struts1.3.10/web/WEB-INF/classes
+/java/Struts2/out/*
