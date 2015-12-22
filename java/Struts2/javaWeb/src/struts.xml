@@ -65,6 +65,11 @@
                 /{1}Success.jsp
             </result>
         </action>
+        <action name="*_*" class="com.bejond.action.{1}" method="{2}">
+            <result name="{2}Success">
+                /{1}_{2}_success.jsp
+            </result>
+        </action>
 
     </package>
 
