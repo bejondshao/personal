@@ -60,6 +60,11 @@
             </result>
         </action>
 
+        <action name="address*" class="com.bejond.action.Address" method="{1}">
+            <result name="{1}Success">
+                /{1}Success.jsp
+            </result>
+        </action>
 
     </package>
 
