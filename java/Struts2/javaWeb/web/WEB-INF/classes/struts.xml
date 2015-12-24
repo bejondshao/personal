@@ -76,6 +76,11 @@
             </result>
         </action>
 
+        <action name="addUser" class="com.bejond.action.UserAction" method="addUser">
+            <result name="addUserSuccess">
+                /add_User_success.jsp
+            </result>
+        </action>
     </package>
 
 
@@ -88,4 +93,5 @@
     </package>
 
     <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.encoding" value="GBK" />
 </struts>
