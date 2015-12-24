@@ -12,6 +12,6 @@
   </head>
   <body>
 This is a java web project.
-使用Domain Model接收参数<a href="/Student!add?Student.name=a&Student.age=8">添加学生</a>
+使用Domain Model接收参数<a href="<%= request.getContextPath() %>/Student_add?student.name=a&student.age=8">添加学生</a>
   </body>
 </html>
