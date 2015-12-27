@@ -24,9 +24,9 @@
 <body>
 User Login Successfully!
 <br />
-<s:property value="#request.r"/> <%= request.getAttribute("r") %> <br />
-<s:property value="#session.s" /> <%= session.getAttribute("s") %> <br />
-<s:property value="#application.a" /> <%= application.getAttribute("a") %> <br />
+<s:property value="#request.r"/> ~ <%= request.getAttribute("r") %> <br />
+<s:property value="#session.s" /> ~ <%= session.getAttribute("s") %> <br />
+<s:property value="#application.a" /> ~ <%= application.getAttribute("a") %> <br />
 <s:property value="#attr.a" />
 <s:debug></s:debug>
 </body>
