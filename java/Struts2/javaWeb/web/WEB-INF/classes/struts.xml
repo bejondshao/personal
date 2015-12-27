@@ -90,5 +90,17 @@
         </action>
     </package>
 
+    <package name="login" extends="struts-default" namespace="/login">
+        <action name="login1" class="com.bejond.action.LoginAction1">
+            <result name="success">/login1.jsp</result>
+        </action>
+        <action name="login2" class="com.bejond.action.LoginAction2">
+            <result name="success">/login1.jsp</result>
+        </action>
+        <action name="login*" class="com.bejond.action.LoginAction{1}">
+            <result>/login1.jsp</result>
+        </action>
+    </package>
+
     <constant name="struts.devMode" value="true" />
 </struts>
