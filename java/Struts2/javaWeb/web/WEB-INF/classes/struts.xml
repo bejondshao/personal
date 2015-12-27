@@ -74,6 +74,9 @@
             <result name="{2}{1}Success">
                 /{2}_{1}_success.jsp
             </result>
+            <result name="{2}{1}Error">
+                /{2}_{1}_error.jsp
+            </result>
         </action>
 
     </package>
