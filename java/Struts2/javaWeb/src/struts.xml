@@ -32,9 +32,11 @@
 
     <!-- Add packages here -->
 
+    <include file="login.xml" />
     <package name="default" namespace="/" extends="struts-default">
 
         <default-action-ref name="index" />
+
 
         <global-results>
             <result name="error">/WEB-INF/jsp/error.jsp</result>
@@ -43,6 +45,12 @@
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
+
+        <action name="index">
+            <result>
+                /index1.jsp
+            </result>
+        </action>
 
         <action name="action1" class="com.bejond.action.Action1">
             <result>
@@ -74,6 +82,9 @@
             <result name="{2}{1}Success">
                 /{2}_{1}_success.jsp
             </result>
+            <result name="{2}{1}Error">
+                /{2}_{1}_error.jsp
+            </result>
         </action>
 
         <action name="addUser" class="com.bejond.action.UserAction" method="addUser">
@@ -91,6 +102,8 @@
             <result name="path">/path.jsp</result>
         </action>
     </package>
+
+
 
     <constant name="struts.devMode" value="true" />
     <constant name="struts.i18n.encoding" value="GBK" />

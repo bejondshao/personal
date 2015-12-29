@@ -12,13 +12,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title></title>
+    <title>Index1</title>
   </head>
   <body>
+  Index1
+
 This is a java web project.
-使用Domain Model接收参数<a href="<%= request.getContextPath() %>/Student_add?student.name=a&student.age=8">添加学生</a>
-Model Driven接收参数 <a href="<%= contextPath %>/Book_add?name=github&price=11.2&pages=123" >添加图书</a>
-  中文乱码<a href="<%= contextPath %>/add_user.jsp">添加用户</a>
+使用Domain Model接收参数<a href="/Student!add?Student.name=a&Student.age=8">添加学生</a>
  <a href="<%= path %>/login.jsp">登录</a>
   </body>
 </html>
