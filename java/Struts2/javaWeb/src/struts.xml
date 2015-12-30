@@ -106,6 +106,12 @@
         <action name="r4">
             <result type="redirectAction">r2</result>
         </action>
+
+        <action name="dynamic" class="com.bejond.action.DynamicResultAction" method="execute">
+            <result>
+                /${result}.jsp
+            </result>
+        </action>
     </package>
 
 
