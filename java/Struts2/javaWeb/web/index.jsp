@@ -17,8 +17,8 @@
   <body>
 This is a java web project.
 使用Domain Model接收参数<a href="<%= request.getContextPath() %>/Student_add?student.name=a&student.age=8">添加学生</a>
-Model Driven接收参数 <a href="<%= contextPath %>/Book_add?name=github&price=11.2&pages=123" >添加图书</a>
-  中文乱码<a href="<%= contextPath %>/add_user.jsp">添加用户</a>
+Model Driven接收参数 <a href="<%= path %>/Book_add?name=github&price=11.2&pages=123" >添加图书</a>
+  中文乱码<a href="<%= path %>/add_user.jsp">添加用户</a>
  <a href="<%= path %>/login.jsp">登录</a>
   </body>
 </html>
