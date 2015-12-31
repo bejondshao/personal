@@ -25,6 +25,7 @@
 <li>访问value stack contents中的action普通属性: username = <s:property value="username" /> </li>
 <li>访问值栈中对象的普通属性(get set方法)：<s:property value="student.age"/> | <s:property value="student['age']" /> | <s:property value="student[\"age\"]" /> | wrong: <%--<s:property value="user[age]"/>--%> </li>
 <li>访问值栈中对象的普通属性(get set方法)：<s:property value="book.name"/> | <s:property value="book['name']" /> | <s:property value="book[\"name\"]" /> | wrong: <%--<s:property value="user[age]"/>--%> </li></li>
+<li>访问值栈中对象的普通属性(get set方法): <s:property value="cat.friend.name"/></li>
 <s:debug />
 </body>
 </html>

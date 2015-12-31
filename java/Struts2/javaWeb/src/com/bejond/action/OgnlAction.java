@@ -1,6 +1,7 @@
 package com.bejond.action;
 
 import com.bejond.model.Book;
+import com.bejond.model.Cat;
 import com.bejond.model.Student;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -14,6 +15,20 @@ public class OgnlAction extends ActionSupport {
 	private Student student;
 
 	private Book book = new Book();
+
+	private Cat cat;
+
+	public OgnlAction() {
+
+	}
+
+	public Cat getCat() {
+		return cat;
+	}
+
+	public void setCat(Cat cat) {
+		this.cat = cat;
+	}
 
 	public Book getBook() {
 		return book;
@@ -31,7 +46,6 @@ public class OgnlAction extends ActionSupport {
 		this.student = student;
 	}
 
-
 	public String getUsername() {
 		return username;
 	}
@@ -46,9 +60,5 @@ public class OgnlAction extends ActionSupport {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public OgnlAction() {
-
 	}
 }
