@@ -12,6 +12,10 @@ public class Book {
 		name = "asdf";
 	}
 
+	public Book(String name) {
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -34,5 +38,9 @@ public class Book {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String toString() {
+		return "name: " + name;
 	}
 }

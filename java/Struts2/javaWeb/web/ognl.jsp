@@ -33,6 +33,11 @@
 <li>访问静态方法：<s:property value="@com.bejond.staticpackage.Static@s()"/></li>
 <li>访问静态属性：<s:property value="@com.bejond.staticpackage.Static@NAME"/></li>
 <li>访问Math类的静态方法：<s:property value="@ @max(2,3)" /></li>
+<hr />
+<li>访问普通类的构造方法：<s:property value="new com.bejond.model.Book(\"Gone with wind\")"/></li>
+
+
+
 <s:debug />
 </body>
 </html>
