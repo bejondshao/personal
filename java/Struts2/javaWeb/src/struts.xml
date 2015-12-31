@@ -125,5 +125,5 @@
 
 
     <include file="login.xml" />
-
+    <include file="ognl.xml" />
 </struts>
