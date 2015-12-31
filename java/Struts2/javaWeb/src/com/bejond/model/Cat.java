@@ -23,6 +23,9 @@ public class Cat {
 		this.friend = friend;
 	}
 
+	public String miao() {
+		return "miao";
+	}
 	@Override
 	public String toString() {
 		return "cat's name is: " + name;

@@ -26,6 +26,9 @@
 <li>访问值栈中对象的普通属性(get set方法)：<s:property value="student.age"/> | <s:property value="student['age']" /> | <s:property value="student[\"age\"]" /> | wrong: <%--<s:property value="user[age]"/>--%> </li>
 <li>访问值栈中对象的普通属性(get set方法)：<s:property value="book.name"/> | <s:property value="book['name']" /> | <s:property value="book[\"name\"]" /> | wrong: <%--<s:property value="user[age]"/>--%> </li></li>
 <li>访问值栈中对象的普通属性(get set方法): <s:property value="cat.friend.name"/></li>
+<li>访问值栈中对象的普通方法：<s:property value="password.length()"/></li>
+<li>访问值栈中对象的普通方法：<s:property value="cat.miao()" /></li>
+<li>访问值栈中action的普通方法：<s:property value="m()" /></li>
 <s:debug />
 </body>
 </html>

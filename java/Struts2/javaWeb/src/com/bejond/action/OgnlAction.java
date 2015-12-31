@@ -61,4 +61,8 @@ public class OgnlAction extends ActionSupport {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String m() {
+		return "method m from OgnlAction";
+	}
 }
