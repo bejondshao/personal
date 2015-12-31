@@ -1,5 +1,6 @@
 package com.bejond.action;
 
+import com.bejond.model.Book;
 import com.bejond.model.Student;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -11,6 +12,16 @@ public class OgnlAction extends ActionSupport {
 	private String password;
 
 	private Student student;
+
+	private Book book = new Book();
+
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
 
 	public Student getStudent() {
 		return student;

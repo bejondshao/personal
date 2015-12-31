@@ -8,6 +8,10 @@ public class Book {
 	private double price;
 	private int pages;
 
+	public Book() {
+		name = "asdf";
+	}
+
 	public String getName() {
 		return name;
 	}
