@@ -6,6 +6,17 @@ package com.bejond.model;
 public class Dog {
 	private String name;
 
+	@Override
+	public String toString() {
+		return "Dog{" +
+			"name='" + name + '\'' +
+			'}';
+	}
+
+	public Dog(String name) {
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}

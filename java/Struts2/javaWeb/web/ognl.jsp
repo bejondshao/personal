@@ -35,7 +35,19 @@
 <li>访问Math类的静态方法：<s:property value="@ @max(2,3)" /></li>
 <hr />
 <li>访问普通类的构造方法：<s:property value="new com.bejond.model.Book(\"Gone with wind\")"/></li>
-
+<hr />
+<li>访问List:<s:property value="users"/></li>
+<li>访问List中某个元素:<s:property value="users[1]"/></li>
+<li>访问List中元素某个属性的集合:<s:property value="users.{age}"/></li>
+<li>访问List中元素某个属性的集合中的特定值:<s:property value="users.{age}[0]"/> | <s:property value="users[0].age"/></li>
+<li>访问Set:<s:property value="dogs"/></li>
+<li>访问Set中某个元素:<s:property value="dogs[1]"/></li>
+<li>访问Map:<s:property value="dogMap"/></li>
+<li>访问Map中某个元素:<s:property value="dogMap.dog101"/> | <s:property value="dogMap['dog101']"/> | <s:property value="dogMap[\"dog101\"]"/></li>
+<li>访问Map中所有的key:<s:property value="dogMap.keys"/></li>
+<li>访问Map中所有的value:<s:property value="dogMap.values"/></li>
+<li>访问容器的大小：<s:property value="dogMap.size()"/> | <s:property value="users.size"/> </li>
+<hr />
 
 
 <s:debug />
