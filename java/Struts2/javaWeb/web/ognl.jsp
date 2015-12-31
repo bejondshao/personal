@@ -47,8 +47,12 @@
 <li>访问Map中所有的key:<s:property value="dogMap.keys"/></li>
 <li>访问Map中所有的value:<s:property value="dogMap.values"/></li>
 <li>访问容器的大小：<s:property value="dogMap.size()"/> | <s:property value="users.size"/> </li>
-<hr />
 
+<hr />
+<li>投影(过滤)：<s:property value="users.{?#this.age==1}"/>|</li><s:property value="users.{?#this.age==1}[0]"/></li>
+<li>投影：<s:property value="users.{^#this.age>1}"/></li>
+<li>投影：<s:property value="users.{$#this.age>1}[0].age"/></li>
+<li>投影：<s:property value="users.{$#this.age>1}.{age} == null"/></li>
 
 <s:debug />
 </body>

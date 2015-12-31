@@ -17,6 +17,10 @@ public class Dog {
 		this.name = name;
 	}
 
+	public Dog() {
+
+	}
+
 	public String getName() {
 		return name;
 	}

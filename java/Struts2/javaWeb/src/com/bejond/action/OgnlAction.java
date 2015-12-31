@@ -68,9 +68,9 @@ public class OgnlAction extends ActionSupport {
 	private Set<Dog> dogs = new HashSet<Dog>();
 
 	public OgnlAction() {
-		users.add(new User("1"));
-		users.add(new User("2"));
-		users.add(new User("3"));
+		users.add(new User("1", 1));
+		users.add(new User("2", 2));
+		users.add(new User("3", 3));
 
 		dogs.add(new Dog("dog1"));
 		dogs.add(new Dog("dog2"));
