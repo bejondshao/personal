@@ -29,6 +29,10 @@
 <li>访问值栈中对象的普通方法：<s:property value="password.length()"/></li>
 <li>访问值栈中对象的普通方法：<s:property value="cat.miao()" /></li>
 <li>访问值栈中action的普通方法：<s:property value="m()" /></li>
+
+<li>访问静态方法：<s:property value="@com.bejond.staticpackage.Static@s()"/></li>
+<li>访问静态属性：<s:property value="@com.bejond.staticpackage.Static@NAME"/></li>
+<li>访问Math类的静态方法：<s:property value="@ @max(2,3)" /></li>
 <s:debug />
 </body>
 </html>

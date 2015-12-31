@@ -1,0 +1,9 @@
+package com.bejond.staticpackage;
+
+public class Static {
+	public static String NAME="static attribute";
+
+	public static String s() {
+		return "sss";
+	}
+}
