@@ -15,5 +15,10 @@
         <action name="login*" class="com.bejond.action.LoginAction{1}">
             <result>/login1.jsp</result>
         </action>
+        <action name="test" class="com.bejond.action.TestAction">
+            <result type="chain">
+                ognl
+            </result>
+        </action>
     </package>
 </struts>

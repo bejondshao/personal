@@ -22,5 +22,6 @@ Model Driven接收参数 <a href="<%= path %>/Book_add?name=github&price=11.2&pa
  <a href="<%= path %>/login.jsp">登录</a>
 <br />
 <a href="<%= path %>/ognl/ognl?username=bejond&password=asdf&student.age=29&cat.friend.name=Ohdy">ognl</a> <br />
+<a href="<%= path %>/ognl/test">Chain Test Action</a>
   </body>
 </html>
