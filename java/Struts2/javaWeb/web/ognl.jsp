@@ -53,7 +53,8 @@
 <li>投影：<s:property value="users.{^#this.age>1}"/></li>
 <li>投影：<s:property value="users.{$#this.age>1}[0].age"/></li>
 <li>投影：<s:property value="users.{$#this.age>1}.{age} == null"/></li>
-
+<li>[]: <s:property value="[0]" /> </li>
+<li>[]: <s:property value="[0].student" /> </li>
 <s:debug />
 </body>
 </html>
