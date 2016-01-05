@@ -40,10 +40,15 @@
 <li>bean, 定义bean, 生成新的对象，使用param来设定新的属性值:
     <s:bean name="com.bejond.model.Dog" var="myDog">
       <s:param name="name" value="'Hashiqi'" />
-      <s:property value="name" /> 
+      <s:property value="name" />
       <s:property value="#myDog.name" />
-      <s:debug />
+      <%--<s:debug />--%>
     </s:bean>
+</li>
+
+<li>include标签, 不推荐用<br />
+  <s:set var="incPage" value="'_include.html'" /> <%-- 这里的value是Object, 会按照ognl来读内容--%>
+  <s:include value="%{#incPage}"></s:include> <%-- 这里的value是String, 会直接读内容--%>%{}表示将大括号里的内容当做ognl表达式读
 </li>
 <s:debug />
 </body>
