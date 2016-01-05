@@ -37,7 +37,14 @@
 <li>set 设定var, 范围为session: <s:set var="adminPassword2" value="password" scope="session"/></li>
 <li>set 从相应范围取值: <s:property value="#session.adminPassword2"/> </li>
 <hr />
-
+<li>bean, 定义bean, 生成新的对象，使用param来设定新的属性值:
+    <s:bean name="com.bejond.model.Dog" var="myDog">
+      <s:param name="name" value="'Hashiqi'" />
+      <s:property value="name" /> 
+      <s:property value="#myDog.name" />
+      <s:debug />
+    </s:bean>
+</li>
 <s:debug />
 </body>
 </html>
