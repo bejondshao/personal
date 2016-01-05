@@ -19,6 +19,6 @@
   </head>
   <body>
   This is a java web project.
-<a href="<%= path %>/tags/tag?username=bejond&password=test">Tags</a>
+<a href="<%= path %>/tags/tag?username=bejond&password=test&age=12">Tags</a>
   </body>
 </html>
