@@ -228,3 +228,6 @@ java/Struts2/strutus2_0100_helloWorld/out
 java/Struts2/javaWeb/web/WEB-INF/classes
 java/Struts2/struts2_tags/web/WEB-INF/classes
 java/Struts2/struts2_bbs/web/WEB-INF/classes
+java/hibernate/hello_hibernate1/web/WEB-INF/classes
+java/hibernate/hello_hibernate/web/WEB-INF/classes
+java/hibernate/hibernate_idea/web/WEB-INF/classes
