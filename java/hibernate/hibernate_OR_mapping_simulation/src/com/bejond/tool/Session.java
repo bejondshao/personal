@@ -2,11 +2,11 @@ package com.bejond.tool;
 
 import com.bejond.hibernate.model.Student;
 
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -20,9 +20,9 @@ public class Session {
 	String[] methodNames;
 
 	public Session() {
-		columnFieldMap.put("_id", "id");
-		columnFieldMap.put("_name", "name");
-		columnFieldMap.put("_age", "age");
+		columnFieldMap.put("id", "id");
+		columnFieldMap.put("name", "name");
+		columnFieldMap.put("age", "age");
 
 		methodNames = new String[columnFieldMap.size()];
 	}
@@ -34,6 +34,23 @@ public class Session {
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/hello_hibernate", "root", "");
 
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+		int index = 1;
+		for(String methodName : methodNames) {
+			Method method = student.getClass().getMethod(methodName);
+			Class returnType = method.getReturnType();
+
+			if (returnType.getName().equals("java.lang.String")) {
+				preparedStatement.setString(index, (String)method.invoke(student));
+			}
+			else if (returnType.getName().equals("java.lang.Integer")) {
+				preparedStatement.setInt(index, (Integer)method.invoke(student));
+			}
+
+			index++;
+
+			System.out.println(method + " | " + returnType.getName());
+		}
 
 		for (int i = 0; i < columnFieldMap.size(); i++) {
 
@@ -47,8 +64,6 @@ public class Session {
 	private String generateSQL() {
 		String keyString = "";
 		String values = "";
-
-		Iterator<String> iterator = columnFieldMap.keySet().iterator();
 
 		int index = 0;
 
