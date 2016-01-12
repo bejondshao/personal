@@ -10,9 +10,10 @@ public class StudentTest {
 	public static void main(String[] args) throws Exception{
 		Student student = new Student();
 
+		student.setId(2);
 		student.setAge(123);
 		student.setName("Big Day");
-		student.setId(1);
+
 
 		Session session = new Session();
 

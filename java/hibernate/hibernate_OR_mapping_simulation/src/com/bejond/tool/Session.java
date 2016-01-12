@@ -43,17 +43,13 @@ public class Session {
 			if (returnType.getName().equals("java.lang.String")) {
 				preparedStatement.setString(index, (String)method.invoke(student));
 			}
-			else if (returnType.getName().equals("java.lang.Integer")) {
+			else if (returnType.getName().equals("int")) {
 				preparedStatement.setInt(index, (Integer)method.invoke(student));
 			}
 
 			index++;
 
 			System.out.println(method + " | " + returnType.getName());
-		}
-
-		for (int i = 0; i < columnFieldMap.size(); i++) {
-
 		}
 
 		preparedStatement.executeUpdate();
@@ -78,6 +74,8 @@ public class Session {
 			methodNames[index] = "get" + value;
 
 			keyString += key + ",";
+
+			index++;
 		}
 
 		keyString = keyString.substring(0, keyString.length() - 1);
@@ -89,8 +87,8 @@ public class Session {
 			}
 		}
 
-		String sql = "insert into " + tableName + " {" + keyString + "}" +
-			" values {" + values + "}";
+		String sql = "insert into " + tableName + " (" + keyString + ")" +
+			" values (" + values + ")";
 
 		System.out.println(sql);
 
