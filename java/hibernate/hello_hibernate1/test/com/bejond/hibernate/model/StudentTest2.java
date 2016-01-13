@@ -4,9 +4,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class StudentTest2 {
+	private static SessionFactory sessionFactory;
+
+	@BeforeClass
+	public static void beforeClass() {
+		sessionFactory = new Configuration().configure().buildSessionFactory();
+	}
 	@Test
 	public void testStudentSave() {
 		Student student = new Student();
@@ -17,8 +25,6 @@ public class StudentTest2 {
 		Configuration configuration = new Configuration();
 
 		configuration.configure();
-
-		SessionFactory sessionFactory = configuration.buildSessionFactory();
 
 		Session session = sessionFactory.openSession();
 
@@ -32,6 +38,11 @@ public class StudentTest2 {
 
 		session.close();
 
+		sessionFactory.close();
+	}
+
+	@AfterClass
+	public static void afterClass() {
 		sessionFactory.close();
 	}
 }
