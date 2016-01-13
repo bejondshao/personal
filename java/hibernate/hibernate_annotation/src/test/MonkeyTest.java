@@ -8,6 +8,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.id.IdentityGenerator;
 
+import java.util.Date;
+
 /**
  * Created by bejond on 16-1-8.
  */
@@ -18,6 +20,7 @@ public class MonkeyTest {
 		monkey.setName("King Kong");
 		monkey.setAge(27);
 		monkey.setFood("Banana");
+		monkey.setBirthday(new Date());
 
 		Configuration configuration = new Configuration();
 

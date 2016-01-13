@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.Transient;
+import java.util.Date;
 
 /**
  * Created by bejond on 16-1-11.
@@ -20,6 +23,27 @@ public class Monkey {
 	private String name;
 	private int age;
 	private String food;
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	private Date birthday;
+
+	@Transient // don't create this column in database
+	public String getPersonalIssue() {
+		return personalIssue;
+	}
+
+	public void setPersonalIssue(String personalIssue) {
+		this.personalIssue = personalIssue;
+	}
+
+	private String personalIssue;
 
 	@Column(name = "food_")
 	public String getFood() {
