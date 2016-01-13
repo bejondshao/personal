@@ -7,18 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by bejond on 16-1-11.
  */
 
 @Entity
+@Table(name = "monkey_")
 public class Monkey {
 	private int id;
 	private String name;
 	private int age;
 	private String food;
 
+	@Column(name = "food_")
 	public String getFood() {
 		return food;
 	}
