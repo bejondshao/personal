@@ -39,10 +39,9 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping resource="com/bejond/model/Husband.hbm.xml"/>
 		<mapping class="com.bejond.model.Husband"/>
-        <mapping resource="com/bejond/model/Wife.hbm.xml"/>
-        <mapping class="com.bejond.model.Husband"/>
+
+        <mapping class="com.bejond.model.Wife"/>
     </session-factory>
 
 </hibernate-configuration>
