@@ -44,6 +44,9 @@
         <mapping class="com.bejond.model.Wife"/>
         <mapping resource="com/bejond/model/Student.hbm.xml" />
         <mapping resource="com/bejond/model/StudentIdCard.hbm.xml" />
+        <mapping class="com.bejond.component.model.User" />
+
+        <mapping resource="com/bejond/component/model/xml/Car.hbm.xml" />
     </session-factory>
 
 </hibernate-configuration>
