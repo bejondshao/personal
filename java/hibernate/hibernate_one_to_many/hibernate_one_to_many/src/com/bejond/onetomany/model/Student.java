@@ -36,7 +36,7 @@ public class Student {
 	}
 
 	@OneToMany
-	
+	@JoinColumn(name = "studentId")
 	public Set<Course> getCourses() {
 		return courses;
 	}
