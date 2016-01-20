@@ -4,10 +4,10 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.bejond.model.StudentIdCard">
+    <class name="com.bejond.model.Student">
         <id name="id" column="id" />
         <property name="name" />
-        <many-to-one name="student" column="studentId" unique="true" />
+        <one-to-one name="studentIdCard" property-ref="student"/>
     </class>
 
 </hibernate-mapping>
