@@ -42,7 +42,7 @@
         <mapping class="com.bejond.hibernate.manytoone.model.Group" />
         <mapping class="com.bejond.hibernate.manytoone.model.User" />
 
-        
+
         <mapping resource="com/bejond/hibernate/manytoone/model/xml/Role.hbm.xml" />
         <mapping resource="com/bejond/hibernate/manytoone/model/xml/SubRole.hbm.xml" />
     </session-factory>
