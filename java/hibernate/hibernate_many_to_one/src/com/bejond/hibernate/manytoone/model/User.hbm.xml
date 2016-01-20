@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bejond.model.User">
+        <id name="id" column="userId">
+            <generator class="native" />
+        </id>
+        <property name="name" />
+
+        <many-to-one name="group" column="groupId" />
+        <!-- 一对一时仍然用many-to-one, 需要加unique="true" -->
+    </class>
+
+</hibernate-mapping>

@@ -20,5 +20,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="mysql" level="project" />
   </component>
 </module>
