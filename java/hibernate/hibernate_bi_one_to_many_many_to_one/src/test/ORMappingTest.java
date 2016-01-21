@@ -68,9 +68,11 @@ public class ORMappingTest {
 
 		User user = new User();
 		user.setUserName("user");
+		user.setGroup(group);
 
 		User user1 = new User();
 		user1.setUserName("user1");
+		user1.setGroup(group);
 
 		group.getUserSet().add(user);
 		group.getUserSet().add(user1);
