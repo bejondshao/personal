@@ -1,5 +1,8 @@
 package test;
 
+import com.bejond.hibernate.model.Group;
+import com.bejond.hibernate.model.User;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -36,5 +39,24 @@ public class ORMappingTest {
 
 		SchemaExport schemaExport = new SchemaExport(serviceRegistry, metadataImplementor);
 		schemaExport.create(true, true);
+	}
+
+	@Test
+	public void testSaveUser() {
+
+		Group group = new Group();
+		group.setGroupName("group1");
+
+		User user = new User();
+		user.setUserName("user1");
+		user.setGroup(group);
+
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		//session.save(group); //object references an unsaved transient instance - save the transient instance before flushing
+
+		session.save(user);
+		session.getTransaction().commit();
+
 	}
 }

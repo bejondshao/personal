@@ -1,5 +1,6 @@
 package com.bejond.hibernate.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class User {
 		this.userId = userId;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "groupId")
 	public Group getGroup() {
 		return group;
