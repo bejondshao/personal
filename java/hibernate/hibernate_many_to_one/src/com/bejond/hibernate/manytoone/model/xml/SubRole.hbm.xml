@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bejond.hibernate.manytoone.model.xml.SubRole">
+        <id name="subRoleId" column="subRoleId">
+            <generator class="native" />
+        </id>
+        <property name="subRoleName" />
+
+        <many-to-one name="role" column="roleId" />
+        <!-- 一对一时仍然用many-to-one, 需要加unique="true" -->
+    </class>
+
+</hibernate-mapping>
