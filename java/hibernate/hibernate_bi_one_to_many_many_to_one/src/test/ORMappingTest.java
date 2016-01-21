@@ -83,4 +83,24 @@ public class ORMappingTest {
 		session.getTransaction().commit();
 
 	}
+
+	@Test
+	public void testGetUser() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		User user = session.get(User.class, 12);
+		Group group = session.get(Group.class, 11);
+		session.getTransaction().commit();
+
+	}
+
+	@Test
+	public void testLoadUser() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		User user = session.load(User.class, 12);
+		user.getGroup().getGroupName();
+		session.getTransaction().commit();
+
+	}
 }
