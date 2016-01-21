@@ -59,4 +59,26 @@ public class ORMappingTest {
 		session.getTransaction().commit();
 
 	}
+
+	@Test
+	public void testSaveGroup() {
+
+		Group group = new Group();
+		group.setGroupName("group1");
+
+		User user = new User();
+		user.setUserName("user");
+
+		User user1 = new User();
+		user1.setUserName("user1");
+
+		group.getUserSet().add(user);
+		group.getUserSet().add(user1);
+
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.save(group);
+		session.getTransaction().commit();
+
+	}
 }

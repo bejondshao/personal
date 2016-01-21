@@ -1,5 +1,6 @@
 package com.bejond.hibernate.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ public class Group {
 	private String groupName;
 	private Set<User> userSet = new HashSet<User>();
 
-	@OneToMany(mappedBy = "group")
+	@OneToMany(mappedBy = "group", cascade = {CascadeType.ALL})
 	public Set<User> getUserSet() {
 		return userSet;
 	}
