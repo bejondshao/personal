@@ -103,4 +103,34 @@ public class ORMappingTest {
 		session.getTransaction().commit();
 
 	}
+
+	@Test
+	public void testDeleteUser() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		User user = session.load(User.class, 12);
+		user.setGroup(null); // this is aimed to avoid delete related group
+		session.delete(user);
+		session.getTransaction().commit();
+
+	}
+
+	@Test
+	public void testDeleteUser2() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		session.createQuery("delete from User u where u.id = 1").executeUpdate();
+		session.getTransaction().commit();
+
+	}
+
+	@Test
+	public void testDeleteGroup() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Group group = (Group)session.load(Group.class, 3);
+		session.delete(group); // delete group would delete users in the group
+		session.getTransaction().commit();
+
+	}
 }
