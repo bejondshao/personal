@@ -15,8 +15,12 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by bejond on 16-1-19.
@@ -118,5 +122,31 @@ public class ORMappingTest {
 
 		session.getTransaction().commit();
 		session.close();
+	}
+
+	@Test
+	public void testPattern() {
+
+		String content = "src=\"asdf\"&ss=\"fddf\"";
+
+		Pattern pattern = Pattern.compile("src=\"([\\s\\S]*?)\"|ss=\"([\\s\\S]*?)\"");
+
+		Matcher matcher = pattern.matcher(content);
+
+		List<String> srcList = new ArrayList<>();
+
+		String src = null;
+
+		while (matcher.find()) {
+			src = matcher.group();
+			String s0 = matcher.group(0);
+			String s1 = matcher.group(1);
+			String s2 = matcher.group(2);
+			System.out.println("group()" + src);
+			System.out.println("group(0)" + s0);
+			System.out.println("group(1)" + s1);
+			System.out.println("group(2)" + s2);
+		}
+
 	}
 }
