@@ -1,8 +1,10 @@
 package test;
 
+import java.util.List;
 import com.bejond.model.Category;
 import com.bejond.model.Message;
 import com.bejond.model.Topic;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -71,5 +73,21 @@ public class HQLTest {
 			}
 		}
 		session.close();
+	}
+
+	@Test
+	public void testHQL1() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Category c where c.id > 500");
+
+		List<Category> categoryList = (List<Category>)query.list();
+
+		for (Category category : categoryList) {
+			System.out.println("Category name: " + category.getName());
+		}
+
+		session.getTransaction().commit();
+
 	}
 }
