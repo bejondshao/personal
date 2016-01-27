@@ -88,6 +88,23 @@ public class HQLTest {
 		}
 
 		session.getTransaction().commit();
+	}
 
+	@Test
+	public void testSelectParameter() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Category c where c.id > :min and c.id < :max");
+
+		query.setParameter("min", 300);
+		query.setInteger("max", 800);
+
+		List<Category> categoryList = (List<Category>)query.list();
+
+		for (Category category : categoryList) {
+			System.out.println("Category name: " + category.getName());
+		}
+
+		session.getTransaction().commit();
 	}
 }
