@@ -161,6 +161,18 @@ public class HQLTest {
 		}
 	}
 
+	/*@Test
+	public void testNamedNativeSQL() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		SQLQuery query = session.getNamedQuery("categories");
+
+		List<Category> categoryList = (List<Category>)query.list();
+		for (Category category : categoryList) {
+			System.out.println(category);
+		}
+	}*/
+
 	@Test  // fetch type 设为 Lazy后不会有第二条sql语句，默认是Eager,会查询category
 	public void testHQLJoin() {
 		Session session = sessionFactory.getCurrentSession();
