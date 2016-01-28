@@ -33,7 +33,6 @@ public class Category {
 	}
 
 	public String toString() {
-		System.out.println(id + " - " + name);
 		return id + " - " + name;
 	}
 }

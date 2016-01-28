@@ -3,6 +3,7 @@ package test;
 import java.util.List;
 import com.bejond.model.Category;
 import com.bejond.model.Message;
+import com.bejond.model.MessageInfo;
 import com.bejond.model.Topic;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -119,7 +120,7 @@ public class HQLTest {
 		List<Category> categoryList = (List<Category>)query.list();
 
 		for (Category category : categoryList) {
-			category.toString();
+			System.out.println(category.toString());
 		}
 	}
 
@@ -146,6 +147,21 @@ public class HQLTest {
 
 		for (Topic topic : topicList) {
 			System.out.println(topic.getTitle());
+		}
+	}
+
+	@Test
+	public void testHQLNewObject() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery(
+			"select new com.bejond.model.MessageInfo(" +
+				"m.id, m.content, m.topic.title, m.topic.category.name)" +
+				" from Message m where m.id > 1100");
+
+		for (Object object : query.list()) {
+			MessageInfo messageInfo = (MessageInfo)object;
+			System.out.println(messageInfo.toString());
 		}
 	}
 }
