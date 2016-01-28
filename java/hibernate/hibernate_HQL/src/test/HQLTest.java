@@ -136,6 +136,16 @@ public class HQLTest {
 		}
 	}
 
+	@Test
+	public void testNamedQuery() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.getNamedQuery("topic.categoryContainsTopic");
+		List<Object> objectList = query.list();
+		for (Object object : objectList) {
+			System.out.println("Category id: " + object);
+		}
+	}
 	@Test  // fetch type 设为 Lazy后不会有第二条sql语句，默认是Eager,会查询category
 	public void testHQLJoin() {
 		Session session = sessionFactory.getCurrentSession();
