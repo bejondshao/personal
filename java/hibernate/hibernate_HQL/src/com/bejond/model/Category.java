@@ -31,4 +31,9 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String toString() {
+		System.out.println(id + " - " + name);
+		return id + " - " + name;
+	}
 }

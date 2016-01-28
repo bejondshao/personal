@@ -107,4 +107,45 @@ public class HQLTest {
 
 		session.getTransaction().commit();
 	}
+
+	@Test
+	public void testHQLPagination() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Category c order by c.name asc");
+		query.setMaxResults(5);
+		query.setFirstResult(2);
+
+		List<Category> categoryList = (List<Category>)query.list();
+
+		for (Category category : categoryList) {
+			category.toString();
+		}
+	}
+
+	@Test
+	public void testHQLColumns() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("select c.id, c.name from Category c order by c.name asc");
+
+		List<Object[]> categoryList = (List<Object[]>)query.list();
+
+		for (Object[] category : categoryList) {
+			System.out.println(category[0] + " - " + category[1]);
+		}
+	}
+
+	@Test  // fetch type 设为 Lazy后不会有第二条sql语句，默认是Eager,会查询category
+	public void testHQLJoin() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Topic t where t.category.name = 'Category2'");
+
+		List<Topic> topicList = (List<Topic>)query.list();
+
+		for (Topic topic : topicList) {
+			System.out.println(topic.getTitle());
+		}
+	}
 }
