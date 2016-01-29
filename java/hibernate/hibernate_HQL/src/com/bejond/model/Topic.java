@@ -57,4 +57,13 @@ public class Topic {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	@Override
+	public String toString() {
+		return "Topic{" +
+			"category=" + category +
+			", id=" + id +
+			", title='" + title + '\'' +
+			'}';
+	}
 }
