@@ -6,6 +6,7 @@ import com.bejond.model.Message;
 import com.bejond.model.MessageInfo;
 import com.bejond.model.Topic;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -136,6 +137,42 @@ public class HQLTest {
 			System.out.println(category[0] + " - " + category[1]);
 		}
 	}
+
+	@Test
+	public void testNamedQuery() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.getNamedQuery("topic.categoryContainsTopic");
+		List<Object> objectList = query.list();
+		for (Object object : objectList) {
+			System.out.println("Category id: " + object);
+		}
+	}
+
+	@Test
+	public void testNativeSQL() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		SQLQuery query = session.createSQLQuery(
+			"select * from category where categoryId > 600").addEntity(Category.class); // just type the sql you want to execute
+
+		List<Category> categoryList = (List<Category>)query.list();
+		for (Category category : categoryList) {
+			System.out.println(category);
+		}
+	}
+
+	/*@Test
+	public void testNamedNativeSQL() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		SQLQuery query = session.getNamedQuery("categories");
+
+		List<Category> categoryList = (List<Category>)query.list();
+		for (Category category : categoryList) {
+			System.out.println(category);
+		}
+	}*/
 
 	@Test  // fetch type 设为 Lazy后不会有第二条sql语句，默认是Eager,会查询category
 	public void testHQLJoin() {
