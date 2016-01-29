@@ -164,4 +164,32 @@ public class HQLTest {
 			System.out.println(messageInfo.toString());
 		}
 	}
+
+	@Test
+	public void testHQLJoinProperty() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("select m.content, c.name from Message m join m.topic.category c where m.id > 1105");
+
+		List<Object[]> objectList = query.list();
+
+		for (Object[] object : objectList) {
+			System.out.println(object[0] + " & " + object[1]);
+		}
+	}
+
+	@Test
+	public void testHQLObject() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Message m where m = :message");
+
+		Message message = new Message();
+		message.setId(8);
+
+		query.setParameter("message", message);
+		message = (Message) query.uniqueResult();
+
+		System.out.println(message.toString());
+	}
 }
