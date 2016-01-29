@@ -1,7 +1,11 @@
 package test;
 
 import com.bejond.model.Topic;
+
+import java.util.List;
+
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -44,6 +48,46 @@ public class QBETest {
 		for (Object object : criteria.list()) {
 			Topic topic = (Topic)object;
 
+			System.out.println(topic);
+		}
+	}
+
+	@Test
+	public void testSelect1PlusN() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("from Topic");
+		List<Topic> topicList = (List<Topic>)query.list();
+
+		for (Topic topic : topicList) {
+			System.out.println(topic);
+		}
+	}
+
+	@Test
+	public void testSelect1PlusNSolution() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Topic topicExample = new Topic();
+
+		Example example = Example.create(topicExample).ignoreCase();
+		Criteria criteria = session.createCriteria(Topic.class).add(example);
+		List<Topic> topicList = (List<Topic>)criteria.list();
+
+		for (Topic topic : topicList) {
+			System.out.println(topic);
+		}
+	}
+
+	@Test
+	public void testSelect1PlusNSolution2() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+
+		Criteria criteria = session.createCriteria(Topic.class);
+		List<Topic> topicList = (List<Topic>)criteria.list();
+
+		for (Topic topic : topicList) {
 			System.out.println(topic);
 		}
 	}
