@@ -1,7 +1,9 @@
 package test;
 
+import com.bejond.model.Category;
 import com.bejond.model.Topic;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -89,6 +91,18 @@ public class QBETest {
 
 		for (Topic topic : topicList) {
 			System.out.println(topic);
+		}
+	}
+
+	@Test
+	public void testIterator() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+
+		Iterator<Topic> categoryIterator = session.createQuery("from Topic").iterate();
+
+		while (categoryIterator.hasNext()) {
+			System.out.println(categoryIterator.next().getTitle());
 		}
 	}
 }
