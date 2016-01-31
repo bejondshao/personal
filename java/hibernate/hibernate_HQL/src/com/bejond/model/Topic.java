@@ -1,5 +1,8 @@
 package com.bejond.model;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +27,8 @@ import javax.persistence.NamedQuery;
 		@NamedNativeQuery(name = "categories", query = "select * from category where categoryId > 500 and categoryId < 900")
 	}
 )
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE,
+region = "sampleCache1")
 public class Topic {
 	private int id;
 	private String title;

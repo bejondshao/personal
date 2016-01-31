@@ -1,6 +1,7 @@
 package com.bejond.model;
 
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cache;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

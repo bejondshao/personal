@@ -60,4 +60,21 @@ public class CacheTest {
 		System.out.println(category2); // two sessions, new sql
 		session2.getTransaction().commit();
 	}
+
+	@Test
+	public void testEhcacheSessions() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+
+		Topic topic = session.load(Topic.class, 2);
+		System.out.println(topic.getTitle()); // 没有用到category, 但是还是获取了,因为使用的eager.
+		session.getTransaction().commit();
+
+		Session session2 = sessionFactory.getCurrentSession();
+		session2.beginTransaction();
+
+		Topic topic2 = session2.load(Topic.class, 2);
+		System.out.println(topic2.getTitle()); // 第二次, topic是从cache取的, category依然从数据库取的.
+		session2.getTransaction().commit();
+	}
 }
