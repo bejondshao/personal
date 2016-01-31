@@ -77,4 +77,23 @@ public class CacheTest {
 		System.out.println(topic2.getTitle()); // 第二次, topic是从cache取的, category依然从数据库取的.
 		session2.getTransaction().commit();
 	}
+
+	@Test
+	public void testQueryCache() {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+
+		List<Topic> topicList = (List<Topic>)session.createQuery(
+			"from Topic").setCacheable(true).list();
+
+		session.getTransaction().commit();
+
+		Session session2 = sessionFactory.getCurrentSession();
+		session2.beginTransaction();
+
+		List<Topic> topicList2 = (List<Topic>)session2.createQuery(
+			"from Topic").setCacheable(true).list();
+
+		session2.getTransaction().commit();
+	}
 }
