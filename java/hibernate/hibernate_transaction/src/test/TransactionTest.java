@@ -1,6 +1,7 @@
 package test;
 
 import com.bejond.model.Account;
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -59,14 +60,39 @@ public class TransactionTest {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
 
-		Account account = (Account)session.load(Account.class, 1);
+		Account account = (Account)session.load(Account.class, 1, LockMode.PESSIMISTIC_WRITE);
 		BigDecimal total = account.getTotal();
 
 		total = total.add(new BigDecimal(10));
 
 		account.setTotal(total);
 
-		session.save(account);
 		session.getTransaction().commit();
+	}
+
+	@Test
+	public void testLock() {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Account account = session.load(Account.class, 2);
+
+		Session session1 = sessionFactory.openSession();
+		session1.beginTransaction();
+		Account account1 = session1.load(Account.class, 2);
+
+		BigDecimal total = account.getTotal();
+		BigDecimal total1 = account1.getTotal();
+		total = total.add(new BigDecimal(100));
+		total1 = total1.subtract(new BigDecimal(80));
+		account.setTotal(total);
+		account1.setTotal(total1);
+
+		session1.getTransaction().commit();
+		System.out.println(account.getVersion());
+
+		session.getTransaction().commit();
+		System.out.println(account.getVersion());
+		session.close();
+		session1.close();
 	}
 }
