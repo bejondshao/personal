@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<school name="DLUT">
+    <department name="software">
+        <unit>09 grade</unit>
+        <count>1024</count>
+        <course>
+            math
+        </course>
+        <course>
+            physics
+        </course>
+    </department>
+    <department name="math">
+        <unit>08 grade</unit>
+        <count>1028</count>
+        <course>
+            math2
+        </course>
+        <course>
+            physics2
+        </course>
+    </department>
+</school>
