@@ -233,3 +233,5 @@ java/hibernate/hello_hibernate/web/WEB-INF/classes
 java/hibernate/hibernate_idea/web/WEB-INF/classes
 java/hibernate/hibernate_annotation/web/WEB-INF/classes
 java/hibernate/hibernate_annotation/classes/
+production
+out
