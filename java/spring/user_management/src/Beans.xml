@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-init-method="init"
+       default-destroy-method="destory">
+       <context:annotation-config/>
+       <bean id="helloWorld" class="com.bejond.spring.sample.HelloWorld" scope="prototype">
+              <property name="message" value="Hello World! (This initial data is set in Beans.xml file.)" />
+       </bean>
+       <bean id="helloWorldChina" class="com.bejond.spring.sample.HelloWorldChina" parent="helloWorld">
+              <property name="address" value="China, Asia" />
+       </bean>
+
+       <bean id="textManager" class="com.bejond.spring.sample.innerBean.TextManager" >
+              <property name="spellChecker">
+                     <bean id="spellChecker" class="com.bejond.spring.sample.innerBean.SpellChecker"/>
+              </property>
+       </bean>
+       <bean id="javaCollection" class="com.bejond.spring.sample.injectCollection.JavaCollection">
+              <property name="list">
+                     <list>
+                            <value>China</value>
+                            <value>USA</value>
+                            <value>USA</value>
+                            <value>India</value>
+                     </list>
+              </property>
+              <property name="set">
+                     <set>
+                            <value>China</value>
+                            <value>USA</value>
+                            <value>USA</value>
+                            <value>India</value>
+                     </set>
+              </property>
+              <property name="map">
+                     <map>
+                            <entry key="1" value="China"/>
+                            <entry key="2" value="USA"/>
+                            <entry key="3" value="USA"/>
+                            <entry key="4" value="Indea"/>
+                     </map>
+              </property>
+              <property name="property">
+                     <props>
+                            <prop key="Asia">China</prop>
+                            <prop key="North America">USA1</prop>
+                            <prop key="North America">USA2</prop>
+                            <prop key="Asia">India</prop>
+                     </props>
+              </property>
+       </bean>
+
+       <bean id="bridge" class="com.bejond.spring.sample.annotation.Bridge">
+              <property name="name" value="ChangJiang Da Qiao" />
+
+              <property name="length" value="120"/>
+       </bean>
+       <bean id="customEventPublisher" class="com.bejond.spring.sample.event.CustomEventPublisher">
+       </bean>
+       <bean id="customEventHandler" class="com.bejond.spring.sample.event.CustomEventHandler" />
+</beans>
