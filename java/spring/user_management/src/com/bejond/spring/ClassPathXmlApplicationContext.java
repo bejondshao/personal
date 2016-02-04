@@ -47,7 +47,6 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
 				if (bean != null) {
 					Object beanObject = beans.get(bean);
 
-
 					System.out.println("Method name = " + methodName);
 
 					Method method = object.getClass().getMethod(
@@ -57,6 +56,12 @@ public class ClassPathXmlApplicationContext implements BeanFactory {
 				}
 
 				if (value != null) {
+					System.out.println("Method name = " + methodName);
+
+					Method method = object.getClass().getMethod(
+						methodName, value.getClass());
+
+					method.invoke(object, value);
 				}
 			}
 		}

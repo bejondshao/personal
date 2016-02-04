@@ -1,6 +1,5 @@
 package test;
 
-import com.bejond.DAO.UserDAO;
 import com.bejond.model.User;
 import com.bejond.service.UserService;
 import com.bejond.spring.BeanFactory;
