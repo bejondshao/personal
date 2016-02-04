@@ -1,14 +1,13 @@
 package com.bejond.service;
 
 import com.bejond.DAO.UserDAO;
-import com.bejond.DAO.impl.UserDAOImpl;
 import com.bejond.model.User;
 
 /**
  * Created by bejond on 16-2-3.
  */
 public class UserService {
-	private UserDAO userDAO = new UserDAOImpl();
+	private UserDAO userDAO;
 
 	public UserDAO getUserDAO() {
 		return userDAO;
