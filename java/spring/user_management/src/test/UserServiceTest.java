@@ -15,13 +15,15 @@ public class UserServiceTest {
 	public void testAdd() throws Exception {
 		BeanFactory beanFactory = new ClassPathXmlApplicationContext();
 
-		UserService userService = new UserService();
+/*		UserService userService = new UserService();
 
 		UserDAO userDao = (UserDAO)beanFactory.getBean("userDAOImpl");
 
-		userService.setUserDAO(userDao);
+		userService.setUserDAO(userDao);*/
 
-		User user = new User();
+		UserService userService = (UserService)beanFactory.getBean("userService");
+
+		User user = (User)beanFactory.getBean("user");
 
 		userService.addUser(user);
 	}
