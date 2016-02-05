@@ -6,7 +6,7 @@
        <import resource="models.xml" />
        <import resource="daos.xml" />
 
-       <bean id="userService" class="com.bejond.service.UserService">
+       <bean id="userService" class="com.bejond.service.UserService" init-method="init" destroy-method="destroy">
               <constructor-arg name="userDAO" ref="userDAOImpl" />
               <!--<constructor-arg name="userDAO">
                      <bean class="com.bejond.DAO.impl.UserDAOImpl"
