@@ -4,7 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
        <bean id="user" class="com.bejond.model.User" scope="prototype">
+              <constructor-arg index="0" value="username1" />
+              <constructor-arg index="1" value="password1" />
               <property name="username" value="Hello World! (This initial data is set in Beans.xml file.)" />
               <property name="password" value="test" />
+
        </bean>
 </beans>

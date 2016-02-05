@@ -9,11 +9,17 @@ import com.bejond.model.User;
 public class UserService {
 	private UserDAO userDAO;
 
+	public UserService(UserDAO userDAO) {
+		System.out.println("Init UserDAO with UserService constructor");
+		this.userDAO = userDAO;
+	}
+
 	public UserDAO getUserDAO() {
 		return userDAO;
 	}
 
 	public void setUserDAO(UserDAO userDAO) {
+		System.out.println("Init UserDAO with setUserDAO()");
 		this.userDAO = userDAO;
 	}
 
