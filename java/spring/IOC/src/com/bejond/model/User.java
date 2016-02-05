@@ -1,15 +1,28 @@
 package com.bejond.model;
 
+import java.util.List;
+import java.util.Properties;
+
 /**
  * Created by bejond on 16-2-3.
  */
 public class User {
 	private String username;
 	private String password;
+	private List<Properties> emails;
 
-	public User(String username, String password) {
+	public List<Properties> getEmails() {
+		return emails;
+	}
+
+	public void setEmails(List<Properties> emails) {
+		this.emails = emails;
+	}
+
+	public User(String username, String password, List<Properties> emails) {
 		this.username = username;
 		this.password = password;
+		this.emails = emails;
 	}
 
 	public String getPassword() {
@@ -27,8 +40,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User{" +
-			"password='" + password + '\'' +
-			", username='" + username + '\'' +
+			"username='" + username + '\'' +
+			", password='" + password + '\'' +
+			", emails=" + emails +
 			'}';
 	}
 
