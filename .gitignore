@@ -235,3 +235,4 @@ java/hibernate/hibernate_annotation/web/WEB-INF/classes
 java/hibernate/hibernate_annotation/classes/
 production
 out
+*.class
