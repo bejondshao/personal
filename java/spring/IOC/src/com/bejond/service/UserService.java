@@ -30,4 +30,12 @@ public class UserService {
 	public void addUser(String username, String password) {
 		userDAO.save(username, password);
 	}
+
+	public void init() {
+		System.out.println("UserService init()");
+	}
+
+	public void destroy() {
+		System.out.println("UserService destroy()");
+	}
 }
