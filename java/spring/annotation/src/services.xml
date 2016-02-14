@@ -8,9 +8,13 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config />
+    <!--<context:component-scan base-package="com.bejond" />-->
+    <context:component-scan base-package="com.bejond.DAO.impl" />
+    <context:component-scan base-package="com.bejond.model" />
+    <context:component-scan base-package="com.bejond.service" />
 
-       <import resource="models.xml" />
-       <import resource="daos.xml" />
+       <!--<import resource="models.xml" />
+       <import resource="daos.xml" />-->
 
        <!--<bean id="userService" class="com.bejond.service.UserService" init-method="init" destroy-method="destroy">
               <constructor-arg name="userDAO" ref="userDAOImpl" />
@@ -22,8 +26,8 @@
               </constructor-arg>&ndash;&gt;
               <property name="userDAO" ref="userDAOImpl" />
        </bean>-->
-       <bean id="userService" class="com.bejond.service.UserService">
+       <!--<bean id="userService" class="com.bejond.service.UserService">
 
-       </bean>
+       </bean>-->
 
 </beans>
