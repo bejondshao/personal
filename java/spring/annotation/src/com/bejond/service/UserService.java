@@ -2,6 +2,7 @@ package com.bejond.service;
 
 import com.bejond.DAO.UserDAO;
 import com.bejond.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by bejond on 16-2-3.
@@ -13,6 +14,7 @@ public class UserService {
 		return userDAO;
 	}
 
+	@Autowired
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
