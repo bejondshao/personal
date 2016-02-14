@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 /**
  * Created by bejond on 16-2-3.
  */
-@Component
+@Component("userService")
 public class UserService {
 	private UserDAO userDAO;
 
