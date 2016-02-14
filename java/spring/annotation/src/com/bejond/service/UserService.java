@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 /**
@@ -30,5 +32,15 @@ public class UserService {
 
 	public void addUser(String username, String password) {
 		userDAO.save(username, password);
+	}
+
+	@PostConstruct
+	public void init() {
+		System.out.println("UserService init()");
+	}
+
+	@PreDestroy
+	public void destroy() {
+		System.out.println("UserService destroy()");
 	}
 }

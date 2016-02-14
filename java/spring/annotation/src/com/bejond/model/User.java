@@ -1,11 +1,13 @@
 package com.bejond.model;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by bejond on 16-2-3.
  */
 @Component("user")
+@Scope("prototype")
 public class User {
 	private String username;
 	private String password;
