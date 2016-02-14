@@ -17,7 +17,7 @@ public class UserService {
 		return userDAO;
 	}
 
-	@Resource
+	@Resource(name="userDAOImpl")
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
