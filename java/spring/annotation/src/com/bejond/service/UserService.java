@@ -5,6 +5,8 @@ import com.bejond.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 
+import javax.annotation.Resource;
+
 /**
  * Created by bejond on 16-2-3.
  */
@@ -15,8 +17,7 @@ public class UserService {
 		return userDAO;
 	}
 
-	@Autowired
-	@Required
+	@Resource
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
