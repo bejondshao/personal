@@ -10,16 +10,16 @@ import java.lang.reflect.Proxy;
  * Created by bejond on 16-2-15.
  */
 public class ProxyHandler implements InvocationHandler {
-	private Object car;
+	private Object target;
 	private Logger logger = new Logger();
 
 	// 绑定委托对象, 并返回代理类
-	public Object bind(Object car) {
-		this.car = car;
+	public Object bind(Object target) {
+		this.target = target;
 
 		// 绑定该类实现的所有接口, 取得代理类
 		return Proxy.newProxyInstance(
-			car.getClass().getClassLoader(), car.getClass().getInterfaces(),
+			target.getClass().getClassLoader(), target.getClass().getInterfaces(),
 			this);
 	}
 
@@ -31,7 +31,7 @@ public class ProxyHandler implements InvocationHandler {
 		// 在调用具体函数方法前,执行功能处理
 		logger.beforeMethod();
 
-		result = method.invoke(car, args);
+		result = method.invoke(target, args);
 
 		// 在调用具体函数方法后,执行功能处理
 		logger.afterMethod();
