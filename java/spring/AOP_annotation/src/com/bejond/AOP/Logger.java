@@ -1,5 +1,6 @@
 package com.bejond.AOP;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import java.util.Date;
@@ -16,6 +17,7 @@ public class Logger {
 		System.out.println(getDate1());
 	}
 
+	@After("execution(public * com.bejond.DAO.impl.*.*(..))")
 	public void afterMethod() {
 		System.out.println("We are doing things after invoke method.");
 		setDate2(new Date());
