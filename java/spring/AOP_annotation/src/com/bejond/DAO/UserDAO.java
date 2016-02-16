@@ -8,5 +8,5 @@ import com.bejond.model.User;
 public interface UserDAO {
 	public void save(User user);
 
-	public void save(String username, String password);
+	//public void save(String username, String password);
 }

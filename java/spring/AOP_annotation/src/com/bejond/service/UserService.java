@@ -30,9 +30,9 @@ public class UserService {
 		userDAO.save(user);
 	}
 
-	public void addUser(String username, String password) {
+	/*public void addUser(String username, String password) {
 		userDAO.save(username, password);
-	}
+	}*/
 
 	@PostConstruct
 	public void init() {

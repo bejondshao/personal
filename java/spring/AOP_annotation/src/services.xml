@@ -16,6 +16,7 @@
     <context:component-scan base-package="com.bejond.DAO.impl" />
     <context:component-scan base-package="com.bejond.model" />
     <context:component-scan base-package="com.bejond.service" />
+    <bean id="logger" class="com.bejond.AOP.Logger" />
 
        <!--<import resource="models.xml" />
        <import resource="daos.xml" />-->
