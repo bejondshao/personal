@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+    <context:annotation-config />
+    <aop:aspectj-autoproxy />
+    <!--<context:component-scan base-package="com.bejond" />-->
+    <context:component-scan base-package="com.bejond.DAO.impl" />
+    <context:component-scan base-package="com.bejond.model" />
+    <context:component-scan base-package="com.bejond.service" />
+    <bean id="logger" class="com.bejond.AOP.Logger" />
+    <aop:config>
+        <aop:aspect>
+
+        </aop:aspect>
+    </aop:config>
+
+       <!--<import resource="models.xml" />
+       <import resource="daos.xml" />-->
+
+       <!--<bean id="userService" class="com.bejond.service.UserService" init-method="init" destroy-method="destroy">
+              <constructor-arg name="userDAO" ref="userDAOImpl" />
+              &lt;!&ndash;<constructor-arg name="userDAO">
+                     <bean class="com.bejond.DAO.impl.UserDAOImpl"
+              </constructor-arg>&ndash;&gt;
+              &lt;!&ndash;<constructor-arg name="userDAO">
+                     <ref bean="userDAOImpl" />
+              </constructor-arg>&ndash;&gt;
+              <property name="userDAO" ref="userDAOImpl" />
+       </bean>-->
+       <!--<bean id="userService" class="com.bejond.service.UserService">
+
+       </bean>-->
+
+
+</beans>
