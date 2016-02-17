@@ -18,7 +18,9 @@
     <context:component-scan base-package="com.bejond.service" />
     <bean id="logger" class="com.bejond.AOP.Logger" />
     <aop:config>
-        <aop:aspect>
+        <aop:aspect id="loggerAspect" ref="logger">
+            <aop:pointcut id="myPointCut" expression="execution(* com.bejond.DAO.impl.UserDAOImpl.*(..))" />
+            <aop:around pointcut-ref="myPointCut" method="aroundMethod" />
 
         </aop:aspect>
     </aop:config>

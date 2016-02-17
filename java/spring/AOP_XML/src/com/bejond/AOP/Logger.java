@@ -32,6 +32,17 @@ public class Logger {
 		System.out.println("The method returns without exceptions.");
 	}
 
+	public Object aroundMethod(ProceedingJoinPoint proceedingJoinPoint)
+	throws Throwable {
+
+	// start stopwatch
+	System.out.println("Around method start");
+    Object retVal = proceedingJoinPoint.proceed();
+    // stop stopwatch
+	System.out.println("Around method end");
+    return retVal;
+}
+
 	public void afterThrowingMethod() {
 		System.out.println("OOps, exceptions.");
 	}
