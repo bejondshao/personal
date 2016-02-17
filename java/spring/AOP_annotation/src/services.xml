@@ -11,12 +11,14 @@
        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
     <context:annotation-config />
+
     <aop:aspectj-autoproxy />
     <!--<context:component-scan base-package="com.bejond" />-->
+    <context:component-scan base-package="com.bejond.AOP" />
     <context:component-scan base-package="com.bejond.DAO.impl" />
     <context:component-scan base-package="com.bejond.model" />
     <context:component-scan base-package="com.bejond.service" />
-    <bean id="logger" class="com.bejond.AOP.Logger" />
+    <!--<bean id="logger" class="com.bejond.AOP.Logger" />-->
 
        <!--<import resource="models.xml" />
        <import resource="daos.xml" />-->

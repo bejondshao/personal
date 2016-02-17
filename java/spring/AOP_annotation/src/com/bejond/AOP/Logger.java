@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.junit.BeforeClass;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -16,6 +17,7 @@ import java.util.Date;
  * Created by bejond on 16-2-15.
  */
 @Aspect
+@Component
 public class Logger {
 	@Before (value="execution(public void com.bejond.DAO.impl.UserDAOImpl.save(com.bejond.model.User))")
 	public void beforeMethod() {
