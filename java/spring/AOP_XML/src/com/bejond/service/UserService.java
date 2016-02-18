@@ -39,7 +39,7 @@ public class UserService {
 		this.userDAO = userDAO;
 	}
 
-
+	@Transactional
 	public void addUser(User user) {
 		Group group = groupDAO.save(new Group());
 		user.setGroup(group);
