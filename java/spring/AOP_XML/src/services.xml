@@ -52,6 +52,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.bejond.model.User</value>
+                <value>com.bejond.model.Group</value>
             </list>
         </property>
         <property name="hibernateProperties">
