@@ -17,16 +17,6 @@ import java.sql.Connection;
  */
 @Component("userDAOImpl")
 public class UserDAOImpl implements UserDAO {
-	private GroupDAO groupDAO;
-
-	public GroupDAO getGroupDAO() {
-		return groupDAO;
-	}
-
-	@Resource(name="groupDAOImpl")
-	public void setGroupDAO(GroupDAO groupDAO) {
-		this.groupDAO = groupDAO;
-	}
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -41,29 +31,26 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User save(User user) {
+		Session session = sessionFactory.openSession();
+
 		try {
-			Session session = sessionFactory.openSession();
+
 			session.beginTransaction();
 			user.setUsername("Zhangfei");
 			user.setPassword("test");
-			user.setGroup(groupDAO.save(new Group()));
 			session.save(user);
 			session.getTransaction().commit();
 
 			System.out.println("UserDAO.save()");
-			session.close();
+
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		finally {
-
+			session.close();
 		}
 		return user;
 	}
 
-	/*@Override
-	public void save(String username, String password) {
-		System.out.println("UserDAO.save(String, String)");
-	}*/
 }
