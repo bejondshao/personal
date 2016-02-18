@@ -18,13 +18,11 @@ public class GroupDAOImpl implements GroupDAO {
 	@Override
 	public Group save(Group group) {
 
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		try {
 			group.setName("group1");
-			session.beginTransaction();
 
 			session.save(group);
-			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

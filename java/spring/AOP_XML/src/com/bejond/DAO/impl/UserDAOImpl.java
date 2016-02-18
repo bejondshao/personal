@@ -31,18 +31,16 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User save(User user) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		try {
 
-			session.beginTransaction();
 			if (user.getUsername() == null) {
 				throw new Exception();
 			}
 			user.setUsername("Zhangfei");
 			user.setPassword("test");
 			session.save(user);
-			session.getTransaction().commit();
 
 			System.out.println("UserDAO.save()");
 
