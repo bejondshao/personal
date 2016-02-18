@@ -36,6 +36,9 @@ public class UserDAOImpl implements UserDAO {
 		try {
 
 			session.beginTransaction();
+			if (user.getUsername() == null) {
+				throw new Exception();
+			}
 			user.setUsername("Zhangfei");
 			user.setPassword("test");
 			session.save(user);

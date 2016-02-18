@@ -6,6 +6,7 @@ import com.bejond.model.Group;
 import com.bejond.model.User;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -37,6 +38,7 @@ public class UserService {
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
+
 
 	public void addUser(User user) {
 		Group group = groupDAO.save(new Group());
