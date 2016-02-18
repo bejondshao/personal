@@ -1,6 +1,8 @@
 package com.bejond.DAO.impl;
 
+import com.bejond.DAO.GroupDAO;
 import com.bejond.DAO.UserDAO;
+import com.bejond.model.Group;
 import com.bejond.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,6 +17,17 @@ import java.sql.Connection;
  */
 @Component("userDAOImpl")
 public class UserDAOImpl implements UserDAO {
+	private GroupDAO groupDAO;
+
+	public GroupDAO getGroupDAO() {
+		return groupDAO;
+	}
+
+	@Resource(name="groupDAOImpl")
+	public void setGroupDAO(GroupDAO groupDAO) {
+		this.groupDAO = groupDAO;
+	}
+
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -27,12 +40,13 @@ public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void save(User user) {
+	public User save(User user) {
 		try {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			user.setUsername("Zhangfei");
 			user.setPassword("test");
+			user.setGroup(groupDAO.save(new Group()));
 			session.save(user);
 			session.getTransaction().commit();
 
@@ -45,6 +59,7 @@ public class UserDAOImpl implements UserDAO {
 		finally {
 
 		}
+		return user;
 	}
 
 	/*@Override
