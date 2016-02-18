@@ -42,13 +42,13 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-    <bean id="hibernateSessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mappingResources">
+    <!--    <property name="mappingResources">
             <list>
                 <value>resource/product.hbm.xml</value>
             </list>
-        </property>
+        </property>-->
         <property name="annotatedClasses">
             <list>
                 <value>com.bejond.model.User</value>
@@ -61,6 +61,7 @@
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
     </bean>
