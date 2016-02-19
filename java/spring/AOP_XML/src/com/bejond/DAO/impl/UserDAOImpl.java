@@ -35,9 +35,9 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 
-			if (user.getUsername() == null) {
+			/*if (user.getUsername() == null) {
 				throw new Exception();
-			}
+			}*/
 			user.setUsername("Zhangfei");
 			user.setPassword("test");
 			session.save(user);
@@ -49,7 +49,7 @@ public class UserDAOImpl implements UserDAO {
 			e.printStackTrace();
 		}
 		finally {
-			session.close();
+			//session.close();
 		}
 		return user;
 	}

@@ -26,7 +26,7 @@ public class GroupDAOImpl implements GroupDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			session.close();
+			//session.close();
 		}
 
 		return group;
