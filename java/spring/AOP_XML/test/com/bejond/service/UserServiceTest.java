@@ -1,5 +1,6 @@
 package com.bejond.service;
 
+import com.bejond.model.Group;
 import com.bejond.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
@@ -22,5 +23,15 @@ public class UserServiceTest {
 		User user = (User)applicationContext.getBean("user");
 
 		userService.addUser(user);
+	}
+
+	@Test
+	public void testAddGroup() throws Exception {
+		ApplicationContext applicationContext =
+			new ClassPathXmlApplicationContext(new String[] {"services.xml"});
+
+		GroupService groupService = (GroupService)applicationContext.getBean("groupService");
+		Group group = (Group)applicationContext.getBean("group");
+		groupService.addGroup(group);
 	}
 }

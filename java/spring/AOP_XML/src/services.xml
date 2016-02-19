@@ -32,6 +32,16 @@
 
         </aop:aspect>
     </aop:config>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*" read-only="false" />
+            <tx:method name="get*" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="groupServicePointcut" expression="execution(* com.bejond.service.GroupService.addGroup(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="groupServicePointcut"/>
+    </aop:config>
     <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/spring" />
