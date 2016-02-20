@@ -6,6 +6,7 @@ import com.bejond.model.Group;
 import com.bejond.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -17,22 +18,19 @@ import java.sql.Connection;
  */
 @Component("userDAOImpl")
 public class UserDAOImpl implements UserDAO {
+	private HibernateTemplate hibernateTemplate;
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
 	}
 
 	@Resource
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
-
-	private SessionFactory sessionFactory;
 
 	@Override
 	public User save(User user) {
-		Session session = sessionFactory.getCurrentSession();
-
 		try {
 
 			/*if (user.getUsername() == null) {
@@ -40,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
 			}*/
 			user.setUsername("Zhangfei");
 			user.setPassword("test");
-			session.save(user);
+			hibernateTemplate.save(user);
 
 			System.out.println("UserDAO.save()");
 
