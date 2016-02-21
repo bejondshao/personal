@@ -21,10 +21,10 @@ public class UserService {
 	private UserDAO userDAO;
 	private GroupDAO groupDAO;
 
-	public UserService(UserDAO userDAO, GroupDAO groupDAO) {
+/*	public UserService(UserDAO userDAO, GroupDAO groupDAO) {
 		this.userDAO = userDAO;
 		this.groupDAO = groupDAO;
-	}
+	}*/
 
 	public GroupDAO getGroupDAO() {
 		return groupDAO;

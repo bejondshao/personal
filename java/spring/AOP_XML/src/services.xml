@@ -120,14 +120,15 @@
        <import resource="daos.xml" />-->
 
        <bean id="userService" class="com.bejond.service.UserService" init-method="init" destroy-method="destroy">
-              <constructor-arg name="userDAO" ref="userDAOImpl" />
+           <!--<constructor-arg name="userDAO" ref="userDAOImpl" />
+           <constructor-arg name="groupDAO" ref="groupDAOImpl" />-->
               <!--<constructor-arg name="userDAO">
                      <bean class="com.bejond.DAO.impl.UserDAOImpl"
               </constructor-arg>-->
               <!--<constructor-arg name="userDAO">
                      <ref bean="userDAOImpl" />
               </constructor-arg>-->
-           <constructor-arg name="groupDAO" ref="groupDAOImpl" />
+
               <property name="userDAO" ref="userDAOImpl" />
            <property name="groupDAO" ref="groupDAOImpl" />
        </bean>
