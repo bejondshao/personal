@@ -7,6 +7,7 @@ import com.bejond.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -17,17 +18,17 @@ import java.sql.Connection;
  * Created by bejond on 16-2-3.
  */
 @Component("userDAOImpl")
-public class UserDAOImpl implements UserDAO {
-	private HibernateTemplate hibernateTemplate;
+public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
+	//private HibernateTemplate hibernateTemplate;
 
-	public HibernateTemplate getHibernateTemplate() {
+	/*public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;
 	}
 
 	@Resource
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
-	}
+	}*/
 
 	@Override
 	public User save(User user) {
@@ -38,7 +39,8 @@ public class UserDAOImpl implements UserDAO {
 			}*/
 			user.setUsername("Zhangfei");
 			user.setPassword("test");
-			hibernateTemplate.save(user);
+			//hibernateTemplate.save(user);
+			this.getHibernateTemplate().save(user);
 
 			System.out.println("UserDAO.save()");
 

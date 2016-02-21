@@ -91,6 +91,13 @@
         <property name="sessionFactory" ref="sessionFactory" />
 
     </bean>
+    <!-- 如果UserDAOImpl继承了HibernateDaoSupport, 就得注入hibernateTemplate或者sessionFactory, 而UserDAOImpl没有这两个属性,所以只能在schema上配置,这是必须的 -->
+    <bean id="userDAOImpl" class="com.bejond.DAO.impl.UserDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>
+    <bean id="groupDAOImpl" class="com.bejond.DAO.impl.GroupDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>
 
     <!--<bean id="dataSourceAspect" class="com.bejond.AOP.DataSourceAspect" />
     <aop:config>

@@ -4,6 +4,7 @@ import com.bejond.DAO.GroupDAO;
 import com.bejond.model.Group;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -12,17 +13,13 @@ import javax.annotation.Resource;
  * Created by bejond on 16-2-18.
  */
 @Component
-public class GroupDAOImpl implements GroupDAO {
-	private SessionFactory sessionFactory;
-
+public class GroupDAOImpl extends HibernateDaoSupport implements GroupDAO {
 	@Override
 	public Group save(Group group) {
-
-		Session session = sessionFactory.getCurrentSession();
 		try {
 			group.setName("group1");
 
-			session.save(group);
+			this.getHibernateTemplate().save(group);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -32,12 +29,4 @@ public class GroupDAOImpl implements GroupDAO {
 		return group;
 	}
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	@Resource
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 }
