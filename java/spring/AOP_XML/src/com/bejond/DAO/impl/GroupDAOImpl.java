@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * Created by bejond on 16-2-18.
  */
-@Component
-public class GroupDAOImpl extends HibernateDaoSupport implements GroupDAO {
+//@Component
+public class GroupDAOImpl extends AbstractDAOImpl implements GroupDAO {
 	@Override
 	public Group save(Group group) {
 		try {

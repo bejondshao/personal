@@ -17,8 +17,8 @@ import java.sql.Connection;
 /**
  * Created by bejond on 16-2-3.
  */
-@Component("userDAOImpl")
-public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
+//@Component("userDAOImpl")
+public class UserDAOImpl extends AbstractDAOImpl implements UserDAO {
 	//private HibernateTemplate hibernateTemplate;
 
 	/*public HibernateTemplate getHibernateTemplate() {

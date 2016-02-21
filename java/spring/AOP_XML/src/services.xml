@@ -92,13 +92,22 @@
 
     </bean>
     <!-- 如果UserDAOImpl继承了HibernateDaoSupport, 就得注入hibernateTemplate或者sessionFactory, 而UserDAOImpl没有这两个属性,所以只能在schema上配置,这是必须的 -->
-    <bean id="userDAOImpl" class="com.bejond.DAO.impl.UserDAOImpl">
+    <!--<bean id="userDAOImpl" class="com.bejond.DAO.impl.UserDAOImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate" />
     </bean>
     <bean id="groupDAOImpl" class="com.bejond.DAO.impl.GroupDAOImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>-->
+    <!-- 使用一个继承类,创建一个公共bean,注入所需要的属性,这样不用在所有的bean里注入相同的属性 -->
+    <bean id="abstractDAOImpl" class="com.bejond.DAO.impl.AbstractDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
     </bean>
+    <bean id="userDAOImpl" class="com.bejond.DAO.impl.UserDAOImpl">
 
+    </bean>
+    <bean id="groupDAOImpl" class="com.bejond.DAO.impl.GroupDAOImpl">
+
+    </bean>
     <!--<bean id="dataSourceAspect" class="com.bejond.AOP.DataSourceAspect" />
     <aop:config>
         <aop:pointcut id="dataSourceConnection" expression="execution(* com.bejond.DAO.impl.*.*(..))" />
@@ -110,16 +119,21 @@
        <!--<import resource="models.xml" />
        <import resource="daos.xml" />-->
 
-       <!--<bean id="userService" class="com.bejond.service.UserService" init-method="init" destroy-method="destroy">
+       <bean id="userService" class="com.bejond.service.UserService" init-method="init" destroy-method="destroy">
               <constructor-arg name="userDAO" ref="userDAOImpl" />
-              &lt;!&ndash;<constructor-arg name="userDAO">
+              <!--<constructor-arg name="userDAO">
                      <bean class="com.bejond.DAO.impl.UserDAOImpl"
-              </constructor-arg>&ndash;&gt;
-              &lt;!&ndash;<constructor-arg name="userDAO">
+              </constructor-arg>-->
+              <!--<constructor-arg name="userDAO">
                      <ref bean="userDAOImpl" />
-              </constructor-arg>&ndash;&gt;
+              </constructor-arg>-->
+           <constructor-arg name="groupDAO" ref="groupDAOImpl" />
               <property name="userDAO" ref="userDAOImpl" />
-       </bean>-->
+           <property name="groupDAO" ref="groupDAOImpl" />
+       </bean>
+    <bean id="groupService" class="com.bejond.service.GroupService" init-method="init" destroy-method="destroy">
+        <property name="groupDAO" ref="groupDAOImpl" />
+    </bean>
        <!--<bean id="userService" class="com.bejond.service.UserService">
 
        </bean>-->

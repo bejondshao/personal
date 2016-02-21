@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 /**
  * Created by bejond on 16-2-18.
  */
-@Component
+//@Component
 public class GroupService {
 	private GroupDAO groupDAO;
 
@@ -20,7 +20,7 @@ public class GroupService {
 		return groupDAO;
 	}
 
-	@Resource (name="groupDAOImpl")
+	//@Resource (name="groupDAOImpl")
 	public void setGroupDAO(GroupDAO groupDAO) {
 		this.groupDAO = groupDAO;
 	}

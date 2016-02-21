@@ -16,16 +16,21 @@ import javax.annotation.Resource;
 /**
  * Created by bejond on 16-2-3.
  */
-@Component("userService")
+//@Component("userService")
 public class UserService {
 	private UserDAO userDAO;
 	private GroupDAO groupDAO;
+
+	public UserService(UserDAO userDAO, GroupDAO groupDAO) {
+		this.userDAO = userDAO;
+		this.groupDAO = groupDAO;
+	}
 
 	public GroupDAO getGroupDAO() {
 		return groupDAO;
 	}
 
-	@Resource (name="groupDAOImpl")
+	//@Resource (name="groupDAOImpl")
 	public void setGroupDAO(GroupDAO groupDAO) {
 		this.groupDAO = groupDAO;
 	}
@@ -34,7 +39,7 @@ public class UserService {
 		return userDAO;
 	}
 
-	@Resource(name="userDAOImpl")
+	//@Resource(name="userDAOImpl")
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
