@@ -236,3 +236,4 @@ java/hibernate/hibernate_annotation/classes/
 production
 out
 *.class
+artifacts
