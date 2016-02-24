@@ -30,10 +30,10 @@ public class UserDAOImpl implements UserDAO {
 	public boolean isExisting(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		String sqlQuery = "select count(*) from User where username = ?";
+		String sqlQuery = "from User where username = ?";
 		Query query = session.createQuery(sqlQuery);
-		query.setString(1, user.getUsername());
-		List result = (ArrayList<User>)query.
+		query.setString(0, user.getUsername());
+		List result = (ArrayList<User>)query.list();
 
 		return result.size() > 0;
 	}
@@ -42,14 +42,8 @@ public class UserDAOImpl implements UserDAO {
 	public User addUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		String sql = "insert into User values (?, ?, ?, ?)";
-		Query query = session.createQuery(sql);
-		Random random = new Random();
-		query.setInteger(1, random.nextInt());
-		query.setString(2, user.getPassword());
-		query.setString(3, user.getUsername());
-		query.setInteger(4, 7);
-		query.executeUpdate();
+		session.save(user);
+		session.getTransaction().commit();
 
 		return user;
 	}
