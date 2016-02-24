@@ -12,6 +12,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  User Registration Success.
   </body>
 </html>

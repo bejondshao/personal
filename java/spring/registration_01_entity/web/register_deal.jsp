@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.bejond.service.UserManager" %><%--
   Created by IntelliJ IDEA.
   User: bejond
   Date: 2/22/16
@@ -9,35 +9,18 @@
 <%@include file="init.jsp" %>
 <%
 User user = new User();
-String username = request.getParameter("username");
-String password = request.getParameter("password");
+user.setUsername(request.getParameter("username"));
+user.setPassword(request.getParameter("password"));
 String password2 = request.getParameter("password2");
 
-Class.forName("com.mysql.jdbc.Driver");
-Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/spring", "root", "");
-
-String sqlQuery = "select count(*) from User where username = ?";
-PreparedStatement preparedStatement0 = connection.prepareStatement(sqlQuery);
-preparedStatement0.setString(1, username);
-ResultSet resultSet = preparedStatement0.executeQuery();
-resultSet.next();
-int count = resultSet.getInt(1);
-if(count > 0) {
-    response.sendRedirect("register_fail.jsp");
-    preparedStatement0.close();
-    connection.close();
+UserManager userManager = new UserManagerImpl();
+boolean userExists = userManager.userExists(user);
+if (userExists) {
+    response.sendRedirect("/register_fail");
     return;
 }
 
-String sql = "insert into User values (?, ?, ?, ?)";
-PreparedStatement preparedStatement = connection.prepareStatement(sql);
-Random random = new Random();
-preparedStatement.setInt(1, random.nextInt());
-preparedStatement.setString(2, password);
-preparedStatement.setString(3, username);
-preparedStatement.setInt(4, 7);
-preparedStatement.executeUpdate();
-connection.close();
+userManager.addUser(user);
 
 response.sendRedirect("register_success.jsp");
 %>
