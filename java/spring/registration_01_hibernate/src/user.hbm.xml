@@ -5,7 +5,7 @@
 
     <class name="User" table="User">
         <id name="userId" column="userId">
-            <!--<generator class="native"/>-->
+            <generator class="increment"/>
         </id>
         <property name="password" />
         <property name="username" />
