@@ -30,12 +30,12 @@ public class UserDAOImpl implements UserDAO {
 	public boolean isExisting(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		String sqlQuery = "from User where username = ?";
+		String sqlQuery = "select count(*) from User where username = ?";
 		Query query = session.createQuery(sqlQuery);
 		query.setString(0, user.getUsername());
-		List result = (ArrayList<User>)query.list();
+		long count = (Long)query.uniqueResult();
 
-		return result.size() > 0;
+		return count > 0;
 	}
 
 	@Override
