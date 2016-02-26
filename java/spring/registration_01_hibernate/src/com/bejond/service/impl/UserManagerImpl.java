@@ -22,7 +22,9 @@ public class UserManagerImpl implements UserManager {
 	}
 	@Override
 	public boolean userExists(User user) throws Exception {
-		return userDAO.isExisting(user);
+		User user1 = userDAO.loadUserByName(user.getUsername());
+
+		return user1 != null;
 	}
 
 	@Override

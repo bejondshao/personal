@@ -26,7 +26,7 @@ public class UserDAOImpl implements UserDAO {
 		sessionFactory.close();
 	}
 
-	@Override
+	/*@Override
 	public boolean isExisting(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -36,6 +36,16 @@ public class UserDAOImpl implements UserDAO {
 		long count = (Long)query.uniqueResult();
 
 		return count > 0;
+	}*/
+	@Override
+	public User loadUserByName(String username) {
+		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		String sqlQuery = "select * from User where username = ?";
+		Query query = session.createQuery(sqlQuery).setString(0, username);
+		User user = (User)query.uniqueResult();
+
+		return user;
 	}
 
 	@Override
