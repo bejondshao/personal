@@ -12,7 +12,7 @@
     <title>用户注册</title>
   </head>
   <body>
-      <form method="post" action="regist.action">
+      <form method="post" action="test/regist.action">
           用户名: <input type="text" name="username"> <br>
           密码: <input type="password" name="password"> <br>
           重复密码: <input type="password" name="password2"> <br>

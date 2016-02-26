@@ -53,6 +53,16 @@
                 /index.jsp
             </result>
         </action>
+        <!--<action name="regist" class="com.bejond.action.UserAction">
+            <result name="success">
+                /register_success.jsp
+            </result>
+            <result name="fail">
+                /register_fail.jsp
+            </result>
+        </action>-->
+    </package>
+    <package name="registration" extends="struts-default" namespace="/test">
         <action name="regist" class="com.bejond.action.UserAction">
             <result name="success">
                 /register_success.jsp
@@ -61,9 +71,6 @@
                 /register_fail.jsp
             </result>
         </action>
-    </package>
-    <package name="registration" extends="struts-default">
-
     </package>
     <!--<include file="tag.xml" />-->
 </struts>
