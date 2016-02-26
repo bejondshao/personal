@@ -41,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 	public User loadUserByName(String username) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		String sqlQuery = "select * from User where username = ?";
+		String sqlQuery = "select u from User u where username = ?";
 		Query query = session.createQuery(sqlQuery).setString(0, username);
 		User user = (User)query.uniqueResult();
 
