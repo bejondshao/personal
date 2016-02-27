@@ -2,9 +2,8 @@ package com.bejond.action;
 
 import com.bejond.model.User;
 import com.bejond.service.UserManager;
-import com.bejond.service.impl.UserManagerImpl;
 import com.opensymphony.xwork2.ActionSupport;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 
@@ -16,7 +15,7 @@ import javax.annotation.Resource;
  * 比较合适的方式是将Action当做一个bean交给Spring管理,这样Action里的属性和service都
  * 可以通过Spring注入
  */
-@Component
+@Controller
 public class UserAction extends ActionSupport {
 	private String username;
 	private String password;
