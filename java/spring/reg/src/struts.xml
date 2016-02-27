@@ -31,6 +31,7 @@
     <include file="example.xml"/>-->
 
     <!-- Add packages here -->
+    <constant name="struts.objectFactory" value="spring" />
     <constant name="struts.devMode" value="true" />
     <constant name="struts.i18n.encoding" value="GBK" />
     <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
@@ -63,7 +64,7 @@
         </action>-->
     </package>
     <package name="registration" extends="struts-default" namespace="/test">
-        <action name="regist" class="com.bejond.action.UserAction">
+        <action name="regist" class="userAction">
             <result name="success">
                 /register_success.jsp
             </result>

@@ -17,9 +17,14 @@ import java.util.Random;
 public class UserManagerImpl implements UserManager {
 	private UserDAO userDAO;
 
-	public UserManagerImpl() {
-		userDAO = new UserDAOImpl();
+	public UserDAO getUserDAO() {
+		return userDAO;
 	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
 	@Override
 	public boolean userExists(User user) throws Exception {
 		User user1 = userDAO.loadUserByName(user.getUsername());
