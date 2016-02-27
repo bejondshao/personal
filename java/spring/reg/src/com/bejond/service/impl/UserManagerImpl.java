@@ -32,7 +32,26 @@ public class UserManagerImpl implements UserManager {
 	}
 
 	@Override
+	public boolean userExists(String username) throws Exception {
+		User user = userDAO.loadUserByName(username);
+
+		return user != null;
+	}
+
+	@Override
 	public User addUser(User user) throws Exception {
 		return userDAO.addUser(user);
+	}
+
+	@Override
+	public User addUser(String username, String password, String password2)
+		throws Exception {
+
+		if (!password.equals(password2) || userExists(username)) {
+			return null;
+		}
+		else {
+			return userDAO.addUser(username, password);
+		}
 	}
 }

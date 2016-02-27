@@ -60,4 +60,16 @@ public class UserDAOImpl implements UserDAO {
 
 		return user;
 	}
+
+	@Override
+	@Transactional
+	public User addUser(String username, String password) {
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+
+		addUser(user);
+
+		return user;
+	}
 }
