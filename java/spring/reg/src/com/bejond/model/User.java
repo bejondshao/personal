@@ -1,8 +1,11 @@
 package com.bejond.model;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by bejond on 2/24/16.
  */
+@Component
 public class User {
 	private int userId;
 	private String username;

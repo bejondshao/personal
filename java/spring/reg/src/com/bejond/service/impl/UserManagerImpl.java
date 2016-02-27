@@ -4,7 +4,9 @@ import com.bejond.DAO.UserDAO;
 import com.bejond.DAO.impl.UserDAOImpl;
 import com.bejond.model.User;
 import com.bejond.service.UserManager;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +16,7 @@ import java.util.Random;
 /**
  * Created by bejond on 2/24/16.
  */
+@Component
 public class UserManagerImpl implements UserManager {
 	private UserDAO userDAO;
 
@@ -21,6 +24,7 @@ public class UserManagerImpl implements UserManager {
 		return userDAO;
 	}
 
+	@Resource
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
