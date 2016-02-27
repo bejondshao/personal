@@ -12,6 +12,7 @@ import javax.annotation.Resource;
  * Created by bejond on 2/24/16.
  */
 @Service
+@Transactional
 public class UserManagerImpl implements UserManager {
 	private UserDAO userDAO;
 

@@ -15,6 +15,7 @@ import javax.annotation.Resource;
  * Created by bejond on 2/24/16.
  */
 @Repository
+@Transactional
 public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessionFactory;
 
@@ -39,7 +40,6 @@ public class UserDAOImpl implements UserDAO {
 		return count > 0;
 	}*/
 	@Override
-	@Transactional
 	public User loadUserByName(String username) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -51,7 +51,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	@Transactional
 	public User addUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -62,7 +61,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	@Transactional
 	public User addUser(String username, String password) {
 		User user = new User();
 		user.setUsername(username);
