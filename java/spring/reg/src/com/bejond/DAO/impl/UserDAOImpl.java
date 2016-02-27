@@ -7,21 +7,24 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 /**
  * Created by bejond on 2/24/16.
  */
 @Repository
 public class UserDAOImpl implements UserDAO {
-	private static SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
-	public UserDAOImpl() {
-		sessionFactory = new Configuration().configure().buildSessionFactory();
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
-	@Override
-	protected void finalize() {
-		sessionFactory.close();
+	@Resource
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
 	/*@Override
@@ -36,6 +39,7 @@ public class UserDAOImpl implements UserDAO {
 		return count > 0;
 	}*/
 	@Override
+	@Transactional
 	public User loadUserByName(String username) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -47,6 +51,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	@Transactional
 	public User addUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();

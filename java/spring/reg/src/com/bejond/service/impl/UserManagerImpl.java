@@ -4,6 +4,7 @@ import com.bejond.DAO.UserDAO;
 import com.bejond.model.User;
 import com.bejond.service.UserManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 

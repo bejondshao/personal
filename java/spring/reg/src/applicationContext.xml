@@ -2,16 +2,61 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
     <context:annotation-config />
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
     <context:component-scan base-package="com.bejond.DAO.impl" />
     <context:component-scan base-package="com.bejond.model" />
     <context:component-scan base-package="com.bejond.service" />
     <context:component-scan base-package="com.bejond.action" />
 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:resources/jdbc.properties"/>
+    </bean>
 
+    <bean id="dataSource" destroy-method="close"
+          class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- scan packages to annotate model classes, the same as annotatedClasses -->
+        <property name="packagesToScan" value="com.bejond.model" />
+        <!--    <property name="mappingResources">
+                <list>
+                    <value>resource/product.hbm.xml</value>
+                </list>
+            </property>-->
+        <!--<property name="annotatedClasses">
+            <list>
+                <value>com.bejond.model.User</value>
+                <value>com.bejond.model.Group</value>
+            </list>
+        </property>-->
+        <property name="hibernateProperties">
+            <!--<value>
+                hibernate.dialect=org.hibernate.dialect.HSQLDialect
+            </value>-->
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
