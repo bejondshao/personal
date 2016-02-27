@@ -8,6 +8,11 @@ import com.opensymphony.xwork2.ActionSupport;
 /**
  * Created by bejond on 16-2-26.
  */
+
+/**
+ * 比较合适的方式是将Action当做一个bean交给Spring管理,这样Action里的属性和service都
+ * 可以通过Spring注入
+ */
 public class UserAction extends ActionSupport {
 	private String username;
 	private String password;
@@ -59,7 +64,8 @@ public class UserAction extends ActionSupport {
 		else {
 			userManager.addUser(user);
 		}
-		/* 其实这里有判断user是否存在,属于业务逻辑,理应放在UserManager里处理.比较合
+		/**
+		 *  其实这里有判断user是否存在,属于业务逻辑,理应放在UserManager里处理.比较合
 		 * 适的方式是在UserManager的addUser方法里判断user是否存在, 然后或者报异常,
 		 * 或者返回特定值
 		 */
