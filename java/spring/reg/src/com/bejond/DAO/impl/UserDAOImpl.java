@@ -2,16 +2,11 @@ package com.bejond.DAO.impl;
 
 import com.bejond.DAO.UserDAO;
 import com.bejond.model.User;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by bejond on 2/24/16.

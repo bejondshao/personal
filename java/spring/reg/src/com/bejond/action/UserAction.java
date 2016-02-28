@@ -59,21 +59,12 @@ public class UserAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		if (userManager.userExists(username)) {
+		User user = userManager.addUser(username, password, password2);
+
+		if (user == null) {
 			return "fail";
 		}
-		else {
-			User user = userManager.addUser(username, password, password2);
 
-			if (user == null) {
-				return "fail";
-			}
-		}
-		/**
-		 *  其实这里有判断user是否存在,属于业务逻辑,理应放在UserManager里处理.比较合
-		 * 适的方式是在UserManager的addUser方法里判断user是否存在, 然后或者报异常,
-		 * 或者返回特定值
-		 */
 		return "success";
 	}
 }
