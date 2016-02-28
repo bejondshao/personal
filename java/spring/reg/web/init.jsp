@@ -7,12 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Random" %>
-
 <%@ page import="com.bejond.model.User" %>
-<%@ page import="com.bejond.service.impl.UserManagerImpl" %>
 <%@ page import="com.bejond.service.UserManager" %>
+<%@ page import="com.bejond.service.impl.UserManagerImpl" %>
+

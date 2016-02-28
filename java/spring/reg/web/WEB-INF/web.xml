@@ -21,4 +21,10 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/classes/applicationContext*.xml,classpath*:applicationContext-*.xml</param-value>
     </context-param>
+
+    <!-- Class Reloading -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.apache.struts2.spring.ClassReloadingXMLWebApplicationContext</param-value>
+    </context-param>
 </web-app>

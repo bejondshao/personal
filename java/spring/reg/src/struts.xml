@@ -35,6 +35,9 @@
     <constant name="struts.devMode" value="true" />
     <constant name="struts.i18n.encoding" value="GBK" />
     <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+    <!-- Class Reloading -->
+    <constant name="struts.class.reloading.watchList" value="com" />
+    <constant name="struts.class.reloading.acceptClasses" value="com\.bejond\.actions\..*" />
 
     <package name="default" namespace="/" extends="struts-default">
 
