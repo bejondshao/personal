@@ -1,5 +1,6 @@
 package com.bejond.action;
 
+import com.bejond.DTO.UserRegistrationInfo;
 import com.bejond.model.User;
 import com.bejond.service.UserManager;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,39 +20,19 @@ import javax.annotation.Resource;
 @Controller
 @Scope ("prototype")
 public class UserAction extends ActionSupport {
-	private String username;
-	private String password;
-	private String password2;
+	private UserRegistrationInfo userRegistrationInfo;
 
 	// 添加一个service, 这样所有方法都可以调用. 这个属性的初始化可以交给spring处理
 	private UserManager userManager;
 
-	public String getUsername() {
-		return username;
+	public UserRegistrationInfo getUserRegistrationInfo() {
+		return userRegistrationInfo;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	public void setUserRegistrationInfo(
+		UserRegistrationInfo userRegistrationInfo) {
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPassword2() {
-		return password2;
-	}
-
-	public void setPassword2(String password2) {
-		this.password2 = password2;
-	}
-
-	public UserManager getUserManager() {
-		return userManager;
+		this.userRegistrationInfo = userRegistrationInfo;
 	}
 
 	@Resource
@@ -61,7 +42,13 @@ public class UserAction extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		User user = userManager.addUser(username, password, password2);
+		/**
+		 * 其实这里应该用userManager.addUser(userRegistrationInfo),这样新创建个方法.不写了
+		 */
+		User user = userManager.addUser(
+			userRegistrationInfo.getUsername(),
+			userRegistrationInfo.getPassword(),
+			userRegistrationInfo.getPassword2());
 
 		if (user == null) {
 			return "fail";
