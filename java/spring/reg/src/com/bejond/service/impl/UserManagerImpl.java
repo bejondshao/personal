@@ -6,6 +6,8 @@ import com.bejond.service.UserManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 /**
@@ -54,5 +56,10 @@ public class UserManagerImpl implements UserManager {
 		else {
 			return userDAO.addUser(username, password);
 		}
+	}
+
+	@Override
+	public List<User> viewUsers() {
+		return userDAO.getUsers();
 	}
 }

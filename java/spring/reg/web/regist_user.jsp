@@ -12,7 +12,12 @@
     <title>用户注册</title>
   </head>
   <body>
-      <a href="regist_user.jsp">用户注册</a> <br>
-      <a href="view_users.jsp">查看用户</a> <br>
+      <form method="post" action="test/regist.action">
+          用户名: <input type="text" name="username"> <br>
+          密码: <input type="password" name="password"> <br>
+          重复密码: <input type="password" name="password2"> <br>
+
+          <input type="submit" name="提交">
+      </form><br>
   </body>
 </html>

@@ -5,8 +5,10 @@ import com.bejond.model.User;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
 import java.util.List;
+
+import javax.annotation.Resource;
+
 
 /**
  * Created by bejond on 2/24/16.
@@ -87,5 +89,12 @@ public class UserDAOImpl implements UserDAO {
 		addUser(user);
 
 		return user;
+	}
+
+	@Override
+	public List<User> getUsers() {
+		List<User> userList = (List<User>)hibernateTemplate.find("from User u");
+
+		return userList;
 	}
 }

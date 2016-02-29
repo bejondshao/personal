@@ -11,3 +11,7 @@
 <%@ page import="com.bejond.service.UserManager" %>
 <%@ page import="com.bejond.service.impl.UserManagerImpl" %>
 
+<%@ page import="java.util.List" %>
+<%
+UserManager userManager = new UserManagerImpl();
+%>

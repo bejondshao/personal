@@ -2,6 +2,8 @@ package com.bejond.DAO;
 
 import com.bejond.model.User;
 
+import java.util.List;
+
 /**
  * Created by bejond on 2/24/16.
  */
@@ -10,4 +12,5 @@ public interface UserDAO {
 	public User loadUserByName(String username);
 	public User addUser(User user);
 	public User addUser(String username, String password);
+	public List<User> getUsers();
 }

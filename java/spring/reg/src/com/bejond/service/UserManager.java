@@ -1,6 +1,7 @@
 package com.bejond.service;
 
 import com.bejond.model.User;
+import java.util.List;
 
 /**
  * Created by bejond on 2/24/16.
@@ -11,4 +12,6 @@ public interface UserManager {
 	public User addUser(User user) throws Exception;
 	public User addUser(String username, String password, String password2)
 		throws Exception;
+
+	public List<User> viewUsers() throws Exception;
 }
