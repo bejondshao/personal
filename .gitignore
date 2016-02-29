@@ -237,3 +237,4 @@ production
 out
 *.class
 artifacts
+*.iml
