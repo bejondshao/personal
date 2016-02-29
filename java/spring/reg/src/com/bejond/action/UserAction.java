@@ -3,6 +3,7 @@ package com.bejond.action;
 import com.bejond.model.User;
 import com.bejond.service.UserManager;
 import com.opensymphony.xwork2.ActionSupport;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
  * 可以通过Spring注入
  */
 @Controller
+@Scope ("prototype")
 public class UserAction extends ActionSupport {
 	private String username;
 	private String password;
