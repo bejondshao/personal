@@ -4,6 +4,7 @@ import com.bejond.DTO.UserRegistrationInfo;
 import com.bejond.model.User;
 import com.bejond.service.UserManager;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -19,8 +20,9 @@ import javax.annotation.Resource;
  */
 @Controller
 @Scope ("prototype")
-public class UserAction extends ActionSupport {
-	private UserRegistrationInfo userRegistrationInfo;
+public class UserAction extends ActionSupport implements ModelDriven {
+	private UserRegistrationInfo userRegistrationInfo =
+		new UserRegistrationInfo();
 
 	// 添加一个service, 这样所有方法都可以调用. 这个属性的初始化可以交给spring处理
 	private UserManager userManager;
@@ -55,5 +57,10 @@ public class UserAction extends ActionSupport {
 		}
 
 		return "success";
+	}
+
+	@Override
+	public Object getModel() {
+		return userRegistrationInfo;
 	}
 }
