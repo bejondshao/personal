@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by bejond on 16-2-26.
@@ -26,6 +27,15 @@ public class UserAction extends ActionSupport implements ModelDriven {
 
 	// 添加一个service, 这样所有方法都可以调用. 这个属性的初始化可以交给spring处理
 	private UserManager userManager;
+	private List<User> userList;
+
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
+	}
 
 	public UserRegistrationInfo getUserRegistrationInfo() {
 		return userRegistrationInfo;
@@ -62,5 +72,11 @@ public class UserAction extends ActionSupport implements ModelDriven {
 	@Override
 	public Object getModel() {
 		return userRegistrationInfo;
+	}
+
+	public String viewUsers() throws Exception {
+		userList = userManager.viewUsers();
+
+		return "view_users";
 	}
 }
