@@ -3,6 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
+    <!-- for session life cycle, must be in front of struts2 filter-->
+    <filter>
+        <filter-name>openSessionInView</filter-name>
+        <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>openSessionInView</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
