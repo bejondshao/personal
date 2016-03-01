@@ -37,7 +37,7 @@ public class UserAction extends ActionSupport implements ModelDriven {
 		this.userRegistrationInfo = userRegistrationInfo;
 	}
 
-	@Resource
+	@Resource (name = "userManagerImpl")
 	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
 	}
