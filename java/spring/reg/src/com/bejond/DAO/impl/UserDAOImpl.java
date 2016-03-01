@@ -68,6 +68,13 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
+	public User loadUserById(int id) {
+		User user = hibernateTemplate.load(User.class, id);
+
+		return user;
+	}
+
+	@Override
 	public User addUser(User user) {
 		/*Session session = sessionFactory.getCurrentSession();
 		session.beginTransaction();
@@ -97,4 +104,6 @@ public class UserDAOImpl implements UserDAO {
 
 		return userList;
 	}
+
+
 }

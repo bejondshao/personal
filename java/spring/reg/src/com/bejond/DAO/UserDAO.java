@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserDAO {
 	//public boolean isExisting(User user);
 	public User loadUserByName(String username);
+	public User loadUserById(int id);
 	public User addUser(User user);
 	public User addUser(String username, String password);
 	public List<User> getUsers();
