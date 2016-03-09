@@ -12,7 +12,8 @@
     <title>用户注册</title>
   </head>
   <body>
-      <a href="regist_user.jsp">用户注册</a> <br>
-      <a href="view_users.jsp">查看用户</a> <br>
+      <%--<a href="regist_user.jsp">用户注册</a> <br>--%>
+      <s:action name="viewUser!viewUsers" executeResult="true" />
+      <s:debug />
   </body>
 </html>

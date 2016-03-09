@@ -100,7 +100,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> getUsers() {
-		List<User> userList = (List<User>)hibernateTemplate.find("from User u");
+		List<User> userList = (List<User>)hibernateTemplate.find("from User");
 
 		return userList;
 	}
