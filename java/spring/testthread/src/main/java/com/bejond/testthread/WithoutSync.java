@@ -19,8 +19,10 @@ public class WithoutSync {
 
 		@Override
 		public void run() {
-			account.setBalance(account.addBlance(1));
-			System.out.println("Balance :" + account.getBalance());
+			synchronized (account) {
+				account.setBalance(account.addBlance(1));
+				System.out.println("Balance :" + account.getBalance());
+			}
 		}
 	}
 }

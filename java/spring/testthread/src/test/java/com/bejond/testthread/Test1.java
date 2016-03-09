@@ -21,5 +21,6 @@ public class Test1 {
 	@Test
 	public void testWithouSync() {
 		WithoutSync withoutSync = new WithoutSync();
+		System.out.println(withoutSync.account.getBalance());
 	}
 }
