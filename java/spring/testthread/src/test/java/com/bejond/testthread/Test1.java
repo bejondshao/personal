@@ -17,4 +17,9 @@ public class Test1 {
 		printInt.start();
 		printChar1.start();
 	}
+
+	@Test
+	public void testWithouSync() {
+		WithoutSync withoutSync = new WithoutSync();
+	}
 }
