@@ -3,7 +3,7 @@ package com.bejond.testthread;
 /**
  * Created by bejond on 16-3-9.
  */
-public class PrintInt extends Thread {
+public class PrintInt implements Runnable {
 	private int a;
 
 	public PrintInt(int a) {

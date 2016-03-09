@@ -11,7 +11,7 @@ public class Test1 {
 		Thread printChar = new PrintChar('a', 40);
 		Thread printChar1 = new PrintChar('b', 60);
 
-		Thread printInt = new PrintInt(10);
+		Thread printInt = new Thread(new PrintInt(10));
 
 		printChar.start();
 		printInt.start();
