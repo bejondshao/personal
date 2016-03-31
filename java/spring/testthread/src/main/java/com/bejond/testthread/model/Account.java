@@ -21,4 +21,25 @@ public class Account {
 	public int addBlance(int add) {
 		return balance + add;
 	}
+
+	public synchronized void deposit(int amount) {
+		balance += amount;
+		System.out.println("Deposit: " + amount + "\t\t\t\t\t\t" + balance);
+		notifyAll();
+	}
+
+	public synchronized void withdraw(int amount) {
+
+		while (balance < amount) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		balance -= amount;
+
+		System.out.println("\t\t\t\tWithdraw: " + amount + "\t\t" + balance);
+	}
 }

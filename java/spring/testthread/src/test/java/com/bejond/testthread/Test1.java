@@ -1,5 +1,6 @@
 package com.bejond.testthread;
 
+import com.bejond.testthread.model.Account;
 import org.junit.Test;
 
 /**
@@ -22,5 +23,17 @@ public class Test1 {
 	public void testWithouSync() {
 		WithoutSync withoutSync = new WithoutSync();
 		System.out.println(withoutSync.account.getBalance());
+	}
+
+	@Test
+	public void testDepositAndWithdraw() {
+		Account account = new Account(0);
+		Thread depositThread = new DepositThread(account);
+		Thread withdrawThread = new WithdrawThread(account);
+
+		System.out.println("Thread 1\t\tThread 2\t\tBalance");
+
+		withdrawThread.start();
+		depositThread.start();
 	}
 }
