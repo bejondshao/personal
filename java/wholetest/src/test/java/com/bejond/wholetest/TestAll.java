@@ -42,4 +42,11 @@ public class TestAll {
 		}
 
 	}
+
+	@Test
+	public void testProvinceDescription() {
+		for (Province province : Province.values()) {
+			System.out.println(province.getProvinceDescription());
+		}
+	}
 }
