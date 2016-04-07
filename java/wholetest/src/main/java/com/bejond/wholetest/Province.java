@@ -11,6 +11,7 @@ public enum Province {
 	private ProvinceDescription provinceDescription;
 
 	private Province(ProvinceDescription provinceDescription) {
+		System.out.println(provinceDescription.toString());
 		this.provinceDescription = provinceDescription;
 	}
 
