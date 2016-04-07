@@ -5,6 +5,7 @@ import org.junit.Test;
 /**
  * Created by bejond on 16-4-7.
  */
+
 public class SubDefaultFunction implements DefaultFunctionInterface {
 	@Test
 	public void testDefaultFunction() {
