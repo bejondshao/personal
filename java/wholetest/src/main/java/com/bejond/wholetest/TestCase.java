@@ -48,5 +48,16 @@ public static String toLowerCase(String s) {
 		str = TestCase.toLowerCase(str);
 		System.out.println(str);
 	}
+
+	@Test
+	public void testCompareTo() {
+		String a = "aeb";
+		String c = "dde";
+		String d = "D";
+
+		System.out.println(a.compareTo(c)); // the result is -3, it means it only compare the first character in the string.
+		System.out.println(a.compareTo(d));
+		System.out.println(a.compareToIgnoreCase(d));
+	}
 }
 
