@@ -49,4 +49,14 @@ public class TestAll {
 			System.out.println(province.getProvinceDescription());
 		}
 	}
+
+	@Test
+	public void testSingleton() {
+		Singleton singleton0 = Singleton.CHINA;
+		// Singleton singleton1 = new Singleton();
+		// this is wrong, because Enum types can't be instantiated
+		Singleton singleton2 = Singleton.CHINA;
+
+		System.out.println(singleton0 == singleton2); // this is true, it means we make the type only one instance.
+	}
 }
