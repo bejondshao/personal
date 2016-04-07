@@ -59,4 +59,19 @@ public class TestAll {
 
 		System.out.println(singleton0 == singleton2); // this is true, it means we make the type only one instance.
 	}
+
+	@Test
+	public void testValueOf() {
+		Province liaoning = Enum.valueOf(Province.class, "LIAONING");
+		// when we know the type of Enum and the name(a String) of constant, we can use
+		// valueOf() to get the value of the constant.
+		// That is, get value with name.
+
+		System.out.println(liaoning);
+
+		ProvinceDescription provinceDescription =
+			liaoning.getProvinceDescription();
+
+		System.out.println(provinceDescription);
+	}
 }
