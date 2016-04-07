@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/index" method="post">
+    <table> <!-- table用来限定格式对齐 -->
+        <tr>
+            <td>
+                用户名:
+            </td>
+            <td>
+                <input type="text"/>
+            </td>
+            <td>
+                密码:
+            </td>
+            <td>
+                <input type="password" id="password" name="password"/>
+            </td>
+        </tr>
+
+
+    </table>
+    文本框:
+    <textarea cols="20" rows="10" id="text" name="text"></textarea>
+    <br>
+    <input type="radio" name="gender"/>male
+    <input type="radio" checked="checked" name="gender"/>female
+    <br>
+    <input type="checkbox" name="hobby">唱歌
+    <input type="checkbox" name="hobby">跳舞
+    <input type="checkbox" name="hobby">游泳
+    <br>
+    年级:
+    <select id="grade" name="grade">
+        <option value="1">一年级</option>
+        <option value="2">二年级</option>
+        <option value="3">三年级</option>
+        <option value="4">四年级</option>
+        <option value="5">五年级</option>
+        <option value="6">六年级</option>
+    </select>
+    <br>
+    <input type="file" id="file" name="document">上传</input>
+    <br />
+    <button type="reset">重置</button>
+    <button type="submit">登录</button>
+</form>
+<hr />
+这是 <sub> 下标</sub> 和 <sup> 上标</sup>
+</body>
+</html>
