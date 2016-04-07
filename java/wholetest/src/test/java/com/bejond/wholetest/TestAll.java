@@ -35,6 +35,9 @@ public class TestAll {
 		moneyList.add(money4);
 
 		for (Money money : moneyList) {
+			System.out.print(Enum.valueOf(
+				Note.class, money.getNote().name()) + ". ");
+
 			money.describe();
 		}
 

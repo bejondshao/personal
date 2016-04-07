@@ -6,6 +6,14 @@ package com.bejond.wholetest;
 public class Money {
 	Note note;
 
+	public Note getNote() {
+		return note;
+	}
+
+	public void setNote(Note note) {
+		this.note = note;
+	}
+
 	public Money(Note note) {
 		this.note = note;
 	}
