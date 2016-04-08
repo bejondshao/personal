@@ -99,4 +99,11 @@ public class TestAll {
 			System.out.println(e);
 		}
 	}
+
+	@Test
+	public void testEnumItem() {
+		Item item0 = Item.Computer.DELL;
+		Item item1 = Item.Phone.NOKIA;
+		Item item2 = Item.Car.BMW;
+	}
 }
