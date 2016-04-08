@@ -74,4 +74,16 @@ public class TestAll {
 
 		System.out.println(provinceDescription);
 	}
+
+	@Test
+	public void testenumValueOf() {
+		String province = "Liaoning"; // suppose we get this value from another method
+
+		province = province.toUpperCase();
+
+		Enum e = Province.valueOf(province); // This method only needs one
+		// parameter, so if you have known the enum type, you should use this one instead of Enum.valueOf(,).
+
+		System.out.print(e);
+	}
 }
