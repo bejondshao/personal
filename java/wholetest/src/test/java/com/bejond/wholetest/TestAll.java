@@ -86,4 +86,17 @@ public class TestAll {
 
 		System.out.print(e);
 	}
+
+	@Test
+	public void testGetEnumConstants() {
+		Enum e0 = Province.HEILONGJIANG;
+		// e0.values(); // this is wrong
+		for (Enum e : e0.getClass().getEnumConstants()) { // See, we can get values even though we just know one of values
+			System.out.println(e.name());
+		}
+
+		for (Enum e : Province.values()) { // they are the same
+			System.out.println(e);
+		}
+	}
 }
