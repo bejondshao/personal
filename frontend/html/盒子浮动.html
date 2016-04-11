@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子浮动float</title>
+    <style type="text/css">
+        .parent {
+            padding: 5px;
+            background-color: yellow;
+            border: 1px solid red;
+        }
+
+        .div1 {
+            float: right;
+            margin: 5px;
+            background-color: aqua;
+            border: 2px solid green;
+        }
+
+        .div2 {
+            float: left;
+            margin: 5px;
+            background-color: gainsboro;
+            border: 2px solid orange;
+        }
+
+        p {
+            clear: both;
+            margin: 5px;
+            background-color: blanchedalmond;
+            border: 1px solid blue;
+        }
+
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="div1">盒子1</div>
+    <div class="div2">盒子2</div>
+    <p> 块级元素：以一个块的形式展现，跟同级的兄弟块依次竖直排列，左右撑满
+
+    行内元素：以普通的一个DOM节点展现，跟同级的兄弟元素横向排列，排满后，自动换行</p>
+</div>
+</body>
+</html>
