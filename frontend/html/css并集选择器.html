@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css并集选择器</title>
+    <style type="text/css">
+        p {
+            font-size: 20px;
+        }
+
+        .c {
+            color: blue;
+        }
+
+        p.c {
+            text-decoration: underline;
+        }
+
+        p#p2 {
+            text-decoration: underline;
+        }
+
+        p, .c, div {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<p id="p1">p1</p>
+<p id="p2">p2</p>
+<p id="p3" class="c">p3</p>
+<h1 id="h1" class="c">h1</h1>
+<h1 id="h2">h2</h1>
+<h1 id="h3">h3</h1>
+<div id="div1">div1</div>
+<div id="div2">div2</div>
+<div id="div3">div3</div>
+</body>
+</html>
