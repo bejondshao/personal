@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript处理DOM事件</title>
+    <script type="text/javascript">
+        function modifyDOM() {
+            document.getElementById("txt").innerHTML = "用户名: ";
+            document.getElementById("username").value = "Jack";
+            /**
+             * 何时用innerHTML, 何时用value?
+             * 这是个比较容易令新手蒙的问题. 其实也简单, innerHTML用来修饰容器类的标签的,
+             * value用来修饰有值的节点的. 最简单的方式是看这个标签有没有value属性,
+             * 如果有, 那就是value; 没有,  那就是innerHTML
+             */
+        }
+    </script>
+</head>
+<body>
+
+<div id="parent">
+    <div id="son1">
+        <font id="txt">:</font><input type="text" id="username" name="username" />
+    </div>
+</div>
+<input type="button" value="修改DOM节点" onclick="modifyDOM()" />
+</body>
+</html>
