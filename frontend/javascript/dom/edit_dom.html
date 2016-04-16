@@ -14,6 +14,29 @@
              * 如果有, 那就是value; 没有,  那就是innerHTML
              */
         }
+
+        function addDOM() {
+            var parameter = document.createElement("p");
+            var node = document.createTextNode("...前...");
+            parameter.appendChild(node);
+
+            var parent = document.getElementById("parent");
+            var son1 = document.getElementById("son1");
+            parent.insertBefore(parameter, son1);
+
+        }
+
+        function addDOMWtihText(parentId, sonId, dom1Id, text) {
+            var parameter = document.createElement("p");
+            parameter.id = dom1Id;
+            var node = document.createTextNode(text);
+            parameter.appendChild(node);
+
+            var parent = document.getElementById(parentId);
+            var son = document.getElementById(sonId);
+            parent.insertBefore(parameter, son);
+            parent.appendChild(parameter);
+        }
     </script>
 </head>
 <body>
@@ -24,5 +47,8 @@
     </div>
 </div>
 <input type="button" value="修改DOM节点" onclick="modifyDOM()" />
+<input type="button" value="插入DOM节点" onclick="addDOM()" />
+<input type="text" id="text0" />
+<input type="button" value="插入前面的内容" onclick='addDOMWtihText("parent", "son1", "text1", document.getElementById("text0").value)' />
 </body>
 </html>
