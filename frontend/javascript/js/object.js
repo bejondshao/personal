@@ -19,8 +19,11 @@ function say(something) {
 function person(name, age) { // 构造方法
     this.name = name;
     this.age = age;
+    
+    this.func = say; // 在构造方法中添加属性, 方法
 }
 
 var p1 = new person("David", 25);
 document.writeln(p1.name);
 document.writeln(p1.age);
+document.writeln(p1.func(p1.name + " is " + p1.age));
