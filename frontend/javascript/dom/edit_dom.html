@@ -44,6 +44,24 @@
 
             parent.removeChild(son);
         }
+
+        function modifyCSS(elementId) {
+            var element = document.getElementById(elementId);
+
+            element.style.color = "blue";
+        }
+
+        function modifyCSS2(elementId) {
+            var element = document.getElementById(elementId);
+
+            element.style.color = "red";
+        }
+
+        function modifyCSS3(elementId) {
+            var element = document.getElementById(elementId);
+
+            element.style.color = "purple";
+        }
     </script>
 </head>
 <body>
@@ -58,5 +76,7 @@
 <input type="text" id="text0" />
 <input type="button" value="插入前面的内容" onclick='addDOMWtihText("parent", "son1", "text1", document.getElementById("text0").value)' />
 <input type="button" value="删除DOM节点" onclick='removeDOM("parent", "text1")' />
+<input type="button" value="修改DOM节点样式" onclick='modifyCSS("text1")' />
+<input type="button" value="修改DOM节点样式2" onmouseover="modifyCSS2('text1')" onmouseleave="modifyCSS3('text1')" />
 </body>
 </html>
