@@ -37,6 +37,13 @@
             parent.insertBefore(parameter, son);
             parent.appendChild(parameter);
         }
+
+        function removeDOM(parentId, sonId) {
+            var parent = document.getElementById(parentId);
+            var son = document.getElementById(sonId);
+
+            parent.removeChild(son);
+        }
     </script>
 </head>
 <body>
@@ -50,5 +57,6 @@
 <input type="button" value="插入DOM节点" onclick="addDOM()" />
 <input type="text" id="text0" />
 <input type="button" value="插入前面的内容" onclick='addDOMWtihText("parent", "son1", "text1", document.getElementById("text0").value)' />
+<input type="button" value="删除DOM节点" onclick='removeDOM("parent", "text1")' />
 </body>
 </html>
