@@ -17,6 +17,18 @@
             document.getElementById("password").value = "";
         }
     </script>
+<%
+    String username = "";
+    String password = "";
+    Cookie[] cookies = request.getCookies();
+
+    for (int i = 0; cookies != null && i < cookies.length; i++) {
+        if (cookies[i].getName().equals("usernameAndPassword")) {
+            username = cookies[i].getValue().split("_")[0];
+            username = cookies[i].getValue().split("_")[1];
+        }
+    }
+%>
 </head>
 <body>
 <form action="user_login.jsp" method="post">
@@ -26,7 +38,7 @@
             用户名:
         </td>
         <td>
-            <input type="text" id="username" name="username" />
+            <input type="text" id="username" name="username" value="<%= username %>"/>
         </td>
     </tr>
     <tr>
@@ -34,7 +46,7 @@
             密码:
         </td>
         <td>
-            <input type="password" id="password" name="password" />
+            <input type="password" id="password" name="password" value="<%= password %>"/>
         </td>
     </tr>
     <tr>
