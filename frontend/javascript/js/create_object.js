@@ -61,3 +61,31 @@ document.write(obj.objectAttribute);
 document.writeln("<br />");
 document.write(obj.objectAttribute2);
 document.writeln("<br />");
+
+/**
+ * 对象方法
+ * @constructor
+ */
+function Object() {
+    var privateFunction = function() {
+        return "私有方法";
+        };
+    this.objectFunction = function() {
+        return "对象方法";
+    };
+    this.prototype.object2Function = function() {
+        return "对象方法2";
+    }
+}
+
+Object.classFunction = function() {
+    return "类方法";
+};
+
+document.write(Object.classFunction());
+document.writeln("<br />");
+var object2 = new Object();
+document.write(object2.objectFunction());
+document.writeln("<br />");
+document.write(object2.object2Function());
+document.writeln("<br />");
