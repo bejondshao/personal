@@ -7,6 +7,30 @@
     <groupId>com.bejond.jsptest</groupId>
     <artifactId>jsptest</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <build>
+        <plugins>
+            <!--
+            <plugin>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-maven-plugin</artifactId>
+                <configuration>
+                    <url>
+                        http://localhost:8080/manager
+                    </url>
+                    <username>tomcat</username>
+                    <password>123456</password>
+                    <path>/jsptest</path>
+                </configuration>
+            </plugin>
+            -->
+            <!--
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.7.Final</version>
+            </plugin>
+            -->
+        </plugins>
+    </build>
 
 </project>
