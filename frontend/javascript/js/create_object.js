@@ -39,3 +39,25 @@ function Sheep(name, age) {
 
 var tom = new Sheep("Tom", 2);
 tom.shout();
+document.writeln("<br />");
+
+/**
+ * 对象属性
+ * @constructor
+ */
+function Obj() {
+    this.objectAttribute = "对象属性";
+    Obj.prototype.objectAttribute2 = "对象属性2";
+    var privateAttribute = "私有属性";
+}
+
+Obj.classAttribute = "类属性";
+
+document.writeln(Obj.classAttribute);
+document.writeln("<br />");
+
+var obj = new Obj();
+document.write(obj.objectAttribute);
+document.writeln("<br />");
+document.write(obj.objectAttribute2);
+document.writeln("<br />");
