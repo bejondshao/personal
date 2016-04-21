@@ -67,5 +67,10 @@
     </tr>
 </form>
 </table>
+<%
+    out.println("out print");
+    out.println(out.getBufferSize());
+    out.println(out.getRemaining());
+%>
 </body>
 </html>
