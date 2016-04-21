@@ -3,4 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>init</servlet-name>
+        <jsp-file>/system_init.jsp</jsp-file>
+        <init-param>
+            <param-name>pageName</param-name>
+            <param-value>system_init</param-value>
+        </init-param>
+        <init-param>
+            <param-name>usages</param-name>
+            <param-value>init things</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>init</servlet-name>
+        <url-pattern>/init</url-pattern>
+    </servlet-mapping>
 </web-app>
