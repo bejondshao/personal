@@ -12,7 +12,9 @@
 </head>
 <body>
 <jsp:useBean id="student" scope="request" class="com.bejond.javabean.model.Student"/>
-<jsp:setProperty name="student" property="*"/>
+<%--<jsp:setProperty name="student" property="*"/>--%>
+<jsp:setProperty name="student" property="name"/>
+<jsp:setProperty name="student" property="age" value="66"/>
 <%
     request.setCharacterEncoding("UTF-8");
     // String name = request.getParameter("name");
