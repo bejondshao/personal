@@ -15,7 +15,7 @@
     <table>
         <tr>
             <td>姓名:</td>
-            <td><input type="text" name="name"/></td>
+            <td><input type="text" name="userName"/></td>
         </tr>
         <tr>
             <td>年龄:</td>
