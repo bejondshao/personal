@@ -24,7 +24,7 @@
     // student.setAge(age);
 %>
 
-<h4>姓名: <%= student.getName() %></h4>
+<h4>姓名: <jsp:getProperty name="student" property="name"/></h4>
 <h4>年龄: <%= student.getAge() %></h4>
 </body>
 </html>
