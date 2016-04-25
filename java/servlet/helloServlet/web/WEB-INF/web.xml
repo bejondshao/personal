@@ -46,4 +46,17 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/main</url-pattern>
     </filter-mapping>
+
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>com.bejond.helloServlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <listener>
+        <listener-class>com.bejond.helloServlet.listener.SessionAttributeListener</listener-class>
+    </listener>
 </web-app>

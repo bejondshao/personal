@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-当前用户: ${user.username}
+当前用户: ${user.username}<br/>
+<a href="logout">注销</a>
 </body>
 </html>
