@@ -28,4 +28,22 @@
         <servlet-name>forwardServlet</servlet-name>
         <url-pattern>/forward</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>com.bejond.helloServlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.bejond.helloServlet.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/main</url-pattern>
+    </filter-mapping>
 </web-app>
