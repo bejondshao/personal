@@ -9,11 +9,21 @@ import java.io.IOException;
  * Created by bejond on 4/25/16.
  */
 public class HelloTag extends TagSupport {
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public int doStartTag() throws JspException {
 		JspWriter jspWriter = this.pageContext.getOut();
 		try {
-			jspWriter.println("自定义标签你好");
+			jspWriter.println("自定义标签"+ name + "你好");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

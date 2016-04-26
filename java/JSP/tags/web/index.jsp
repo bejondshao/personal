@@ -12,7 +12,7 @@
     <title>$Title$</title>
   </head>
   <body>
-  <b:helloTag/>
+  <b:helloTag name="hahaha"/>
   <b:reverseTag bold="true">asdfghjkl</b:reverseTag>
   <b:reverseTag bold="false">asd fgh jkl</b:reverseTag>
   </body>
