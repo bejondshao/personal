@@ -25,6 +25,9 @@
   <b:iterate value="name6" items="list">
         <h4>${name6}</h4>
   </b:iterate>
+  <b:simpleIterate value="name1" items="list">
+      <h3>${name1}</h3>
+  </b:simpleIterate>
   <b:reverseTag bold="true">asdfghjkl</b:reverseTag>
   <b:reverseTag bold="false">asd fgh jkl</b:reverseTag>
   </body>
