@@ -12,6 +12,7 @@
     <title>Title</title>
     <!-- 包含头部信息用于适应不同设备 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- 包含bootstrap样式表 -->
     <link rel="stylesheet" href="bootstrap3/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap3/css/bootstrap-theme.min.css">
@@ -41,6 +42,10 @@
         </tr>
     </c:forEach>
 </table>
+<h4>添加数据</h4>
+<sql:update var="result">
+    insert into t_student values(null, "006", "林冲", "1859-03-02", "男");
+</sql:update>
 </body>
 <!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
 <!-- 可选: 包含 jQuery 库 -->
