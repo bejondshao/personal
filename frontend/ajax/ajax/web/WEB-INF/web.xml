@@ -13,4 +13,14 @@
         <servlet-name>getAjaxNameServlet</servlet-name>
         <url-pattern>/getAjaxName</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>timer</servlet-name>
+        <servlet-class>com.bejond.ajax.servlet.TimerServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>timer</servlet-name>
+        <url-pattern>/timer</url-pattern>
+    </servlet-mapping>
 </web-app>
