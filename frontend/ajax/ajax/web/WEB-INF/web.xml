@@ -23,4 +23,13 @@
         <servlet-name>timer</servlet-name>
         <url-pattern>/timer</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>loadInfo</servlet-name>
+        <servlet-class>com.bejond.ajax.servlet.InformationServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>loadInfo</servlet-name>
+        <url-pattern>/loadInfo</url-pattern>
+    </servlet-mapping>
 </web-app>

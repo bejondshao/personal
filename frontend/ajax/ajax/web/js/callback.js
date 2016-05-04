@@ -23,3 +23,12 @@ function loadText(url, callbackFunction) {
     xmlHttp.send();
 }
 
+function loadInfo(name, age, url) {
+    loadText(url, function () {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            var dataObj = eval("(" + xmlHttp.responseText + ")");
+            document.getElementById(name).innerHTML = dataObj.name;
+            document.getElementById(age).innerHTML = dataObj.age;
+        }
+    });
+}
