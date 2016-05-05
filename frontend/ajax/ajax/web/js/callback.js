@@ -84,3 +84,28 @@ function checkUsername(id1, id2, url) {
         }
     })
 }
+
+function loadCities(id1, id2, url) {
+    var provinceId = document.getElementById(id1).value; // 获取下拉框所选内容的id
+
+    url += "&provinceId=" + provinceId;
+    id2.options.length = 0;
+
+    loadText(url, function () {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            var dataObj = eval("(" + xmlHttp.responseText + ")");
+
+            var city; // 循环内的临时变量必须要声明, 否则被视为全局变量, 会影响第二次选择的二级联动
+
+            for (var index in dataObj.cities) { // index是序号, 并不是cities里的元素
+                city = dataObj.cities[index];
+                id2.options.add(new Option(city.name, city.cityId));
+            }
+
+            /*for (var i = 0; i < dataObj.cities.length; i++) {
+                city = dataObj.cities[i];
+                id2.options.add(new Option(city.name, city.cityId));
+            }*/
+        }
+    })
+}

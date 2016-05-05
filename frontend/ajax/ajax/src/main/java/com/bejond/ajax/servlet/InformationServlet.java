@@ -42,6 +42,9 @@ public class InformationServlet extends HttpServlet {
 		else if ("checkUsername".equals(action)) {
 			checkUsername(req, resp, jsonObject);
 		}
+		else if ("loadCities".equals(action)) {
+			loadCities(req, resp, jsonObject);
+		}
 
 		out.print(jsonObject);
 		out.flush();
@@ -102,5 +105,74 @@ public class InformationServlet extends HttpServlet {
 		if ("haha".equals(username)) {
 			jsonObject.put("exists", true);
 		}
+	}
+
+	protected void loadCities(HttpServletRequest req, HttpServletResponse resp,
+			JSONObject jsonObject) throws ServletException, IOException {
+
+		String provinceId = req.getParameter("provinceId");
+		JSONArray cities = new JSONArray();
+		JSONObject temp = new JSONObject();
+
+		switch (Integer.parseInt(provinceId)) {
+			case 1: {
+				temp.put("cityId", 1);
+				temp.put("name", "沈阳");
+				cities.add(temp);
+				temp.clear();
+
+				temp.put("cityId", 2);
+				temp.put("name", "大连");
+				cities.add(temp);
+				temp.clear();
+
+				temp.put("cityId", 3);
+				temp.put("name", "丹东");
+				cities.add(temp);
+				temp.clear();
+
+				break;
+			}
+
+			case 2: {
+				temp.put("cityId", 4);
+				temp.put("name", "吉林");
+				cities.add(temp);
+				temp.clear();
+
+				temp.put("cityId", 5);
+				temp.put("name", "长春");
+				cities.add(temp);
+				temp.clear();
+
+				temp.put("cityId", 6);
+				temp.put("name", "延吉");
+				cities.add(temp);
+				temp.clear();
+
+				break;
+			}
+
+			case 3: {
+				temp.put("cityId", 7);
+				temp.put("name", "哈尔滨");
+				cities.add(temp);
+				temp.clear();
+
+				temp.put("cityId", 8);
+				temp.put("name", "牡丹江");
+				cities.add(temp);
+				temp.clear();
+
+				temp.put("cityId", 9);
+				temp.put("name", "大庆");
+				cities.add(temp);
+				temp.clear();
+
+				break;
+			}
+		}
+
+		jsonObject.put("cities", cities);
 	}
 }
