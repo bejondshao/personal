@@ -39,6 +39,9 @@ public class InformationServlet extends HttpServlet {
 		else if ("getStudents".equals(action)){
 			getStudents(req, resp, jsonObject);
 		}
+		else if ("checkUsername".equals(action)) {
+			checkUsername(req, resp, jsonObject);
+		}
 
 		out.print(jsonObject);
 		out.flush();
@@ -89,5 +92,15 @@ public class InformationServlet extends HttpServlet {
 
 		jsonObject.put("name", "小狗");
 		jsonObject.put("age", 18);
+	}
+
+	protected void checkUsername(HttpServletRequest req, HttpServletResponse resp,
+			JSONObject jsonObject) throws ServletException, IOException {
+
+		String username = req.getParameter("username");
+
+		if ("haha".equals(username)) {
+			jsonObject.put("exists", true);
+		}
 	}
 }

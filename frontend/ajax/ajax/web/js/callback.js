@@ -66,3 +66,21 @@ function loadInfo2(id, url) {
         }
     })
 }
+
+function checkUsername(id1, id2, url) {
+    var username = document.getElementById(id1).value;
+    url += "&username=" + username;
+
+    loadText(url, function () {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            var dataObj = eval("(" + xmlHttp.responseText + ")");
+
+            if (dataObj.exists) {
+                document.getElementById(id2).innerHTML = "<image src='img/no.png'/>&nbsp;用户名已存在";
+            }
+            else {
+                document.getElementById(id2).innerHTML = "<image src='img/ok.png'/>";
+            }
+        }
+    })
+}
