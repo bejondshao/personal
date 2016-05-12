@@ -61,10 +61,14 @@ public static String toLowerCase(String s) {
 	}
 
 	@Test
-	public void test1() {
+	public void test12() {
 		int j = 1;
+		int h = 0;
 		for (int i = 0; i < 5; i++) {
-			j = j++;
+			// j = j++;
+			h = j;
+			j++;
+			j = h;
 		}
 		System.out.print(j);
 		// The out put is 1. As j++ returns j, which is 1. So j = j, j is 1 at last.
