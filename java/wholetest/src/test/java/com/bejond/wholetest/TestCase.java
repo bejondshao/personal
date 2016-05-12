@@ -59,5 +59,15 @@ public static String toLowerCase(String s) {
 		System.out.println(a.compareTo(d));
 		System.out.println(a.compareToIgnoreCase(d));
 	}
+
+	@Test
+	public void test1() {
+		int j = 1;
+		for (int i = 0; i < 5; i++) {
+			j = j++;
+		}
+		System.out.print(j);
+		// The out put is 1. As j++ returns j, which is 1. So j = j, j is 1 at last.
+	}
 }
 
