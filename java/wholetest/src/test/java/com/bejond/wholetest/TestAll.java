@@ -1,8 +1,11 @@
 package com.bejond.wholetest;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by bejond on 4/7/16.
@@ -105,5 +108,23 @@ public class TestAll {
 		Item item0 = Item.Computer.DELL;
 		Item item1 = Item.Phone.NOKIA;
 		Item item2 = Item.Car.BMW;
+	}
+
+	@Test
+	public void testConvertObject() {
+		Date date = new Date();
+
+		Object object = (Object)date;
+
+		System.out.println(date);
+		System.out.println(object);
+		System.out.println(date == object);
+	}
+
+	@Test
+	public void testGetList() {
+		List list = new LinkedList();
+		list.get(0); // java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+		// always check isEmpty before get.
 	}
 }
