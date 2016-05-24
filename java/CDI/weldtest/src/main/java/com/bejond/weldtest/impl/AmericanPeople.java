@@ -7,9 +7,9 @@ import com.bejond.weldtest.annotation.Country;
 /**
  * Created by bejond on 2016/5/24.
  */
-@Country (CountryType.CHINA)
-public class ChinesePeople implements People {
+@Country (CountryType.USA)
+public class AmericanPeople implements People {
 	public void sayHello() {
-		System.out.println("你好");
+		System.out.println("Hello");
 	}
 }

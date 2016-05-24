@@ -1,6 +1,8 @@
 package com.bejond.weldtest.bean;
 
+import com.bejond.weldtest.CountryType;
 import com.bejond.weldtest.People;
+import com.bejond.weldtest.annotation.Country;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -10,18 +12,19 @@ import javax.inject.Named;
  */
 @Named
 public class SaySomething {
-	private People people;
+	@Inject
+	@Country (CountryType.USA)
+	private People americanPeople;
 
-	public People getPeople() {
-		return people;
+	public People getAmericanPeople() {
+		return americanPeople;
 	}
 
-	@Inject
-	public void setPeople(People people) {
-		this.people = people;
+	public void setAmericanPeople(People americanPeople) {
+		this.americanPeople = americanPeople;
 	}
 
 	public void say() {
-		people.sayHello();
+		americanPeople.sayHello();
 	}
 }
