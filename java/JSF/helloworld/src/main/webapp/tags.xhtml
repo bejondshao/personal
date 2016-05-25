@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputScript name="js/main.js" library="testlib"/>
+        <script type="text/javascript" src=""></script>
+    </h:head>
+
+<f:view>
+    <h:outputLabel value="Hello, world"/><br/>
+    <h:inputText value="asdf"/><br/>
+    <h:inputTextarea value="asdfasdfsdaf"/><br/>
+    <h:inputSecret/><br/>
+    <h:form id="form1">
+        <h:selectBooleanCheckbox value="Remember Me" id="rememberMe"/>Remember Me
+        <h:commandButton value="Show checked" onclick="showCheckedValue()"/>
+    </h:form><br/>
+
+    <ui:remove>
+        <h:inputText value="asdf"></h:inputText>
+    </ui:remove>
+    <!--<h:form>
+        <h:inputText value="asdf"></h:inputText><br/>
+        <f:ajax event=""
+    </h:form>-->
+</f:view>
+</html>
