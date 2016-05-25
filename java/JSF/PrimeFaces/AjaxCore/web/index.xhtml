@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:form id="asdf">
+   <h:panelGrid columns="4" cellpadding="5">
+      <h:outputLabel for="textname" value="Name:" style="font-weight:bold" />
+      <p:inputText id="textname" value="#{basicView.text}" />
+      <p:commandButton value="Submit" update="display" icon="ui-icon-check" />
+      <h:outputText id="display" value="#{basicView.text}" />
+   </h:panelGrid>
+</h:form>
+</ui:composition>
