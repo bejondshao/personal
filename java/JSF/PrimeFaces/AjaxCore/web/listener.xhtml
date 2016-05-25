@@ -6,13 +6,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
-<h:form id="asdf">
-   <h:panelGrid columns="4" cellpadding="5">
-      <h:outputLabel for="textname" value="Name:" style="font-weight:bold" />
-      <p:inputText id="textname" value="#{basicView.text}" />
-      <p:commandButton value="Submit" update="display" icon="ui-icon-check" />
-      <h:outputText id="display" value="#{basicView.text}" />
-   </h:panelGrid>
+<h:form>
+    <h:panelGrid columns="3">
+        <h:outputText value="Keyup: " />
+        <p:inputText id="counter" value="#{listenerView.text}">
+            <p:ajax event="keyup" update="out" listener="#{listenerView.handleKeyEvent()}" />
+        </p:inputText>
+        <h:outputText id="out" value="#{listenerView.text}" />
+    </h:panelGrid>
 </h:form>
 </html>
