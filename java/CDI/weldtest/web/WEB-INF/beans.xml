@@ -6,4 +6,7 @@
     <alternatives>
         <class>com.bejond.weldtest.impl.CountMultiply</class>
     </alternatives>
+    <interceptors>
+        <class>com.bejond.weldtest.interceptor.PrepareInterceptor</class>
+    </interceptors>
 </beans>
