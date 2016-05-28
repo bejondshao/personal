@@ -6,7 +6,7 @@ import com.bejond.weldtest.Car;
  * Created by bejond on 5/28/16.
  */
 
-public class BenzCar implements Car{
+public class ToyotaCar implements Car{
 	private String carName;
 
 	public String getCarName() {
@@ -17,13 +17,13 @@ public class BenzCar implements Car{
 		this.carName = carName;
 	}
 
-	public BenzCar() {
-		System.out.println("Creating Beaz car by constructor");
-		carName = "BenzCar";
+	public ToyotaCar() {
+		System.out.println("Creating Toyota car by constructor");
+		carName = "ToyotaCar";
 	}
 
 	@Override
 	public void drive() {
-		System.out.println("I'm driving Benz.");
+		System.out.println("I'm driving Toyota.");
 	}
 }

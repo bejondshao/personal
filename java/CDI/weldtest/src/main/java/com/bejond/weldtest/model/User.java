@@ -1,8 +1,9 @@
 package com.bejond.weldtest.model;
 
 import com.bejond.weldtest.Car;
+import com.bejond.weldtest.CarType;
 import com.bejond.weldtest.annotation.BMWCarProducer;
-import com.bejond.weldtest.annotation.BenzCarProducer;
+import com.bejond.weldtest.annotation.CarProducer;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -16,11 +17,14 @@ import java.io.Serializable;
 @SessionScoped
 public class User implements Serializable {
 
-	@Inject @BenzCarProducer
+	@Inject @CarProducer(CarType.BENZ)
 	private Car benzCar;
 
 	@Inject @BMWCarProducer
 	private Car bmwCar;
+
+	@Inject @CarProducer(CarType.TOYOTA)
+	private Car toyotaCar;
 
 	public Car getBenzCar() {
 		return benzCar;
@@ -36,5 +40,13 @@ public class User implements Serializable {
 
 	public void setBmwCar(Car bmwCar) {
 		this.bmwCar = bmwCar;
+	}
+
+	public Car getToyotaCar() {
+		return toyotaCar;
+	}
+
+	public void setToyotaCar(Car toyotaCar) {
+		this.toyotaCar = toyotaCar;
 	}
 }
