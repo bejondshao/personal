@@ -4,6 +4,7 @@ import com.bejond.weldtest.Car;
 import com.bejond.weldtest.CarType;
 import com.bejond.weldtest.annotation.BMWCarProducer;
 import com.bejond.weldtest.annotation.CarProducer;
+import com.bejond.weldtest.annotation.PreInvoke;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import java.io.Serializable;
  */
 @Named
 @SessionScoped
+@PreInvoke
 public class User implements Serializable {
 
 	@Inject @CarProducer(CarType.BENZ)

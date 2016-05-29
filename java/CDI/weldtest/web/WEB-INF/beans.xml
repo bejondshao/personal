@@ -8,5 +8,6 @@
     </alternatives>
     <interceptors>
         <class>com.bejond.weldtest.interceptor.PrepareInterceptor</class>
+        <class>com.bejond.weldtest.interceptor.PreInvokeInterceptor</class>
     </interceptors>
 </beans>
