@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script type="text/javascript"> <!-- functions need to be put in another script tag -->
+        $(document).ready(function () {
+            $(".external .button").on("click", function () {
+                $(this).parent().hide(2000);
+                //$(this).parent().hide("slow");
+            });
+
+            $(".button").on("click", function () {
+                $("#p1").toggle("slow");
+            });
+
+            $("#button3").click(function () {
+                $("#div1").fadeIn();
+                $("#div2").fadeIn("slow");
+                $("#div3").fadeIn(4000);
+            });
+
+            $("#button4").click(function () {
+                $("#div1").fadeOut();
+                $("#div2").fadeOut("slow");
+                $("#div3").fadeOut(4000);
+            });
+
+            $("#button5").click(function () {
+                $("#div1").fadeToggle();
+                $("#div2").fadeToggle("slow");
+                $("#div3").fadeToggle(4000);
+            });
+
+            $("#button6").click(function () {
+                $("#div1").fadeTo("fast", 0.15);
+                $("#div2").fadeTo("slow", 0.4);
+                $("#div3").fadeTo("slow", 0.8, function () {
+                    alert("fadeTo() complete");
+                });
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></link>
+    <style type="text/css">
+        div.external {
+            background-color: #9acfea;
+            padding: 7px;
+            border: solid 1px #67b168;
+        }
+    </style>
+</head>
+<body>
+<h3>Island Trading</h3>
+<div class="external">
+    <button class="button">Hide this</button>
+    <p>Contract: Bejond Shao</p>
+    <p>Email: bejond@163.com</p>
+</div>
+
+<button class="button">Hide this</button>
+<div id="p1" class="external">
+    <p>Contract: Bejond Shao</p>
+    <p>Email: bejond@163.com</p>
+</div>
+<hr/>
+fadeIn()<br/>
+<p>Demonstrate fadeIn() with different parameters.</p>
+
+<button id="button3">Click to fade in boxes</button><br/><br/>
+<button id="button4">Click to fade out boxes</button><br/><br/>
+<button id="button5">Click to fade toggle boxes</button><br/><br/>
+<button id="button6">Click to fade to boxes</button><br/><br/>
+
+
+<div id="div1" style="width:80px; height:90px; display:none; background-color:red;"></div><br/>
+<div id="div2" style="width:80px; height:90px; display:none; background-color:green;"></div><br/>
+<div id="div3" style="width:80px; height:90px; display:none; background-color:blue;"></div><br/>
+</body>
+</html>
