@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script type="text/javascript"> <!-- functions need to be put in another script tag -->
+        $(document).ready(function () {
+            $("#p1").click(function () {
+                $(this).hide();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#p2").dblclick(function () {
+                $(this).hide();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#p3").mouseenter(function () {
+                alert("No good.");
+            });
+        });
+
+        $(document).ready(function () {
+            $("#p4").hover(function () {
+                var para = document.createElement("p");
+                var text = document.createTextNode("This is a paragraph.");
+                para.appendChild(text);
+
+                document.getElementById("p4").appendChild(para);
+            },
+            function () {
+                alert("Goodbye");
+            }
+            );
+        });
+
+        $(document).ready(
+            function () {
+                $("input").focus(function () {
+                    $(this).css("background-color", "#bbbbbb");
+                });
+
+                $("input").blur(function () {
+                    $(this).css("background-color", "#eeeeee");
+                })
+            }
+        );
+
+        $(document).ready(function () {
+            $("#p5").on("click", function () {
+                $(this).hide();
+            });
+
+            $("#p5").on(
+                    {
+                        mouseenter: function () {
+                            $(this).css("background-color", "green");
+                        }
+                        ,
+                        mouseleave: function () {
+                            $(this).css("background-color", "blue");
+                        }
+                    }
+            );
+        });
+    </script>
+    <script type="text/css" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p id="p1">this is p1. If you click me, I will hide.</p>
+<p id="p2">this is p2. dblclick()</p>
+<span id="p3" style="border: blue 1px solid;">this is p3. mouseenter()</span><br/>
+<span id="p4" style="border: red 1px solid;">this is p4. hover()</span><br/>
+Name: <input type="text" name="name"/><br/>
+Gender: <input type="text" name="gender"/><br/>
+<p id="p5">this is p5. If you click me, I will hide. on()</p>
+</body>
+</html>
