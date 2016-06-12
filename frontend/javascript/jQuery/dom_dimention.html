@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#button1").click(function(){
+                var div1 = $("#div1");
+                var height = div1.height();
+                var width = div1.width();
+                var innerWidth = div1.innerWidth();
+                var innerHeight = div1.innerHeight();
+                var outerWidth = div1.outerWidth();
+                var outerHeight = div1.outerHeight();
+                var outerWidthTrue = div1.outerWidth(true);
+                var outerHeightTrue = div1.outerHeight(true);
+
+
+                $(this).after("outerWidthTrue: " + outerWidthTrue + "<br/>");
+                $(this).after("outerHeightTrue: " + outerHeightTrue + "<br/>");
+                $(this).after("outerWidth: " + outerWidth + "<br/>");
+                $(this).after("outerHeight: " + outerHeight + "<br/>");
+                $(this).after("innerWidth: " + innerWidth + "<br/>");
+                $(this).after("innerHeight: " + innerHeight + "<br/>");
+                $(this).after("width: " + width + "<br/>");
+                $(this).after("height: " + height + "<br/>");
+            });
+
+            $("#button2").click(function () {
+                // $("h1, h2, p").toggleClass("blue");
+                $("h1").removeClass("blue");
+            });
+        });
+    </script>
+    <style>
+        #div1 {
+            height: 150px;
+            width: 300px;
+            padding: 30px;
+            border: 3px solid blue;
+            margin: 5px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    this is a div
+</div>
+
+<button id="button1">Show div info</button><br/>
+
+</body>
+</html>

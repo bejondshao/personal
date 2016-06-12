@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+    <script type="text/javascript"> <!-- functions need to be put in another script tag -->
+        $(document).ready(function () {
+            $("#button1").click(function () {
+                $("#p1").append("&lt;b&gt;Appended Text.&lt;/b&gt;");
+            });
+
+            $("#button2").click(function () {
+                $("#ol1").append("&lt;li&gt;Append after list.&lt;/li&gt;");
+            });
+
+            $("#button3").click(function () {
+                $("#ol1").prepend("&lt;li&gt;Prepend before list.&lt;/li&gt;");
+            });
+
+            $("#button4").click(function () {
+                $("#p1").remove();
+            });
+
+            $("#button5").click(function () {
+               $("#ol1").empty();
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></link>
+    <style type="text/css">
+        #panel, #flip {
+            padding: 5px;
+            text-align: center;
+            background-color: #e5eecc;
+            border: solid 1px #c3c3c3;
+        }
+
+        #panel {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<p id="p1">This is a paragraph.</p>
+<hr/>
+<ol id="ol1">
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+</ol>
+
+<button id="button1">Append text</button>
+<button id="button2">Append list items</button>
+<button id="button3">Prepend list items</button>
+<button id="button4">Remove element</button>
+<button id="button5">Empty children of the element</button>
+</body>
+</html>
