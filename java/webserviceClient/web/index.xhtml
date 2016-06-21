@@ -6,7 +6,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:form>
-姓名：<h:inputText id="name" value="#{helloWorldWebServiceClient.name}"></h:inputText>
-<h:commandButton action="#{helloWorldWebServiceClient.sayHello()}">提交</h:commandButton>
+<!--姓名：<p:inputText id="name" value="#{helloWorldWebServiceClient.name}"></p:inputText>
+<p:commandButton action="#{helloWorldWebServiceClient.sayHelloClient()}" value="提交" update="result1"></p:commandButton>
+    <p:outputLabel id="result1" value="#{helloWorldWebServiceClient.result}"/>-->
+    <h:inputText id="name" value="#{helloWorldWebServiceClient.name}"></h:inputText>
+    <h:commandButton action="#{helloWorldWebServiceClient.sayHelloClient}" value="提交"></h:commandButton>
 </h:form>
 </html>
