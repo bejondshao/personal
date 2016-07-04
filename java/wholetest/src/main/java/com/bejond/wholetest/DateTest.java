@@ -13,7 +13,7 @@ import java.util.Date;
 public class DateTest {
 
 	@Test
-	public void testDateString() {
+	public void testDateTime() {
 
 		LocalDateTime localDateTime = LocalDateTime.now();
 
