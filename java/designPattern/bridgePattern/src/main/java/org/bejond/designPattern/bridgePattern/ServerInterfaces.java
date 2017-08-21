@@ -6,4 +6,6 @@ public interface ServerInterfaces {
 
     String serverInformation();
 
+    String greeting(String name);
+
 }

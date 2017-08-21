@@ -13,4 +13,9 @@ public class ServerInterfacesComplexImpl implements ServerInterfaces {
 
         return "complex server1, good.";
     }
+
+    public String greeting(String name) {
+
+        return "Welcome home, lovely " + name + "!";
+    }
 }

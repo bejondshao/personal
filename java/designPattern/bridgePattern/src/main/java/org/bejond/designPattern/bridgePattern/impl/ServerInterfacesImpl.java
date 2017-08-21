@@ -13,4 +13,9 @@ public class ServerInterfacesImpl implements ServerInterfaces {
 
         return "server1, good.";
     }
+
+    public String greeting(String name) {
+
+        return "Welcome, " + name + ".";
+    }
 }
