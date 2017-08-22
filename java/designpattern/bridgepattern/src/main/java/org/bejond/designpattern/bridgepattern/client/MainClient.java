@@ -1,6 +1,6 @@
-package org.bejond.designPattern.bridgePattern.client;
+package org.bejond.designpattern.bridgepattern.client;
 
-import org.bejond.designPattern.bridgePattern.ServerInterfaces;
+import org.bejond.designpattern.bridgepattern.ServerInterfaces;
 
 public abstract class MainClient {
 

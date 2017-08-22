@@ -1,4 +1,4 @@
-package org.bejond.designPattern.bridgePattern;
+package org.bejond.designpattern.bridgepattern;
 
 public interface ServerInterfaces {
 

@@ -1,6 +1,6 @@
-package org.bejond.designPattern.bridgePattern.impl;
+package org.bejond.designpattern.bridgepattern.impl;
 
-import org.bejond.designPattern.bridgePattern.ServerInterfaces;
+import org.bejond.designpattern.bridgepattern.ServerInterfaces;
 
 public class ServerInterfacesComplexImpl implements ServerInterfaces {
 
