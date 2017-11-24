@@ -29,6 +29,7 @@ public class DiscardServer {
 
 						protected void initChannel(SocketChannel ch) throws Exception {
 							ch.pipeline().addLast(new DiscardServerHandler());
+							ch.pipeline().addLast(new ResponseHandler());
 						}
 					})
 					.option(ChannelOption.SO_BACKLOG, 128)
