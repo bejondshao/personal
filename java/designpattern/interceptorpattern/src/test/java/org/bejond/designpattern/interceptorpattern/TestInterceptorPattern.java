@@ -10,6 +10,9 @@ public class TestInterceptorPattern {
 		FilterChain filterChain = filterManager.getFilterChain();
 		filterChain.addFilter(new AuthenticationFilter());
 		filterChain.addFilter(new DebugFilter());
-		filterManager.execute("This is brilliant.");
+
+		Client client = new Client();
+		client.setFilterManager(filterManager);
+		client.sendMessage("This is brilliant.");
 	}
 }

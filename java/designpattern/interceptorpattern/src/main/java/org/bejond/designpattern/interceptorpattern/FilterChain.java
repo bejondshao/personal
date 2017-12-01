@@ -12,6 +12,11 @@ public class FilterChain {
 		filterList.add(filter);
 	}
 
+	public boolean removeFilter(Filter filter) {
+
+		return filterList.remove(filter);
+	}
+
 	public String execute(String message) {
 
 		for (Filter filter : filterList) {
