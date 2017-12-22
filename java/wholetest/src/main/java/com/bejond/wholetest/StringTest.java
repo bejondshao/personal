@@ -21,7 +21,13 @@ public class StringTest {
 		int interface1(double d);
 	}
 
+	@Test
+	public void testSpilt() {
 
+		String str = "1,2,3,4,";
+		String[] strings = str.split(",");
+		System.out.println(strings.length); // 4, not 5
+	}
 
 	@Test
 	public void testLength() {
