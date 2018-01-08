@@ -34,5 +34,10 @@
             <artifactId>commons-net</artifactId>
             <version>3.5</version>
         </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1-m04</version>
+        </dependency>
     </dependencies>
 </project>
