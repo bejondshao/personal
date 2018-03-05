@@ -47,4 +47,12 @@ public class StringTest {
 		str = str.replace('=', ' ').trim();
 		System.out.println(str);
 	}
+
+	@Test
+	public void parseString() {
+
+		String value = "";
+		Integer integer = Integer.valueOf(value);
+		System.out.print(integer);
+	}
 }
