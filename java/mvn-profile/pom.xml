@@ -182,13 +182,6 @@
                         <resource>
                             <directory>${project.build.directory}/generated-web</directory>
                         </resource>
-                        <resource>
-                            <directory>src/main/web</directory>
-                            <includes>
-                                <include>**/*.*</include>
-                            </includes>
-                            <filtering>true</filtering>
-                        </resource>
 
                         <resource>
                             <directory>src/main/web/WEB-INF</directory>
@@ -197,6 +190,11 @@
                             <includes>
                                 <include>jboss-web.xml</include>
                             </includes>
+                        </resource>
+                        <resource>
+                            <directory>src/main/web/WEB-INF</directory>
+                            <filtering>false</filtering>
+                            <targetPath>WEB-INF</targetPath>
                         </resource>
                     </webResources>
                 </configuration>
