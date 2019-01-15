@@ -65,6 +65,14 @@ public class Client {
 
 	public void close() throws IOException {
 
+		try
+		{
+			channel.close();
+		}
+		catch ( TimeoutException e )
+		{
+			e.printStackTrace();
+		}
 		connection.close();
 	}
 

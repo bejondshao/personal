@@ -1,7 +1,6 @@
 package org.bejond.wholetest;
 
-import java.util.Arrays;
-import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
@@ -14,10 +13,12 @@ public class StringTest {
 	}
 
 	private interface I0 extends I {
+
 		int interface0(int a, int b);
 	}
 
 	private interface I1 extends I {
+
 		int interface1(double d);
 	}
 
@@ -42,6 +43,7 @@ public class StringTest {
 
 	@Test
 	public void testReplace() {
+
 		String str = "=\"String \"";
 		str = str.replace('"', ' ');
 		str = str.replace('=', ' ').trim();
@@ -54,5 +56,61 @@ public class StringTest {
 		String value = "";
 		Integer integer = Integer.valueOf(value);
 		System.out.print(integer);
+	}
+
+	@Test
+	public void testConcat() {
+
+		String a = null;
+		String b = null;
+		String c = a + b;
+		System.out.println("c = " + c); // Output: c = nullnull
+		a = a == null ? "" : a;
+		b = b == null ? "" : b;
+		String d = a + b;
+		System.out.println("d = " + d); // Output: d =
+	}
+
+	public boolean isBothBlank(String lastName, String firstName) {
+
+		return StringUtils.isBlank(lastName) && StringUtils.isBlank(firstName);
+	}
+
+	@Test
+	public void testStringBuffer() {
+
+		String lastName = "asdf";
+		String firstName = null;
+		String name = null;
+		StringBuffer name1 = new StringBuffer(lastName);
+
+		name = name1.append(firstName).toString();
+
+		System.out.println(name);
+	}
+
+	/**
+	 * test exception before assigning
+	 */
+	@Test
+	public void testException() {
+		int a = 2;
+		String b = null;
+		try {
+			a = b.length();
+		} catch ( Exception e ) {}
+
+		System.out.print(a);
+
+	}
+
+	/**
+	 * test equals(null)
+	 */
+	@Test
+	public void testEqualsNull() {
+		String a = "a";
+		String b = null;
+		System.out.println(a.equals(b));
 	}
 }
