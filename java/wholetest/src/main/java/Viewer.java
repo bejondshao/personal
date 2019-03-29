@@ -56,12 +56,19 @@ public class Viewer {
 	}
 
 	private static void listContents(String range) throws Exception {
-		int[] ints = convertRange2Ints(range);
-		int start = ints[0] - 1; // as index starts from 0, so start minus 1
-		int end = ints[1] - 1;
+
+		int start = 0;
 
 		// get the default list
 		DoubleLinkedList doubleLinkedList = getDefaultDoubleLinkedList();
+		int end = doubleLinkedList.getSize() - 1;
+
+		if (range != null) {
+			int[] ints = convertRange2Ints(range);
+			start = ints[0] - 1; // as index starts from 0, so start minus 1
+			end = ints[1] - 1;
+		}
+
 		slideshow(doubleLinkedList, start, end);
 	}
 
@@ -90,8 +97,16 @@ public class Viewer {
 	 */
 	private static void slideshow(DoubleLinkedList doubleLinkedList, int start, int end) throws Exception {
 
+		if (start < 0) {
+			throw new Exception("Index should not be less than 1.");
+		}
+
 		if (start > end) {
 			throw new Exception("Start should not bigger than end.");
+		}
+
+		if (end >= doubleLinkedList.size) {
+			throw new Exception("Index is out of bound of image counts.");
 		}
 
 		preDeal(doubleLinkedList, start, end);
@@ -119,25 +134,37 @@ public class Viewer {
 
 	private static void reverseSlideshow(String range) throws Exception {
 
-		int[] ints = convertRange2Ints(range);
-		int start = ints[0] - 1;
-		int end = ints[1] - 1;
+		DoubleLinkedList doubleLinkedList = getDefaultDoubleLinkedList();
+		doubleLinkedList.reverse();
+		int start = doubleLinkedList.getSize() - 1;
+		int end = 0;
+
+		if (range != null) {
+			int[] ints = convertRange2Ints(range);
+			start = ints[0] - 1;
+			end = ints[1] - 1;
+		}
 
 		// get the default list
-		DoubleLinkedList doubleLinkedList = getDefaultDoubleLinkedList();
 		reverseSlideshow(doubleLinkedList, start, end);
 	}
 
 	/**
-	 * loop from tail to start, just find the prev is ok
-	 *
+	 * loop from tail to start, just find the prev
 	 * @param start
 	 * @param end
 	 */
 	private static void reverseSlideshow(DoubleLinkedList doubleLinkedList, int start, int end) throws Exception {
 
+		if (end < 0) {
+			throw new Exception("Index should not be less than 1");
+		}
 		if (start < end) {
 			throw new Exception("Start should not smaller than end.");
+		}
+
+		if (start >= doubleLinkedList.size) {
+			throw new Exception("Index is out of bound of image counts.");
 		}
 
 		preDeal(doubleLinkedList, start, end);
@@ -169,6 +196,8 @@ public class Viewer {
 					doubleLinkedList.addTailNode(item);
 				}
 			}
+			System.out.println("Head: " + doubleLinkedList.getHead().getItem().getName());
+			System.out.println("Tail: " + doubleLinkedList.getTail().getItem().getName());
 			doubleLinkedListHashMap.put(folderName, doubleLinkedList);
 			System.out.println("==============================================");
 		}
@@ -186,6 +215,10 @@ public class Viewer {
 			// check if argument contains ":", if not, we just put the argument into next step
 			if (argument.contains(COLON)) {
 				String[] parameters = argument.split(COLON);
+				if (parameters.length < 2) {
+					System.out.println("Lack of parameter.");
+					return;
+				}
 				command = parameters[0];
 				secondPart = parameters[1];
 			}
@@ -387,6 +420,43 @@ public class Viewer {
 			return node;
 		}
 
+		/**
+		 * reverse the double linked list
+		 * @return
+		 */
+		public void reverse() {
+
+			// temp to save previous node
+			Node temp = null;
+			// current move one by one
+			Node current = head;
+
+			while (current != null) {
+				// temp save current previous node, then current previous node can change to next node
+				temp = current.prev;
+				current.prev = current.next;
+				current.next = temp;
+
+				// current move to next one
+				current = current.prev;
+			}
+			/**
+			 * Before changing head, check for the cases like empty list and list with only one node
+			 *
+			 */
+			if (temp != null) {
+				tail = head;
+				head = temp.prev;
+			}
+
+			System.out.println("Printing out reversed double linked list:");
+			for(int i = 0; i < size; i++) {
+				System.out.println(getNode(i).getItem().getName());
+			}
+			System.out.println("Head: " + head.getItem().getName());
+			System.out.println("Tail: " + tail.getItem().getName());
+		}
+
 		public Node getHead() {
 			return head;
 		}
@@ -402,6 +472,11 @@ public class Viewer {
 		public void setTail(Node tail) {
 			this.tail = tail;
 		}
+
+		public int getSize() {
+			return size;
+		}
+
 	}
 
 }
