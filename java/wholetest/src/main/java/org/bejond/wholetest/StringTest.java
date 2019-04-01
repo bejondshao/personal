@@ -113,4 +113,30 @@ public class StringTest {
 		String b = null;
 		System.out.println(a.equals(b));
 	}
+
+	/**
+	 * test a + null
+	 */
+	@Test
+	public void testStringAppendNull() {
+		String a = "a";
+		String b = null;
+		System.out.println(a + b); // anull
+		String c = "c";
+		c += a;
+		System.out.println(c);
+	}
+
+	/**
+	 * Test StringBuilder a + null
+	 */
+	@Test
+	public void testStringBuilderAppendNull() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("a");
+		String b = null;
+		stringBuilder.append(b);
+		System.out.println(stringBuilder.toString()); // anull
+		System.out.println(new StringBuilder("a").append(b).toString()); // anull
+	}
 }
