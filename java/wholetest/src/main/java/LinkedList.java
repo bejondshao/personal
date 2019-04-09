@@ -4,12 +4,9 @@
  *  Dependencies: Picture.java                                                                                         
  ******************************************************************************/
 
-package assignment5;
-
+import java.io.File;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.io.File;
-import java.awt.Color;
 
 public class LinkedList<Item> { // implements Iterable<Item> { // to enable for each syntax                            
 	private int n;          // number of elements
@@ -105,18 +102,53 @@ public class LinkedList<Item> { // implements Iterable<Item> { // to enable for 
 		} catch (Exception e) {}
 	}
 
+	public void remove(Item v) {
+		int i = 0;
+		Node node = this.first;
+		Node previous = null; // point to previous node, need to change previous.next later
+		while (node != null && i < n) {
+			Item item = node.item;
+			if (item != null && item.equals(v)) {
+				if (node == first) {
+					if (n > 1) { // check if list is more than one node
+						first = first.next;
+					} else {
+						first = null;
+					}
+				} else {
+					previous.next = node.next;
+				}
+				System.out.println("Find the item v, removed from list.");
+				n--;
+				break;
+			} else {
+				previous = node;
+				node = node.next;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		// get the list of all file names
-		File folder = new File("pictures/");  /** may need to change this */
+		File folder = new File("images/");  /** may need to change this */
 		File[] listOfFiles = folder.listFiles();
 
 		// create a collection of these objects
 		LinkedList<Picture> photoStack = new LinkedList<Picture>();
-		for (File f: listOfFiles)     /** array implements iterable */
+		for (File f: listOfFiles) {    /** array implements iterable */
+			System.out.println("Adding file: " + f.getName());
 			photoStack.addLast(new Picture(f));
+		}
 
-		Picture p = photoStack.removeFirst();
-		p.show();
+		Picture p = new Picture(listOfFiles[1]);
+		photoStack.remove(p);
+		Iterator<Picture> pictureIterator = photoStack.iterator();
+		while (pictureIterator.hasNext()) {
+			Picture picture = pictureIterator.next();
+			picture.show();
+			pause(1000);
+		}
+
 
 		// The following can be used if LinkedList implements Iterator
 		// Iterator<Picture> l = photoStack.iterator();

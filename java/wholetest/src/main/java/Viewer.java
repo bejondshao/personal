@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Viewer {
 
@@ -52,6 +53,10 @@ public class Viewer {
 		}
 
 		DoubleLinkedList doubleLinkedList = getDoubleLinkedList(folder);
+		//slideshow(doubleLinkedList, 0, doubleLinkedList.size - 1);
+		Node node = doubleLinkedList.getNode(1);
+		Item item1 = node.getItem();
+		doubleLinkedList.remove(item1);
 		slideshow(doubleLinkedList, 0, doubleLinkedList.size - 1);
 	}
 
@@ -315,6 +320,21 @@ public class Viewer {
 		public void setFile(File file) {
 			this.file = file;
 		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) return true;
+			if (!(o instanceof Item)) return false;
+			Item item = (Item) o;
+			return Objects.equals(name, item.name) &&
+					Objects.equals(file, item.file);
+		}
+
+		@Override
+		public int hashCode() {
+
+			return Objects.hash(name, file);
+		}
 	}
 
 	private static class Node {
@@ -455,6 +475,36 @@ public class Viewer {
 			}
 			System.out.println("Head: " + head.getItem().getName());
 			System.out.println("Tail: " + tail.getItem().getName());
+		}
+
+		/**
+		 * remove item from list, leave the list unchangedd if item does not exist.
+		 * @param v
+		 */
+		public void remove(Item v) {
+			int i = 0;
+			Node node = this.head;
+			while(node != null && i < size) {
+				Item item = node.getItem();
+				if (item != null && item.equals(v)) {
+					if (node == head) { // check if head is the item node
+						if (size > 1) { // check if list is more than one node
+							head = head.next;
+							head.prev = null;
+						} else {
+							head = null;
+						}
+					} else {
+						node.prev.next = node.next;
+						node.next.prev = node.prev;
+					}
+					System.out.println("Find the item v, removed from list.");
+					size--;
+					break;
+				} else {
+					node = node.next;
+				}
+			}
 		}
 
 		public Node getHead() {
