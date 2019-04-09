@@ -334,6 +334,9 @@ public class BST<Key extends Comparable<Key>, Value> {
 
 		for (int i = 0; in.hasNext(); i++) {
 			String key = in.next();
+			if (key.equals("exit")) {
+				break;
+			}
 			st.put(key, i);
 		}
 
