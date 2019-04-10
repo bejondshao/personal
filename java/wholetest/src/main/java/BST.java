@@ -280,7 +280,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
 
 		Queue<Key> queue = new Queue<Key>();
-		keys1(root, queue, lo, hi);
+		keys2(root, queue, lo, hi);
 		return queue;
 	}
 
@@ -297,32 +297,49 @@ public class BST<Key extends Comparable<Key>, Value> {
 		Map<Key, Node> visitedMap = new HashMap<>(); // save the visited node
 
 		// to be visited list
-		LinkedList<Node> keyLinkedList = new LinkedList<>();
+		LinkedList<Node> linkedList = new LinkedList<>();
 		if (x == null) {
 			return;
 		}
-		keyLinkedList.addFirst(x);
-		while (keyLinkedList.size() > 0) {
-			Node node = keyLinkedList.getFirst();
+		linkedList.addFirst(x);
+		while (linkedList.size() > 0) {
+			Node node = linkedList.getFirst();
 			while (node.left != null) { // if we haven't visited the left node, visit left node first
 				if (visitedMap.get(node.left.key) != null) { // we have visited the node, skip
 					break;
 				}
 
-				keyLinkedList.addFirst(node.left);
+				linkedList.addFirst(node.left);
 				node = node.left;
 			}
 
-			node = keyLinkedList.getFirst();
-			keyLinkedList.removeFirst();
+			node = linkedList.removeFirst();
+
 			if (lo.compareTo(node.key) <= 0 && hi.compareTo(node.key) >= 0) {
 				queue.enqueue(node.key); // put the key into queue
 			}
 			visitedMap.put(node.key, node);
 			if (node.right != null) {
 				// put right node into linkedList
-				keyLinkedList.addFirst(node.right);
+				linkedList.addFirst(node.right);
 			}
+		}
+	}
+
+	private void keys2(Node x, Queue<Key> queue, Key lo, Key hi) {
+		LinkedList<Node> linkedList = new LinkedList<>();
+		Node node = x;
+
+		while(node != null || !linkedList.isEmpty()) {
+			while (node != null) {
+				linkedList.addFirst(node);
+				node = node.left;
+			}
+			node = linkedList.removeFirst();;
+			if (lo.compareTo(node.key) <= 0 && hi.compareTo(node.key) >= 0) {
+				queue.enqueue(node.key);
+			}
+			node = node.right;
 		}
 	}
 
