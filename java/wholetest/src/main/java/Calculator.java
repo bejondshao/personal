@@ -163,9 +163,13 @@ public class Calculator {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		BST<Double, Double> calculations = new BST<>();
 		while (input.hasNext()) {
 			// read in next line as a string
 			String ln = input.nextLine();
+			if (ln.equals("exit")) {
+				break;
+			}
 			if (ln.isEmpty()) {
 				// avoid empty string or enter
 				continue;
@@ -174,12 +178,21 @@ public class Calculator {
 			String[] tokens = separateOps(ln).split("\\s+");
 			// evaluate and print
 			try {
-				System.out.println(evaluate(tokens));
+				Double result = evaluate(tokens);
+				calculations.put(result, result);
+				System.out.println(result);
 			} catch (NumberFormatException nfe) {
 				System.out.println(nfe.getMessage());
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
+		System.out.println("--- level order ---");
+		for (Double s : calculations.levelOrder())
+			System.out.println(s);
+
+		System.out.println("--- key order ---");
+		for (Double s : calculations.keys())
+			System.out.println(s);
 	}
 }
