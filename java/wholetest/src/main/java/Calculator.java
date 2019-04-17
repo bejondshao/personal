@@ -33,17 +33,13 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class Calculator {
-	static {
-		LEFT_PARENTHESIS = "(";
-		RIGHT_PARENTHESIS = ")";
-	}
-	// all operators -- for now -- as a string
 
+	// all operators -- for now -- as a string
 	private static String opsString = "()+-/*";
 
-	private static String LEFT_PARENTHESIS;
+	private static String LEFT_PARENTHESIS = "\\("; // escape "\", which is "\\", in the end, "\\(" is escaping "("
 
-	private static String RIGHT_PARENTHESIS;
+	private static String RIGHT_PARENTHESIS = "\\)";
 
 	private static final String COLON = ":";
 
@@ -77,6 +73,8 @@ public class Calculator {
 			abstractSyntax = dealDef(input);
 		} else if (input.contains(LEFT_PARENTHESIS)) { // for call and expression
 			abstractSyntax = dealCallOrExpression(input);
+		} else {
+			dealExpression(input);
 		}
 
 		return abstractSyntax;
@@ -109,26 +107,37 @@ public class Calculator {
 
 		String paramsString = functionNameAndParams[1].split(RIGHT_PARENTHESIS)[0]; // "x,y)" would be spilt to ["x,y"], result is "x,y"
 		abstractSyntax.setParams(spiltStringToTrimArray(paramsString, COMMA)); // ["x", "y"]
-
+		functionMap.put(abstractSyntax.getName(), abstractSyntax);
+		System.out.println("Function: " + abstractSyntax.toString());
 		return abstractSyntax;
 	}
 
 	private static AbstractSyntax dealCallOrExpression(String input) {
 		AbstractSyntax abstractSyntax = new AbstractSyntax();
-		String[] functionNameAndParams = input.split(LEFT_PARENTHESIS, 2); // "sum(2, 3)" would be ["sum", "2, 3)"]
-		// "x + (2 + y)" would be ["x + ", "2 + y)"]
+
+		/**
+		 * "sum(2, 3)" would be ["sum", "2, 3)"]
+		 * "x + (2 + y)" would be ["x + ", "2 + y)"]
+		 */
+		String[] functionNameAndParams = input.split(LEFT_PARENTHESIS, 2);
+
 		// this is a function name
-		if (functionNameAndParams[0].matches(REGEX_START_WITH_ALPHA_NUM)) {
+		if (Parser.alphanum(functionNameAndParams[0])) {
 			abstractSyntax.setType(TYPE_CALL);
 			abstractSyntax.setName(functionNameAndParams[0]);
 			String paramsString = functionNameAndParams[1].split(RIGHT_PARENTHESIS)[0]; // "2, 3)" would be "2, 3"
 			abstractSyntax.setParams(spiltStringToTrimArray(paramsString, COMMA)); // ["2", "3"]
 		} else { // this could only be expression
 			abstractSyntax.setType(TYPE_EVAL);
-			abstractSyntax.setExp(new String[]{functionNameAndParams[1].split(RIGHT_PARENTHESIS)[0].trim()});
+			abstractSyntax.setExp(new String[]{input});
+			dealExpression(input);
 		}
 
 		return abstractSyntax;
+	}
+
+	private static void dealExpression(String input) {
+		System.out.println("Expression: " + evaluateExpression(input));
 	}
 
 	private static String[] spiltStringToTrimArray(String string, String regex) {
@@ -180,7 +189,7 @@ public class Calculator {
 			// token is a value
 			if (!opsString.contains(s)) {
 				try {
-					if (s.matches(REGEX_START_WITH_ALPHA_NUM)) { // check variable before parse
+					if (Parser.alphanum(s)) { // check variable before parse
 						Double value = variableMap.get(s);
 						if (value == null) {
 							throw new RuntimeException("Undefined variable: " + s);
@@ -272,6 +281,15 @@ public class Calculator {
 		}
 
 		return new Values(val2, val1);
+	}
+
+	/**
+	 * I didn't have Parser, so I write it myself
+	 */
+	private static class Parser {
+		public static boolean alphanum(String varName) {
+			return varName.matches(REGEX_START_WITH_ALPHA_NUM);
+		}
 	}
 
 	/**
