@@ -37,9 +37,12 @@ public class Calculator {
 	// all operators -- for now -- as a string
 	private static String opsString = "()+-/*";
 
-	private static String LEFT_PARENTHESIS = "\\("; // escape "\", which is "\\", in the end, "\\(" is escaping "("
+	// escape "\", which is "\\", in the end, "\\(" is escaping "("
+	private static String REGEX_LEFT_PARENTHESIS = "\\(";
 
-	private static String RIGHT_PARENTHESIS = "\\)";
+	private static String LEFT_PARENTHESIS = "(";
+
+	private static String REGEX_RIGHT_PARENTHESIS = "\\)";
 
 	private static final String COLON = ":";
 
@@ -89,23 +92,30 @@ public class Calculator {
 		abstractSyntax.setType(TYPE_ASSIGN);
 		abstractSyntax.setName(variableAndExpression[0].trim());
 		abstractSyntax.setExp(new String[]{variableAndExpression[1].trim()});
-		Double result = evaluateExpression(variableAndExpression[1].trim());
+		Double result = evaluateExpression(variableAndExpression[1].trim(), true);
 		variableMap.put(abstractSyntax.getName(), result);
 		System.out.println("Result: " + abstractSyntax.getName() + WS + ASSIGNMENT + WS + result);
 		return abstractSyntax;
 	}
 
 	private static AbstractSyntax dealDef(String input) {
+		if (!input.contains(COLON)) {
+			throw new RuntimeException("Insufficient function definition: \"" + COLON + "\" is required.");
+		}
 		AbstractSyntax abstractSyntax = new AbstractSyntax();
 		String[] def_AndFunction = input.split(TYPE_DEF_, 2); // "def sumOfSquares(x,y) : x * x + y * y" would be ["def ", "sumOfSquares(x,y) : x * x + y * y"]
 		abstractSyntax.setType(TYPE_DEF);
 		String[] functionAndExpression = def_AndFunction[1].split(COLON); // "sumOfSquares(x,y) : x * x + y * y" would be ["sumOfSquares(x,y) ", " x * x + y * y"]
-		String[] functionNameAndParams = functionAndExpression[0].trim().split(LEFT_PARENTHESIS); // "sumOfSquares(x,y) " would be ["sumOfSquares", "x,y)"]
+		if (functionAndExpression.length < 2) {
+			throw new RuntimeException("Insufficient function definition: expression is required.");
+		}
+
+		String[] functionNameAndParams = functionAndExpression[0].trim().split(REGEX_LEFT_PARENTHESIS); // "sumOfSquares(x,y) " would be ["sumOfSquares", "x,y)"]
 
 		abstractSyntax.setName(functionNameAndParams[0]);
 		abstractSyntax.setExp(new String[]{functionAndExpression[1].trim()});
 
-		String paramsString = functionNameAndParams[1].split(RIGHT_PARENTHESIS)[0]; // "x,y)" would be spilt to ["x,y"], result is "x,y"
+		String paramsString = functionNameAndParams[1].split(REGEX_RIGHT_PARENTHESIS)[0]; // "x,y)" would be spilt to ["x,y"], result is "x,y"
 		abstractSyntax.setParams(spiltStringToTrimArray(paramsString, COMMA)); // ["x", "y"]
 		functionMap.put(abstractSyntax.getName(), abstractSyntax);
 		System.out.println("Function: " + abstractSyntax.toString());
@@ -119,14 +129,20 @@ public class Calculator {
 		 * "sum(2, 3)" would be ["sum", "2, 3)"]
 		 * "x + (2 + y)" would be ["x + ", "2 + y)"]
 		 */
-		String[] functionNameAndParams = input.split(LEFT_PARENTHESIS, 2);
+		String[] functionNameAndParams = input.split(REGEX_LEFT_PARENTHESIS, 2);
 
 		// this is a function name
 		if (Parser.alphanum(functionNameAndParams[0])) {
 			abstractSyntax.setType(TYPE_CALL);
 			abstractSyntax.setName(functionNameAndParams[0]);
-			String paramsString = functionNameAndParams[1].split(RIGHT_PARENTHESIS)[0]; // "2, 3)" would be "2, 3"
+			String paramsString = functionNameAndParams[1].split(REGEX_RIGHT_PARENTHESIS)[0]; // "2, 3)" would be "2, 3"
 			abstractSyntax.setParams(spiltStringToTrimArray(paramsString, COMMA)); // ["2", "3"]
+
+			AbstractSyntax function = functionMap.get(abstractSyntax.getName());
+			if (function == null) {
+				throw new RuntimeException("Undefined function: " + abstractSyntax.getName());
+			}
+			System.out.println("Call function: " + evaluateExpression(function.getExp()[0], false));
 		} else { // this could only be expression
 			abstractSyntax.setType(TYPE_EVAL);
 			abstractSyntax.setExp(new String[]{input});
@@ -137,7 +153,7 @@ public class Calculator {
 	}
 
 	private static void dealExpression(String input) {
-		System.out.println("Expression: " + evaluateExpression(input));
+		System.out.println("Expression: " + evaluateExpression(input, false));
 	}
 
 	private static String[] spiltStringToTrimArray(String string, String regex) {
@@ -297,13 +313,19 @@ public class Calculator {
 	 * @param expression
 	 * @return
 	 */
-	public static Double evaluateExpression(String expression) {
+	public static Double evaluateExpression(String expression, boolean assignment) {
 		// should not do separateOps before preDeal. Only do separateOps when you are sure this is an expression
 		expression = separateOps(expression);
 		// tokenize -- separate operands and operators into a string array
 		String[] tokens = expression.split("\\s+");
-		Double result = evaluate(tokens);
-		return result;
+		if (tokens.length == 1 && assignment) {
+			try {
+				return Double.parseDouble(expression);
+			} catch (NumberFormatException nfe) {
+				throw new NumberFormatException("Invalid operands: " + expression + ". Operands contains non-numeric character.");
+			}
+		}
+		return evaluate(tokens);
 	}
 
 	public static void main(String[] args) {
