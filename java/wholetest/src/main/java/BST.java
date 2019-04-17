@@ -280,7 +280,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		if (hi == null) throw new IllegalArgumentException("second argument to keys() is null");
 
 		Queue<Key> queue = new Queue<Key>();
-		keys2(root, queue, lo, hi);
+		keyOrder(root, queue, lo, hi);
 		return queue;
 	}
 
@@ -326,7 +326,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 	}
 
-	private void keys2(Node x, Queue<Key> queue, Key lo, Key hi) {
+	private void keyOrder(Node x, Queue<Key> queue, Key lo, Key hi) {
 		LinkedList<Node> linkedList = new LinkedList<>();
 		Node node = x;
 

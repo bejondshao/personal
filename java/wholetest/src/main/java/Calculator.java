@@ -27,12 +27,118 @@
  ******************************************************************************/
 
 import java.util.EmptyStackException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class Calculator {
+	static {
+		LEFT_PARENTHESIS = "(";
+		RIGHT_PARENTHESIS = ")";
+	}
 	// all operators -- for now -- as a string
+
 	private static String opsString = "()+-/*";
+
+	private static String LEFT_PARENTHESIS;
+
+	private static String RIGHT_PARENTHESIS;
+
+	private static final String COLON = ":";
+
+	private static final String COMMA = ",";
+
+	private static String ASSIGNMENT = "=";
+
+	private static String TYPE_ASSIGN = "assign";
+
+	private static String TYPE_DEF = "def";
+
+	private static String TYPE_DEF_ = "def ";
+
+	private static String TYPE_EVAL = "eval";
+
+	private static String TYPE_CALL = "call";
+
+	private static String WS = " ";
+
+	private static String REGEX_START_WITH_ALPHA_NUM = "^[a-zA-Z][a-zA-Z0-9]*";  // "^[a-zA-Z][a-zA-Z0-9_]*" is better, but not suitable for requirement of assignment
+
+	private static Map<String, Double> variableMap = new HashMap<>();
+
+	private static Map<String, AbstractSyntax> functionMap = new HashMap<>();
+
+	public static AbstractSyntax preDeal(String input) {
+		AbstractSyntax abstractSyntax = new AbstractSyntax();
+		if (input.contains(ASSIGNMENT)) { // for assignment
+			abstractSyntax = dealAssign(input);
+		} else if (input.startsWith(TYPE_DEF_)) { // for def
+			abstractSyntax = dealDef(input);
+		} else if (input.contains(LEFT_PARENTHESIS)) { // for call and expression
+			abstractSyntax = dealCallOrExpression(input);
+		}
+
+		return abstractSyntax;
+	}
+
+	private static AbstractSyntax dealAssign(String input) {
+		AbstractSyntax abstractSyntax = new AbstractSyntax();
+		String[] variableAndExpression = input.split(ASSIGNMENT); // x = 3 + 2 would be ["x", "3 + 2"]
+		if (variableAndExpression.length > 2) {
+			throw new RuntimeException("Insufficient assignment: Only one assignment is allowed.");
+		}
+		abstractSyntax.setType(TYPE_ASSIGN);
+		abstractSyntax.setName(variableAndExpression[0].trim());
+		abstractSyntax.setExp(new String[]{variableAndExpression[1].trim()});
+		Double result = evaluateExpression(variableAndExpression[1].trim());
+		variableMap.put(abstractSyntax.getName(), result);
+		System.out.println("Result: " + abstractSyntax.getName() + WS + ASSIGNMENT + WS + result);
+		return abstractSyntax;
+	}
+
+	private static AbstractSyntax dealDef(String input) {
+		AbstractSyntax abstractSyntax = new AbstractSyntax();
+		String[] def_AndFunction = input.split(TYPE_DEF_, 2); // "def sumOfSquares(x,y) : x * x + y * y" would be ["def ", "sumOfSquares(x,y) : x * x + y * y"]
+		abstractSyntax.setType(TYPE_DEF);
+		String[] functionAndExpression = def_AndFunction[1].split(COLON); // "sumOfSquares(x,y) : x * x + y * y" would be ["sumOfSquares(x,y) ", " x * x + y * y"]
+		String[] functionNameAndParams = functionAndExpression[0].trim().split(LEFT_PARENTHESIS); // "sumOfSquares(x,y) " would be ["sumOfSquares", "x,y)"]
+
+		abstractSyntax.setName(functionNameAndParams[0]);
+		abstractSyntax.setExp(new String[]{functionAndExpression[1].trim()});
+
+		String paramsString = functionNameAndParams[1].split(RIGHT_PARENTHESIS)[0]; // "x,y)" would be spilt to ["x,y"], result is "x,y"
+		abstractSyntax.setParams(spiltStringToTrimArray(paramsString, COMMA)); // ["x", "y"]
+
+		return abstractSyntax;
+	}
+
+	private static AbstractSyntax dealCallOrExpression(String input) {
+		AbstractSyntax abstractSyntax = new AbstractSyntax();
+		String[] functionNameAndParams = input.split(LEFT_PARENTHESIS, 2); // "sum(2, 3)" would be ["sum", "2, 3)"]
+		// "x + (2 + y)" would be ["x + ", "2 + y)"]
+		// this is a function name
+		if (functionNameAndParams[0].matches(REGEX_START_WITH_ALPHA_NUM)) {
+			abstractSyntax.setType(TYPE_CALL);
+			abstractSyntax.setName(functionNameAndParams[0]);
+			String paramsString = functionNameAndParams[1].split(RIGHT_PARENTHESIS)[0]; // "2, 3)" would be "2, 3"
+			abstractSyntax.setParams(spiltStringToTrimArray(paramsString, COMMA)); // ["2", "3"]
+		} else { // this could only be expression
+			abstractSyntax.setType(TYPE_EVAL);
+			abstractSyntax.setExp(new String[]{functionNameAndParams[1].split(RIGHT_PARENTHESIS)[0].trim()});
+		}
+
+		return abstractSyntax;
+	}
+
+	private static String[] spiltStringToTrimArray(String string, String regex) {
+		String[] array = string.split(regex); // "x, y" would be spilt to ["x", " y"]
+		for (int i = 0; i < array.length; i++)
+			array[i] = array[i].trim();
+
+		return array;
+	}
+
 
 	// result of applying binary operator op to two operands val1 and val2
 	public static double eval(String op, double val1, double val2) {
@@ -74,7 +180,15 @@ public class Calculator {
 			// token is a value
 			if (!opsString.contains(s)) {
 				try {
-					vals.push(Double.parseDouble(s));
+					if (s.matches(REGEX_START_WITH_ALPHA_NUM)) { // check variable before parse
+						Double value = variableMap.get(s);
+						if (value == null) {
+							throw new RuntimeException("Undefined variable: " + s);
+						}
+						vals.push(value);
+					} else {
+						vals.push(Double.parseDouble(s));
+					}
 				} catch (NumberFormatException nfe) {
 					throw new NumberFormatException("Invalid operands: " + s + ". Operands contains non-numeric character.");
 				}
@@ -160,10 +274,22 @@ public class Calculator {
 		return new Values(val2, val1);
 	}
 
+	/**
+	 * Evaluate expression
+	 * @param expression
+	 * @return
+	 */
+	public static Double evaluateExpression(String expression) {
+		// should not do separateOps before preDeal. Only do separateOps when you are sure this is an expression
+		expression = separateOps(expression);
+		// tokenize -- separate operands and operators into a string array
+		String[] tokens = expression.split("\\s+");
+		Double result = evaluate(tokens);
+		return result;
+	}
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		BST<Double, Double> calculations = new BST<>();
 		while (input.hasNext()) {
 			// read in next line as a string
 			String ln = input.nextLine();
@@ -174,25 +300,14 @@ public class Calculator {
 				// avoid empty string or enter
 				continue;
 			}
-			// tokenize -- separate operands and operators into a string array
-			String[] tokens = separateOps(ln).split("\\s+");
 			// evaluate and print
 			try {
-				Double result = evaluate(tokens);
-				calculations.put(result, result);
-				System.out.println(result);
+				preDeal(ln);
 			} catch (NumberFormatException nfe) {
 				System.out.println(nfe.getMessage());
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
-		System.out.println("--- level order ---");
-		for (Double s : calculations.levelOrder())
-			System.out.println(s);
-
-		System.out.println("--- key order ---");
-		for (Double s : calculations.keys())
-			System.out.println(s);
 	}
 }
