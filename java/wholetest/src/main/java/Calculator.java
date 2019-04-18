@@ -104,7 +104,11 @@ public class Calculator {
 			throw new RuntimeException("Insufficient assignment: Only one assignment is allowed.");
 		}
 		abstractSyntax.setType(TYPE_ASSIGN);
-		abstractSyntax.setName(variableAndExpression[0].trim());
+		String variable = variableAndExpression[0].trim();
+		if (!Parser.alphanum(variable)) {
+			throw new RuntimeException("Invalid variable name: \"" + variable + "\". Variable should start with alphabet.");
+		}
+		abstractSyntax.setName(variable);
 		abstractSyntax.setExp(new String[]{variableAndExpression[1].trim()});
 		Double result = evaluateExpression(variableAndExpression[1].trim(), true);
 		variableMap.put(abstractSyntax.getName(), result);
