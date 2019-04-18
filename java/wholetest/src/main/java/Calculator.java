@@ -34,11 +34,14 @@
  *    -  support function definition. E.g. def sum(x, y): x + y
  *    -  support function call. E.g. sum(a, b)
  *    -  support pass reall number to function. E.g. sum(2,3), sum(3, x)
+ *    -  support check if function body variables exists in function definition. E.g. sum(ax,bc): ax + bo. "bo" is not valid
  *
  ******************************************************************************/
 
+import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
@@ -72,8 +75,6 @@ public class Calculator {
 	private static String TYPE_CALL = "call";
 
 	private static String WHITE_SPACE = " ";
-
-	private static String UNDERSCORE = "_";
 
 	private static String REGEX_START_WITH_ALPHA_NUM = "^[a-zA-Z][a-zA-Z0-9]*";  // "^[a-zA-Z][a-zA-Z0-9_]*" is better, but not suitable for requirement of assignment
 
@@ -130,9 +131,28 @@ public class Calculator {
 
 		String paramsString = functionNameAndParams[1].split(REGEX_RIGHT_PARENTHESIS)[0]; // "x,y)" would be spilt to ["x,y"], result is "x,y"
 		abstractSyntax.setParams(spiltStringToTrimArray(paramsString, COMMA)); // ["x", "y"]
+
+		checkFunctionBody(abstractSyntax);
+
 		functionMap.put(abstractSyntax.getName(), abstractSyntax);
 		System.out.println("Function: " + abstractSyntax.toString());
 		return abstractSyntax;
+	}
+
+	private static boolean checkFunctionBody(AbstractSyntax abstractSyntax) {
+		String expression = abstractSyntax.getExp()[0];
+		expression = separateOps(expression);
+		String[] tokens = expression.split("\\s+");
+		// convert function params to list
+		List<String> paramList = Arrays.asList(abstractSyntax.getParams());
+		for(String token : tokens) {
+			if (!opsString.contains(token)) {
+				if (!paramList.contains(token)) {
+					throw new RuntimeException("Invalid parameter: \"" + token + "\" does not exist in function definition.");
+				}
+			}
+		}
+		return true;
 	}
 
 	private static AbstractSyntax dealCallOrExpression(String input) {
