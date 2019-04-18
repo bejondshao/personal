@@ -23,6 +23,17 @@
  *    -  can indicate insufficient operators. E.g. 12 21
  *    -  can indicate extraneous/unbalanced parentheses. E.g. 12+(12-1
  *    -  can indicate division by zero. E.g. 12/0
+ *    -  can indicate undefined variables.
+ *    -  can indicate undefined functions
+ *    -  can indicate calling a function with an incorrect number of parameters
+ *    -  can indicate calling a function with invalid parameters. E.g. 12y3
+ *
+ *    -  support variables. E.g. (x + 2) * ( 3 - y)
+ *    -  support simple assignment. E.g. x = 2
+ *    -  support variable assignment. E.g. x = 3 + 2, x = y - 3
+ *    -  support function definition. E.g. def sum(x, y): x + y
+ *    -  support function call. E.g. sum(a, b)
+ *    -  support pass reall number to function. E.g. sum(2,3), sum(3, x)
  *
  ******************************************************************************/
 
@@ -60,7 +71,9 @@ public class Calculator {
 
 	private static String TYPE_CALL = "call";
 
-	private static String WS = " ";
+	private static String WHITE_SPACE = " ";
+
+	private static String UNDERSCORE = "_";
 
 	private static String REGEX_START_WITH_ALPHA_NUM = "^[a-zA-Z][a-zA-Z0-9]*";  // "^[a-zA-Z][a-zA-Z0-9_]*" is better, but not suitable for requirement of assignment
 
@@ -94,7 +107,7 @@ public class Calculator {
 		abstractSyntax.setExp(new String[]{variableAndExpression[1].trim()});
 		Double result = evaluateExpression(variableAndExpression[1].trim(), true);
 		variableMap.put(abstractSyntax.getName(), result);
-		System.out.println("Result: " + abstractSyntax.getName() + WS + ASSIGNMENT + WS + result);
+		System.out.println("Result: " + abstractSyntax.getName() + WHITE_SPACE + ASSIGNMENT + WHITE_SPACE + result);
 		return abstractSyntax;
 	}
 
@@ -126,7 +139,7 @@ public class Calculator {
 		AbstractSyntax abstractSyntax = new AbstractSyntax();
 
 		/**
-		 * "sum(2, 3)" would be ["sum", "2, 3)"]
+		 * "sum(2, 3)" would be ["sum", "2, 3)"], "sum(x, y)" would be ["sum", "x, y)"]
 		 * "x + (2 + y)" would be ["x + ", "2 + y)"]
 		 */
 		String[] functionNameAndParams = input.split(REGEX_LEFT_PARENTHESIS, 2);
@@ -142,7 +155,9 @@ public class Calculator {
 			if (function == null) {
 				throw new RuntimeException("Undefined function: " + abstractSyntax.getName());
 			}
-			System.out.println("Call function: " + evaluateExpression(function.getExp()[0], false));
+
+			String newExpression = rebuildExpression(function, abstractSyntax.getParams());
+			System.out.println("Call function: " + evaluateExpression(newExpression, false));
 		} else { // this could only be expression
 			abstractSyntax.setType(TYPE_EVAL);
 			abstractSyntax.setExp(new String[]{input});
@@ -150,6 +165,25 @@ public class Calculator {
 		}
 
 		return abstractSyntax;
+	}
+
+	/**
+	 * need to change function expression variables to real variables
+	 * @param function abstractSyntax of function
+	 * @param params real variables, could be real number
+	 * @return
+	 */
+	private static String rebuildExpression(AbstractSyntax function, String[] params) {
+		if (function.getParams().length != params.length) {
+			throw new RuntimeException("Incorrect number of parameters: " + function.getName() +
+					", requires and only requires " + function.getParams().length + " parameters.");
+		}
+		String newExpression = function.getExp()[0];
+		for (int i = 0; i < params.length; i++) {
+			newExpression = newExpression.replace(function.getParams()[i], params[i]);
+		}
+		System.out.println("New expression: " + newExpression);
+		return newExpression;
 	}
 
 	private static void dealExpression(String input) {
@@ -311,6 +345,7 @@ public class Calculator {
 	/**
 	 * Evaluate expression
 	 * @param expression
+	 * @param assignment, a signal to allow simple assignment, e.g. x = 2
 	 * @return
 	 */
 	public static Double evaluateExpression(String expression, boolean assignment) {
