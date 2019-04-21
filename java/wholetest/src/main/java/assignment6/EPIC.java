@@ -18,6 +18,12 @@ import java.util.Map;
  * “-u”: this is the URL of the page to begin the search (the seed)
  * “-q”: this is the query string (e.g., “notre dame”)
  * “-m”: this is the maximum number of relevant pages to collect and display
+ *
+ * --------------------------------------
+ *  1. jsoup look into website and find documents
+ *  2. write code to iterate documents, depth-first or width-first. Or calculate an index to choose
+ *  3. write search code to find out key words
+ *  4. write order method to order the contents that contains key words
  */
 public class EPIC {
 
