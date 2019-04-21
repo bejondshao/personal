@@ -7,14 +7,52 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Example program to list links from a URL.
+ * The three command line arguments may be given in any order:
+ * “-u”: this is the URL of the page to begin the search (the seed)
+ * “-q”: this is the query string (e.g., “notre dame”)
+ * “-m”: this is the maximum number of relevant pages to collect and display
  */
 public class EPIC {
+
+	private static Map<String, String> argMap = new HashMap<>();
+	private static List<String> argList = new ArrayList<>();
+
+	static {
+		argList.add("-u");
+		argList.add("-q");
+		argList.add("-m");
+	}
+
+	private static String dealArgs(String[] args) {
+		for (String arg : args) {
+			for (String argument : argList) {
+				if (arg.startsWith(argument)) {
+					if (arg.length() > 2) {
+						argMap.put(argument, arg.substring(2));
+					} else {
+						throw new RuntimeException("Argument " + argument + "should contain content.");
+					}
+				}
+			}
+		}
+		String url = argMap.get("-u");
+		if (url == null) {
+			throw new RuntimeException("Argument \"-u\" is required.");
+		}
+		return url;
+	}
+
 	public static void main(String[] args) throws IOException {
-		Validate.isTrue(args.length == 1, "usage: supply url to fetch");
-		String url = args[0];
+		Validate.isFalse(args.length == 0, "usage: supply url to fetch");
+
+		String url = dealArgs(args);
 		print("Fetching %s...", url);
 
 		Document doc = Jsoup.connect(url).get();
@@ -34,7 +72,7 @@ public class EPIC {
 
 		print("\nImports: (%d)", imports.size());
 		for (Element link : imports) {
-			print(" * %s <%s> (%s)", link.tagName(),link.attr("abs:href"), link.attr("rel"));
+			print(" * %s <%s> (%s)", link.tagName(), link.attr("abs:href"), link.attr("rel"));
 		}
 
 		print("\nLinks: (%d)", links.size());
@@ -49,7 +87,7 @@ public class EPIC {
 
 	private static String trim(String s, int width) {
 		if (s.length() > width)
-			return s.substring(0, width-1) + ".";
+			return s.substring(0, width - 1) + ".";
 		else
 			return s;
 	}
