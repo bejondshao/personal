@@ -9,8 +9,10 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Example program to list links from a URL.
@@ -27,8 +29,14 @@ import java.util.Map;
  */
 public class EPIC {
 
+	private final static String WHITE_SPACE = " ";
 	private static Map<String, String> argMap = new HashMap<>();
 	private static List<String> argList = new ArrayList<>();
+
+	/**
+	 * holds visited URLs
+	 */
+	private static Set<String> visitedURLs = new HashSet<>();
 
 	static {
 		argList.add("-u");
@@ -59,32 +67,46 @@ public class EPIC {
 		Validate.isFalse(args.length == 0, "usage: supply url to fetch");
 
 		String url = dealArgs(args);
-		print("Fetching %s...", url);
 
-		Document doc = Jsoup.connect(url).get();
-		Elements links = doc.select("a[href]");
-		Elements media = doc.select("[src]");
-		Elements imports = doc.select("link[href]");
+		fetchURL(url, argMap.get("-q"), 1);
 
-		print("\nMedia: (%d)", media.size());
-		for (Element src : media) {
-			if (src.tagName().equals("img"))
-				print(" * %s: <%s> %sx%s (%s)",
-					src.tagName(), src.attr("abs:src"), src.attr("width"), src.attr("height"),
-					trim(src.attr("alt"), 20));
-			else
-				print(" * %s: <%s>", src.tagName(), src.attr("abs:src"));
+		print("\nBody: (%s)", text);
+	}
+
+	/**
+	 * Fetch url recursively, until there is no child urls or depth is 0
+	 * @param url
+	 * @param depth, fetch depth, default is 1, if url is an external link, depth is 0, continue fetch,
+	 *                  but don't fetch it's child urls, so the child urls are -1. If current page doesn't contain
+	 *                  any key words, depth set to -1. No more fetch.
+	 */
+	private static void fetchURL(String url, String query, int depth) throws IOException {
+		if (depth >= 1) {
+			print("Fetching %s...", url);
+			Document doc = Jsoup.connect(url).get();
+			Elements links = doc.select("a[href]");
+			String text = doc.text();
+			double marking = calculateMarking(query);
+			Page homePage = new Page(url, doc.title(), text, links);
+		}
+	}
+
+	/**
+	 * Calculate marking for query, first search for query, then spilt query into key words, and check one by one
+	 * If text contains whole query, count 100, if text contains one of the key words, count 10, if the text contains
+	 * one of the key words more than one time, count 1
+	 * @param query
+	 * @param text
+	 * @return
+	 */
+	private static double calculateMarking(String query, String text) {
+		if (query == null) {
+			return 0;
 		}
 
-		print("\nImports: (%d)", imports.size());
-		for (Element link : imports) {
-			print(" * %s <%s> (%s)", link.tagName(), link.attr("abs:href"), link.attr("rel"));
-		}
-
-		print("\nLinks: (%d)", links.size());
-		for (Element link : links) {
-			print(" * a: <%s>  (%s)", link.attr("abs:href"), trim(link.text(), 35));
-		}
+		String[] keyWords = query.split(WHITE_SPACE);
+		String[]
+		for ()
 	}
 
 	private static void print(String msg, Object... args) {

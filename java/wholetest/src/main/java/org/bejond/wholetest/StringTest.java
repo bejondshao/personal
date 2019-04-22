@@ -111,7 +111,7 @@ public class StringTest {
 	public void testEqualsNull() {
 		String a = "a";
 		String b = null;
-		System.out.println(a.equals(b));
+		System.out.println(a.equals(b)); // false
 	}
 
 	/**
