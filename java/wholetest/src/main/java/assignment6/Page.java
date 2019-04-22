@@ -3,14 +3,8 @@ package assignment6;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Page {
 	private String URL;
@@ -33,28 +27,36 @@ public class Page {
 	private double marking;
 
 	/**
-	 * use set to avoid duplicate URLs in the same page
+	 * use map to avoid duplicate URLs in the same page
 	 */
-	private Set<Page> childPages = new HashSet<>();
+	private Map<String, Page> childPages = new HashMap<>();
 
-	public Page(String URL, String theTitle, String theText, Elements links) {
+	public Page(String URL, String theTitle, String theText, double marking, Elements links) {
 		this.URL = URL;
 		this.theTitle = theTitle;
 		this.theText = theText;
+		this.marking = marking;
 		convertElements(links);
 	}
 
-	public Page(String URL, String theTitle) {
+	/**
+	 * Only set URL, because homepage title might not be particular
+	 * @param URL
+	 */
+	public Page(String URL) {
 		this.URL = URL;
-		this.theTitle = theTitle;
 	}
 
 	private void convertElements(Elements links) {
 		for (Element link : links) {
 			String url = link.attr("abs:href");
-			String title = trim(link.text(), 35);
-			print(" * a: <%s>  (%s)", url, title);
-			childPages.add(new Page(url, title));
+			if (url.length() > 0) {
+				String title = trim(link.text(), 35);
+
+				print(" * a: <%s>  (%s)", url, title);
+				childPages.put(url, null);
+
+			}
 		}
 	}
 
@@ -70,7 +72,7 @@ public class Page {
 	}
 
 	public Iterable<Page> adjacentTo() {
-		return childPages;
+		return childPages.values();
 	}
 
 	public String getURL() {
@@ -103,5 +105,17 @@ public class Page {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public double getMarking() {
+		return marking;
+	}
+
+	public void setMarking(double marking) {
+		this.marking = marking;
+	}
+
+	public Map<String, Page> getChildPages() {
+		return childPages;
 	}
 }

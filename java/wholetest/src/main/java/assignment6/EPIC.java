@@ -67,32 +67,61 @@ public class EPIC {
 		Validate.isFalse(args.length == 0, "usage: supply url to fetch");
 
 		String url = dealArgs(args);
-
-		fetchURL(url, argMap.get("-q"), 1);
-
-		print("\nBody: (%s)", text);
+		String query = argMap.get("-q");
+		Page homePage = new Page(url);
+		depthFirst(homePage, query);
 	}
 
 	/**
-	 * Fetch url recursively, until there is no child urls or depth is 0
-	 * @param url
+	 * Depth-first to iterate website
+	 */
+	public static void depthFirst(Page homePage, String query) throws IOException {
+		LinkedList<Page> linkedList = new LinkedList<>();
+		Page page = homePage;
+		linkedList.addFirst(page);
+		while (!linkedList.isEmpty()) {
+			page = linkedList.removeFirst();
+			fetchURL(page, query, 1); // this doesn't work, because page just a reference to homePage, assign new Page to page doesn't not affect homePage
+			System.out.println(page.getTheTitle());
+			for (Page childPage : page.adjacentTo()) {
+				linkedList.addFirst(childPage);
+			}
+		}
+	}
+	/**
+	 * Fetch page based on page url
+	 * Until there is no child urls or depth is -1
+	 * @param page, the page that only contains url
 	 * @param depth, fetch depth, default is 1, if url is an external link, depth is 0, continue fetch,
 	 *                  but don't fetch it's child urls, so the child urls are -1. If current page doesn't contain
 	 *                  any key words, depth set to -1. No more fetch.
 	 */
-	private static void fetchURL(String url, String query, int depth) throws IOException {
-		if (depth >= 1) {
-			print("Fetching %s...", url);
-			Document doc = Jsoup.connect(url).get();
-			Elements links = doc.select("a[href]");
-			String text = doc.text();
-			double marking = calculateMarking(query);
-			Page homePage = new Page(url, doc.title(), text, links);
+	private static void fetchURL(Page page, String query, int depth) throws IOException {
+		String url = page.getURL();
+		if (visitedURLs.contains(url)) {
+			return;
 		}
+		print("Fetching %s...", url);
+		visitedURLs.add(url);
+		Document doc = Jsoup.connect(url).get();
+		Elements links = doc.select("a[href]");
+		String text = doc.text();
+		double marking = calculateMarking(query, text);
+		page = new Page(url, doc.title(), text, marking, links);
+		if (marking == 0.0) {
+			depth = -1;
+		}
+
+		//fetchURL()
+		if (depth < 0) {
+
+		}
+
 	}
 
 	/**
-	 * Calculate marking for query, first search for query, then spilt query into key words, and check one by one
+	 * Calculate marking for query
+	 * First search for query, then spilt query into key words, and check one by one
 	 * If text contains whole query, count 100, if text contains one of the key words, count 10, if the text contains
 	 * one of the key words more than one time, count 1
 	 * @param query
@@ -103,10 +132,14 @@ public class EPIC {
 		if (query == null) {
 			return 0;
 		}
-
+		double marking = 0;
 		String[] keyWords = query.split(WHITE_SPACE);
-		String[]
-		for ()
+		if (text.contains(query)) {
+			marking += 100;
+		}
+		//for ()
+
+		return marking;
 	}
 
 	private static void print(String msg, Object... args) {
