@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Page {
+
 	private String URL;
 
 	private String theTitle;
@@ -24,14 +25,16 @@ public class Page {
 	/**
 	 * calculate marking for key words. In order for result sorting
 	 */
-	private double marking;
+	private int marking;
 
 	/**
 	 * use map to avoid duplicate URLs in the same page
 	 */
 	private Map<String, Page> childPages = new HashMap<>();
 
-	public Page(String URL, String theTitle, String theText, double marking, Elements links) {
+	public Page(String URL, String theTitle, String theText, int marking, Elements links) {
+		URL = URLTrimmer.removeNumberSign(URL);
+		URL = URLTrimmer.removeEndSlash(URL);
 		this.URL = URL;
 		this.theTitle = theTitle;
 		this.theText = theText;
@@ -44,6 +47,8 @@ public class Page {
 	 * @param URL
 	 */
 	public Page(String URL) {
+		URL = URLTrimmer.removeNumberSign(URL);
+		URL = URLTrimmer.removeEndSlash(URL);
 		this.URL = URL;
 	}
 
@@ -54,7 +59,7 @@ public class Page {
 				String title = trim(link.text(), 35);
 
 				print(" * a: <%s>  (%s)", url, title);
-				childPages.put(url, null);
+				childPages.put(url, new Page(url));
 
 			}
 		}
@@ -77,10 +82,6 @@ public class Page {
 
 	public String getURL() {
 		return URL;
-	}
-
-	public void setURL(String URL) {
-		this.URL = URL;
 	}
 
 	public String getTheTitle() {
@@ -107,15 +108,20 @@ public class Page {
 		this.description = description;
 	}
 
-	public double getMarking() {
+	public int getMarking() {
 		return marking;
 	}
 
-	public void setMarking(double marking) {
+	public void setMarking(int marking) {
 		this.marking = marking;
 	}
 
 	public Map<String, Page> getChildPages() {
 		return childPages;
 	}
+
+	public void setChildPages(Map<String, Page> childPages) {
+		this.childPages = childPages;
+	}
+
 }
