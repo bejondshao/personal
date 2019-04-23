@@ -100,7 +100,7 @@ public class EPIC {
 
 			// let's skip external links
 			if (depth > 0) {
-				boolean fetch = fetchURL(page, query, depth);
+				boolean fetch = fetchURL(page, query);
 
 				// only put childPages to linkedList when page is new
 				if (fetch) {
@@ -115,10 +115,10 @@ public class EPIC {
 
 	/**
 	 * only fetch hompPage's childPage, if the childPage url domain is different from homepage, depth is 0,
-	 * then childPage's childPages would not be added to Page
+	 * then childPage's childPages would not be fetched or added to Page
 	 * @param homePage
 	 * @param childPage
-	 * @return
+	 * @return depth, fetch depth, default is 0
 	 */
 	private static int calculateDepth(String homePage, String childPage) {
 		int depth = 0;
@@ -148,11 +148,8 @@ public class EPIC {
 	 * Fetch page based on page url
 	 * Until there is no child urls or depth is -1
 	 * @param page, the page that only contains url
-	 * @param depth, fetch depth, default is 1, if url is an external link, depth is 0, continue fetch,
-	 *                  but don't fetch it's child urls, so the child urls are -1. If current page doesn't contain
-	 *                  any key words, depth set to -1. No more fetch.
 	 */
-	private static boolean fetchURL(Page page, String query, int depth) throws IOException {
+	private static boolean fetchURL(Page page, String query) throws IOException {
 		String url = page.getURL();
 
 		if (visitedURLs.contains(url)) {
