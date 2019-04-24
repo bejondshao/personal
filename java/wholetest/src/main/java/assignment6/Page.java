@@ -32,13 +32,12 @@ public class Page {
 	 */
 	private Map<String, Page> childPages = new HashMap<>();
 
-	public Page(String URL, String theTitle, String theText, int marking, Elements links) {
+	public Page(String URL, String theTitle, String theText, Elements links) {
 		URL = URLTrimmer.removeNumberSign(URL);
 		URL = URLTrimmer.removeEndSlash(URL);
 		this.URL = URL;
 		this.theTitle = theTitle;
 		this.theText = theText;
-		this.marking = marking;
 		convertElements(links);
 	}
 
