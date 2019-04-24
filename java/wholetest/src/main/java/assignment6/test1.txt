@@ -1,0 +1,311 @@
+java -cp .:assignment6/jsoup.jar assignment6/EPIC -uhttps://introcs.cs.princeton.edu/java/33design/ -q"public interface" -m10
+Fetching https://introcs.cs.princeton.edu/java/33design...
+ * a: <https://introcs.cs.princeton.edu/home>  ()
+ * a: <https://introcs.cs.princeton.edu/java/home>  (Intro to Programming)
+ * a: <https://introcs.cs.princeton.edu/java/10elements>  (1. Elements of Programming)
+ * a: <https://introcs.cs.princeton.edu/java/11hello>  (1.1 Your First Program)
+ * a: <https://introcs.cs.princeton.edu/java/12types>  (1.2 Built-in Types of Data)
+ * a: <https://introcs.cs.princeton.edu/java/13flow>  (1.3 Conditionals and Loops)
+ * a: <https://introcs.cs.princeton.edu/java/14array>  (1.4 Arrays)
+ * a: <https://introcs.cs.princeton.edu/java/15inout>  (1.5 Input and Output)
+ * a: <https://introcs.cs.princeton.edu/java/16pagerank>  (1.6 Case Study: PageRank)
+ * a: <https://introcs.cs.princeton.edu/java/20functions>  (2. Functions)
+ * a: <https://introcs.cs.princeton.edu/java/21function>  (2.1 Static Methods)
+ * a: <https://introcs.cs.princeton.edu/java/22library>  (2.2 Libraries and Clients)
+ * a: <https://introcs.cs.princeton.edu/java/23recursion>  (2.3 Recursion)
+ * a: <https://introcs.cs.princeton.edu/java/24percolation>  (2.4 Case Study: Percolation)
+ * a: <https://introcs.cs.princeton.edu/java/30oop>  (3. OOP)
+ * a: <https://introcs.cs.princeton.edu/java/31datatype>  (3.1 Using Data Types)
+ * a: <https://introcs.cs.princeton.edu/java/32class>  (3.2 Creating Data Types)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (3.3 Designing Data Types)
+ * a: <https://introcs.cs.princeton.edu/java/34nbody>  (3.4 Case Study: N-Body)
+ * a: <https://introcs.cs.princeton.edu/java/40algorithms>  (4. Data Structures)
+ * a: <https://introcs.cs.princeton.edu/java/41analysis>  (4.1 Performance)
+ * a: <https://introcs.cs.princeton.edu/java/42sort>  (4.2 Sorting and Searching)
+ * a: <https://introcs.cs.princeton.edu/java/43stack>  (4.3 Stacks and Queues)
+ * a: <https://introcs.cs.princeton.edu/java/44st>  (4.4 Symbol Tables)
+ * a: <https://introcs.cs.princeton.edu/java/45graph>  (4.5 Case Study: Small World)
+ * a: <https://introcs.cs.princeton.edu/java/cs>  (Computer Science)
+ * a: <https://introcs.cs.princeton.edu/java/50theory>  (5. Theory of Computing)
+ * a: <https://introcs.cs.princeton.edu/java/51language>  (5.1 Formal Languages)
+ * a: <https://introcs.cs.princeton.edu/java/52turing>  (5.2 Turing Machines)
+ * a: <https://introcs.cs.princeton.edu/java/53universality>  (5.3 Universality)
+ * a: <https://introcs.cs.princeton.edu/java/54computability>  (5.4 Computability)
+ * a: <https://introcs.cs.princeton.edu/java/55intractability>  (5.5 Intractability)
+ * a: <https://introcs.cs.princeton.edu/java/99crypto>  (9.9 Cryptography)
+ * a: <https://introcs.cs.princeton.edu/java/60machine>  (6. A Computing Machine)
+ * a: <https://introcs.cs.princeton.edu/java/61data>  (6.1 Representing Info)
+ * a: <https://introcs.cs.princeton.edu/java/62toy>  (6.2 TOY Machine)
+ * a: <https://introcs.cs.princeton.edu/java/63programming>  (6.3 TOY Programming)
+ * a: <https://introcs.cs.princeton.edu/java/64simulator>  (6.4 TOY Virtual Machine)
+ * a: <https://introcs.cs.princeton.edu/java/70circuits>  (7. Building a Computer)
+ * a: <https://introcs.cs.princeton.edu/java/71boolean>  (7.1 Boolean Logic)
+ * a: <https://introcs.cs.princeton.edu/java/72circuit>  (7.2 Basic Circuit Model)
+ * a: <https://introcs.cs.princeton.edu/java/73combinational>  (7.3 Combinational Circuits)
+ * a: <https://introcs.cs.princeton.edu/java/74sequential>  (7.4 Sequential Circuits)
+ * a: <https://introcs.cs.princeton.edu/java/75architecture>  (7.5 Digital Devices)
+ * a: <https://introcs.cs.princeton.edu/java/home>  (Beyond)
+ * a: <https://introcs.cs.princeton.edu/java/80systems>  (8. Systems)
+ * a: <https://introcs.cs.princeton.edu/java/81library>  (8.1 Library Programming)
+ * a: <https://introcs.cs.princeton.edu/java/82compiler>  (8.2 Compilers)
+ * a: <https://introcs.cs.princeton.edu/java/83os>  (8.3 Operating Systems)
+ * a: <https://introcs.cs.princeton.edu/java/84network>  (8.4 Networking)
+ * a: <https://introcs.cs.princeton.edu/java/85application>  (8.5 Applications Systems)
+ * a: <https://introcs.cs.princeton.edu/java/90scientific>  (9. Scientific Computation)
+ * a: <https://introcs.cs.princeton.edu/java/91float>  (9.1 Floating Point)
+ * a: <https://introcs.cs.princeton.edu/java/92symbolic>  (9.2 Symbolic Methods)
+ * a: <https://introcs.cs.princeton.edu/java/93integration>  (9.3 Numerical Integration)
+ * a: <https://introcs.cs.princeton.edu/java/94diffeq>  (9.4 Differential Equations)
+ * a: <https://introcs.cs.princeton.edu/java/95linear>  (9.5 Linear Algebra)
+ * a: <https://introcs.cs.princeton.edu/java/96optimization>  (9.6 Optimization)
+ * a: <https://introcs.cs.princeton.edu/java/97data>  (9.7 Data Analysis)
+ * a: <https://introcs.cs.princeton.edu/java/98simulation>  (9.8 Simulation)
+ * a: <https://introcs.cs.princeton.edu/python>  ()
+ * a: <https://algs4.cs.princeton.edu>  ()
+ * a: <https://introcs.cs.princeton.edu/home>  (Web Resources)
+ * a: <https://introcs.cs.princeton.edu/java/faq>  (FAQ)
+ * a: <https://introcs.cs.princeton.edu/java/data>  (Data)
+ * a: <https://introcs.cs.princeton.edu/java/code>  (Code)
+ * a: <https://introcs.cs.princeton.edu/java/errata>  (Errata)
+ * a: <https://introcs.cs.princeton.edu/java/lectures>  (Lectures)
+ * a: <https://introcs.cs.princeton.edu/java/11appendix>  (Appendices)
+ * a: <https://introcs.cs.princeton.edu/java/11precedence>  (A. Operator Precedence)
+ * a: <https://introcs.cs.princeton.edu/java/11style>  (B. Writing Clear Code)
+ * a: <https://introcs.cs.princeton.edu/java/11glossary>  (C. Glossary)
+ * a: <https://introcs.cs.princeton.edu/java/11cheatsheet>  (D. Java Cheatsheet)
+ * a: <https://introcs.cs.princeton.edu/java/11cheatsheet-toy>  (E. TOY Cheatsheet)
+ * a: <https://introcs.cs.princeton.edu/java/11matlab>  (F. Matlab)
+ * a: <https://www.coursera.org/learn/cs-programming-java>  (Online Course)
+ * a: <https://introcs.cs.princeton.edu/java/assignments>  (Programming Assignments)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Complex.java.html>  (Complex.java)
+ * a: <https://introcs.cs.princeton.edu/java/32class/Complex.java.html>  (Complex.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Counter.java.html>  (Counter.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Vector.java.html>  (Vector.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Function.java.html>  (Function.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Square.java.html>  (Square.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/GaussianPDF.java.html>  (GaussianPDF.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/FunctionGraph.java.html>  (FunctionGraph.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/RectangleRule.java.html>  (RectangleRule.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Function.java.html>  (Function.java)
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html>  (java.util.Comparable)
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html>  (java.util.Iterator)
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html>  (java.lang.Iterable)
+ * a: <https://en.wikipedia.org/wiki/Fragile_base_class>  (fragile base class problem)
+ * a: <https://en.wikipedia.org/wiki/Circle-ellipse_problem>  (circle–ellipse)
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html>  (java.lang.Object)
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#toString-->  (toString())
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals-java.lang.Object->  (equals())
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#hashCode-->  (hashCode())
+ * a: <https://introcs.cs.princeton.edu/java/33design/Sketch.java.html>  (Sketch.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Sketch.java.html>  (Sketch.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Sketch.java.html>  (Sketch.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/CompareDocuments.java.html>  (CompareDocuments.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Vector.java.html>  (Vector.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Counter.java.html>  (Counter.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Vector.java.html>  (Vector.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Vector.java.html>  (Vector.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/OnePass.java.html>  (OnePass.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/TwoPass.java.html>  (TwoPass.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/StableOnePass.java.html>  (StableOnePass.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/StringGenome.java.html>  (StringGenome.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Genome.java.html>  (Genome.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/CompactGenome.java.html>  (CompactGenome.java)
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/util/Date.html>  (java.util.Date)
+ * a: <https://docs.oracle.com/javase/8/docs/api/java/util/Date.html>  (java.util.Date)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Date.java.html>  (Date.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Genome.java.html>  (Genome.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Date.java.html>  (Date.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Date.java.html>  (Date.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Date2.java.html>  (Date2.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Date.java.html>  (Date.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/DifferentiableFunction.java.html>  (DifferentiableFunction.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Sqrt.java.html>  (Sqrt.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Newton.java.html>  (Newton.java)
+ * a: <http://en.wikipedia.org/wiki/Box-Muller_transform>  (reference)
+ * a: <http://msdn.microsoft.com/library/default.asp?url= /library/en-us/sysinfo/base/gettickcount.asp>  (shut down)
+ * a: <https://introcs.cs.princeton.edu/java/33design/Point.java.html>  (Point.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design/PointPolar.java.html>  (PointPolar.java)
+ * a: <https://www.cs.princeton.edu/~rs>  (Robert Sedgewick)
+ * a: <https://www.cs.princeton.edu/~wayne>  (Kevin Wayne)
+Fetching https://introcs.cs.princeton.edu/java/33design/TwoPass.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/TwoPass.java>  (TwoPass.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/TwoPass.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Complex.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Complex.java>  (Complex.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/Complex.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/CompareDocuments.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/CompareDocuments.java>  (CompareDocuments.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/CompareDocuments.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/StringGenome.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/StringGenome.java>  (StringGenome.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/StringGenome.java...
+Fetching https://introcs.cs.princeton.edu/java/33design/DifferentiableFunction.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/DifferentiableFunction.java>  (DifferentiableFunction.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/DifferentiableFunction.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Date2.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Date2.java>  (Date2.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/Date2.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/FunctionGraph.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/FunctionGraph.java>  (FunctionGraph.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/FunctionGraph.java...
+Fetching https://introcs.cs.princeton.edu/java/33design/Sketch.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Sketch.java>  (Sketch.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/Sketch.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Vector.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Vector.java>  (Vector.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/Vector.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/StableOnePass.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/StableOnePass.java>  (StableOnePass.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/StableOnePass.java...
+Fetching https://introcs.cs.princeton.edu/java/33design/Genome.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Genome.java>  (Genome.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/Genome.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/GaussianPDF.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/GaussianPDF.java>  (GaussianPDF.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/GaussianPDF.java...
+Fetching https://introcs.cs.princeton.edu/java/33design/Newton.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Newton.java>  (Newton.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/Newton.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Square.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Square.java>  (Square.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Square.java...
+Fetching https://introcs.cs.princeton.edu/java/33design/Function.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Function.java>  (Function.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Function.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/CompactGenome.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/CompactGenome.java>  (CompactGenome.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/CompactGenome.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Date.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Date.java>  (Date.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/Date.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/RectangleRule.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/RectangleRule.java>  (RectangleRule.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/RectangleRule.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/OnePass.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/OnePass.java>  (OnePass.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/OnePass.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Sqrt.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Sqrt.java>  (Sqrt.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/Sqrt.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Counter.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Counter.java>  (Counter.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Counter.java...
+Fetching https://introcs.cs.princeton.edu/java/33design/PointPolar.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/PointPolar.java>  (PointPolar.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetching https://introcs.cs.princeton.edu/java/33design/PointPolar.java...
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Point.java.html...
+ * a: <https://introcs.cs.princeton.edu/java/33design/Point.java>  (Point.java)
+ * a: <https://introcs.cs.princeton.edu/java/33design>  (§3.3 Designing Data Types)
+Fetched url: https://introcs.cs.princeton.edu/java/33design. Won't fetch again.
+Fetching https://introcs.cs.princeton.edu/java/33design/Point.java...
+====================================================
+Find 47 seaching results. Printing out 10 of them.
+Title: Designing Data Types 
+URL: https://introcs.cs.princeton.edu/java/33design 
+Related text: nctions of a single variable. public interface Function {
+    public abstrac
+Marking: 1000
+---------------------------------------------------
+Title: DifferentiableFunction.java 
+URL: https://introcs.cs.princeton.edu/java/33design/DifferentiableFunction.java.html 
+Related text: om §3.3 Designing Data Types. public interface DifferentiableFunction {
+    
+Marking: 1000
+---------------------------------------------------
+Title:  
+URL: https://introcs.cs.princeton.edu/java/33design/DifferentiableFunction.java 
+Related text: public interface DifferentiableFunction { publ
+Marking: 1000
+---------------------------------------------------
+Title: Function.java 
+URL: https://introcs.cs.princeton.edu/java/33design/Function.java.html 
+Related text: ***************************/
+
+public interface Function {
+    public abstrac
+Marking: 1000
+---------------------------------------------------
+Title:  
+URL: https://introcs.cs.princeton.edu/java/33design/Function.java 
+Related text: ****************************/ public interface Function { public abstract do
+Marking: 1000
+---------------------------------------------------
+Title: TwoPass.java 
+URL: https://introcs.cs.princeton.edu/java/33design/TwoPass.java.html 
+Related text: ***************************/
+
+public class TwoPass { 
+    private 
+Marking: 100
+---------------------------------------------------
+Title:  
+URL: https://introcs.cs.princeton.edu/java/33design/TwoPass.java 
+Related text: ****************************/ public class TwoPass { private int c
+Marking: 100
+---------------------------------------------------
+Title: Complex.java 
+URL: https://introcs.cs.princeton.edu/java/33design/Complex.java.html 
+Related text: ***************************/
+
+public final class Complex {
+    pri
+Marking: 100
+---------------------------------------------------
+Title:  
+URL: https://introcs.cs.princeton.edu/java/33design/Complex.java 
+Related text: ****************************/ public final class Complex { private
+Marking: 100
+---------------------------------------------------
+Title: CompareDocuments.java 
+URL: https://introcs.cs.princeton.edu/java/33design/CompareDocuments.java.html 
+Related text: ***************************/
+
+public class CompareDocuments {
+    
+Marking: 100
+---------------------------------------------------
