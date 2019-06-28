@@ -124,7 +124,10 @@ public class TestAll {
 	@Test
 	public void testGetList() {
 		List list = new LinkedList();
-		list.get(0); // java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+		//list.get(0); // java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
 		// always check isEmpty before get.
+		if (!list.isEmpty()) {
+			list.get(0);
+		}
 	}
 }

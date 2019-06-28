@@ -98,7 +98,8 @@ public class StringTest {
 		String b = null;
 		try {
 			a = b.length();
-		} catch ( Exception e ) {}
+		} catch (Exception e) {
+		}
 
 		System.out.print(a);
 
@@ -138,5 +139,19 @@ public class StringTest {
 		stringBuilder.append(b);
 		System.out.println(stringBuilder.toString()); // anull
 		System.out.println(new StringBuilder("a").append(b).toString()); // anull
+	}
+
+	/**
+	 * test (String) null
+	 * test String.valueOf(null);
+	 */
+	@Test
+	public void testObjectToString() {
+		Object object = null;
+		String integerStr = (String) object;
+		String obj = String.valueOf(object);
+		System.out.println(integerStr); // null
+		System.out.println(obj); // null
+		System.out.println(obj.length()); // 4
 	}
 }
